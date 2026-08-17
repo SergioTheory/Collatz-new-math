@@ -1,0 +1,158 @@
+[
+  {
+    "B": 20,
+    "alpha": 1.05,
+    "d1": 7,
+    "rows": [
+      {
+        "bitlen": 21,
+        "d2": 7,
+        "Q": 52101,
+        "endpoint_second_survival": 0.18091783267115794,
+        "fresh_survival": 0.17209,
+        "ratio": 1.0512977666985759,
+        "z_difference": 4.754835038280002
+      },
+      {
+        "bitlen": 22,
+        "d2": 8,
+        "Q": 81452,
+        "endpoint_second_survival": 0.26670922752050286,
+        "fresh_survival": 0.267875,
+        "ratio": 0.995648072871686,
+        "z_difference": -0.6333135684760646
+      },
+      {
+        "bitlen": 23,
+        "d2": 9,
+        "Q": 81580,
+        "endpoint_second_survival": 0.3401691591076244,
+        "fresh_survival": 0.345265,
+        "ratio": 0.9852407834782686,
+        "z_difference": -2.579958671593738
+      },
+      {
+        "bitlen": 24,
+        "d2": 11,
+        "Q": 60177,
+        "endpoint_second_survival": 0.36733303421573027,
+        "fresh_survival": 0.376565,
+        "ratio": 0.9754837391040864,
+        "z_difference": -4.09802339819379
+      },
+      {
+        "bitlen": 25,
+        "d2": 12,
+        "Q": 32315,
+        "endpoint_second_survival": 0.4292743308061272,
+        "fresh_survival": 0.43149,
+        "ratio": 0.9948650740599486,
+        "z_difference": -0.7461548214933331
+      }
+    ]
+  },
+  {
+    "B": 20,
+    "alpha": 1.1,
+    "d1": 8,
+    "rows": [
+      {
+        "bitlen": 21,
+        "d2": 7,
+        "Q": 100711,
+        "endpoint_second_survival": 0.1711828896545561,
+        "fresh_survival": 0.17209,
+        "ratio": 0.9947288607970023,
+        "z_difference": -0.6219701369317522
+      },
+      {
+        "bitlen": 22,
+        "d2": 8,
+        "Q": 168510,
+        "endpoint_second_survival": 0.2599370957213222,
+        "fresh_survival": 0.267875,
+        "ratio": 0.9703671328840773,
+        "z_difference": -5.420637252414346
+      },
+      {
+        "bitlen": 23,
+        "d2": 9,
+        "Q": 181455,
+        "endpoint_second_survival": 0.33417651759389383,
+        "fresh_survival": 0.345265,
+        "ratio": 0.9678841399907139,
+        "z_difference": -7.193510253051992
+      },
+      {
+        "bitlen": 24,
+        "d2": 11,
+        "Q": 155519,
+        "endpoint_second_survival": 0.3624573203274198,
+        "fresh_survival": 0.376565,
+        "ratio": 0.9625358711707668,
+        "z_difference": -8.612224485072131
+      },
+      {
+        "bitlen": 25,
+        "d2": 12,
+        "Q": 110574,
+        "endpoint_second_survival": 0.4244940040154105,
+        "fresh_survival": 0.43149,
+        "ratio": 0.9837864238230561,
+        "z_difference": -3.769242593282039
+      }
+    ]
+  },
+  {
+    "B": 20,
+    "alpha": 1.2,
+    "d1": 11,
+    "rows": [
+      {
+        "bitlen": 21,
+        "d2": 7,
+        "Q": 346850,
+        "endpoint_second_survival": 0.17056364422661094,
+        "fresh_survival": 0.17209,
+        "ratio": 0.9911304795549477,
+        "z_difference": -1.4402508205019848
+      },
+      {
+        "bitlen": 22,
+        "d2": 8,
+        "Q": 584825,
+        "endpoint_second_survival": 0.257381267900654,
+        "fresh_survival": 0.267875,
+        "ratio": 0.9608260117616576,
+        "z_difference": -9.147718891754629
+      },
+      {
+        "bitlen": 23,
+        "d2": 9,
+        "Q": 670389,
+        "endpoint_second_survival": 0.3342626445242986,
+        "fresh_survival": 0.345265,
+        "ratio": 0.968133591659446,
+        "z_difference": -9.082352566727916
+      },
+      {
+        "bitlen": 24,
+        "d2": 11,
+        "Q": 650642,
+        "endpoint_second_survival": 0.363763790225654,
+        "fresh_survival": 0.376565,
+        "ratio": 0.9660053117673019,
+        "z_difference": -10.333515194932675
+      },
+      {
+        "bitlen": 25,
+        "d2": 12,
+        "Q": 567604,
+        "endpoint_second_survival": 0.423754941825639,
+        "fresh_survival": 0.43149,
+        "ratio": 0.9820736096448098,
+        "z_difference": -6.005902388559535
+      }
+    ]
+  }
+]
