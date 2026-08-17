@@ -50,7 +50,7 @@ and $I(\sigma)=\sup_s[s\sigma-\Lambda(s)]$ is in bits. Equivalently, in nats
 The reverse structural gain is $g=\log_2 3-1.33\approx0.25496$ bits/step
 $=(\ln3-1.33\ln2)\approx0.17668$ nats/step.  The reverse-geometric ratio
 $\gamma_{\rm rev}=I_{\rm rev}/g$ is dimensionless and unit-independent:
-$0.2532/0.25496\approx0.993=0.175/0.17668$.  This unit conversion does not turn
+$0.2532/0.25498\approx0.993=0.17550/0.17673$.  This unit conversion does not turn
 $\gamma_{\rm rev}$ into a forward exceptional-set exponent.  The earlier value
 $0.67$ arose from mixing a nats rate with a bits gain and is superseded.  We
 normalize $I(2)=0$ throughout.
@@ -198,11 +198,11 @@ $r_w$ and $r_{w'}$ modulo $2^{M-1}$ is impossible.
 \begin{lemma}[Spectral Transversality of Resonant Sets; falsified as a decay mechanism]
 \label{lem:spectral_transversality}
 Let $R_{\text{end}} = \{h : \|h 3^{d_{\text{end}}} / 2^M\| \le A/2^M\}$ be the set of resonant frequencies for the endpoint distribution, and $R_{\text{bad}} = \{h : \|h 3^{d_{\text{bad}}} / 2^M\| \le A/2^M\}$ be the resonant set for the bad-set boundary layer.
-While the arithmetic fact $3^{d_{\text{end}} - d_{\text{bad}}} \not\equiv 1 \pmod{2^M}$ holds, enforcing that the central peaks do not intersect, this separation does not imply smallness of the total error $\Delta_b$. The high-frequency noise cross-terms generate macroscopic peaks of magnitude $\sim 0.43$ independent of the resonance alignment, exceeding the required $2^{-B/2}$ threshold by a factor of 885.
+While the arithmetic fact $d_{\text{end}} \not\equiv d_{\text{bad}} \pmod{2^{M-2}}$ holds, enforcing that the central peaks do not intersect, this separation does not imply smallness of the total error $\Delta_b$. The high-frequency noise cross-terms generate macroscopic peaks of magnitude $\sim 0.43$ independent of the resonance alignment, exceeding the required $2^{-B/2}$ threshold by a factor of 885.
 \end{lemma}
 
 \begin{remark}[Falsification of intra-layer anomalous cancellation]
-Extensive exact numerical DP tracking over the bucket constraints (up to $M=10^5$) explicitly falsifies any hypothesis of anomalous intra-layer Fourier cancellation. Within any fixed, macroscopic slice of length $d \approx M/2$, the Fourier coefficients uniformly obey $\theta \approx 0.47 \approx 0.5$, mirroring an unstructured random walk. Anomalous suppression (such as $\theta \to 0.20$ observed in unrestricted phase sums) is exclusively a consequence of \emph{inter-layer} destructive interference, which is irrelevant for isolated buckets defined at fixed length $d$. Thus, the decay in $\Delta_b$ is not driven by the endpoint distribution becoming artificially smooth, but rather by its sharp peaks systematically avoiding the structural resonances of the bad set.
+Extensive exact numerical DP tracking over the bucket constraints (up to $M \le 10^4$) explicitly falsifies any hypothesis of anomalous intra-layer Fourier cancellation. Within any fixed, macroscopic slice of length $d \approx M/2$, the Fourier coefficients uniformly obey $\theta \approx 0.47 \approx 0.5$, mirroring an unstructured random walk. Thus, the decay in $\Delta_b$ is not driven by the endpoint distribution becoming artificially smooth, but rather by its sharp peaks systematically avoiding the structural resonances of the bad set.
 \end{remark}
 
 \begin{remark}[Finite diagnostic and why pointwise transport is too strong]
@@ -226,9 +226,9 @@ The Reverse-chord Encoding Hypothesis was previously formulated as a
 potential bridge to attach $\gamma_{\rm rev} \approx 0.993$ to the forward
 exceptional set. Numerical experiments (E9) revealed a fundamental
 information-theoretic barrier: the entropy of reverse chords with mean
-shift $4/3$ is $h(4/3) \approx 1.077$ bits/step, while the target space
+shift $4/3$ is $h(4/3) \approx 1.0817$ bits/step, while the target space
 requires $\log_2 3 \approx 1.585$ bits/step. The resulting Hausdorff
-dimension deficit ($D_{\rm rev} \approx 0.808 < D_{\rm fwd} \approx 0.950$)
+dimension deficit ($D_{\rm rev} \approx 0.811 < D_{\rm fwd} \approx 0.950$)
 makes 100\% coverage algebraically impossible. This route is closed.
 \end{remark}
 
@@ -238,7 +238,7 @@ cost-per-gain ratio
 \[
  \gamma_{\rm rev}
  =\frac{I_{\rm rev}(1.33)}{\log_2 3-1.33}
- \approx\frac{0.2532}{0.25496}\approx0.993.
+ \approx\frac{0.2532}{0.25498}\approx0.993.
 \]
 This is a characteristic of reverse growth geometry.  It becomes a candidate
 forward exceptional-set exponent only under both reverse LDP shadowing and the
@@ -248,8 +248,7 @@ Reverse-chord Encoding Conjecture.
 \begin{remark}[Why one shadowing statement is insufficient]
 Forward non-descent gives an upper threshold
 \[
- \frac{S_d}{d}<\log_2 3+\frac{\log_2(N/N_0)}d+O(N_0^{-1})
- >\log_2 3,
+ \frac{S_d}{d}<\log_2 3+\frac{\log_2(N/N_0)}d+O(N_0^{-1}) \qquad \text{(which is } >\log_2 3\text{)},
 \]
 whereas the value $1.33<\log_2 3$ belongs to reverse growth.  Thus reverse LDP
 shadowing alone does not imply a forward exceptional-set estimate.  The

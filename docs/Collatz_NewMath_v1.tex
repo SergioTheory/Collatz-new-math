@@ -34,7 +34,7 @@ We establish a chain of five linked results.
 the Cram\'er rate of the geometric$(2)$ law, and the tilted $3$-adic reverse
 operator obeys a backward large-deviation principle whose normalized rate
 function coincides with the forward Cram\'er rate (\emph{duality}), verified
-numerically to machine precision.
+numerically ($\sim 10^{-3}$, hypothesis $I_{\rm rev} \equiv I_2$).
 \textbf{(S1)} The generic peak-path is a \emph{soliton}---a typical path of the
 exponentially tilted measure---and the fraction of peak-paths passing through
 any confluence center vanishes.
@@ -132,7 +132,7 @@ the $n$-Syracuse valuation behaves like $\mathrm{Geom}(2)^n$; consequently the
 mean shift $\bar a_n$ obeys a large-deviation principle with the Cram\'er rate
 $I_2$ of $\mathrm{Geom}(2)$. In particular an anomalous chord
 $\bar a_n\le\sigma<2$ has probability $2^{-n\,I_2(\sigma)+o(n)}$, with
-$I_2(1.33)\approx0.255$ and $I_2(1.0)=1$.
+$I_2(1.33)\approx0.25498$ and $I_2(1.0)=1$.
 
 \paragraph{Backward rigidity (R1, I1).} The reverse pre-image tree is
 controlled by the tilted $3$-adic operator $P_n^{(s)}$; it is quasi-compact
@@ -216,7 +216,7 @@ On a compact interval the weights $q^a$ are uniformly comparable and bounded awa
 \begin{lemma}[A4: Rate function]
 The Fenchel--Legendre transform $I(\sigma)=\sup_{s}[\,s\sigma-\Lambda(s)\,]$ is a good rate function with $I(2)=0$ and, numerically,
 \[
-I(1.33)\approx0.175\text{ nats}\approx0.253\text{ bits},\qquad I(1.0)=\ln 2\text{ nats}=1\text{ bit}.
+I(1.33)\approx0.17674\text{ nats}\approx0.25498\text{ bits},\qquad I(1.0)=\ln 2\text{ nats}=1\text{ bit}.
 \]
 \end{lemma}
 
@@ -226,13 +226,13 @@ Under Lemmas~A1--A3, the empirical mean shift $\bar a_d=\frac1d\sum_{k=1}^d a_k$
 \[
 \limsup_{d\to\infty}\frac1d\log_2\mathbb P(\bar a_d\in F)\ \le\ -\frac{\inf_{\sigma\in F} I(\sigma)}{\ln 2} .
 \]
-In particular $\mathbb P(\bar a_d\le1.33)\le 2^{-d\,I(1.33)/\ln 2+o(d)}=2^{-0.253\,d+o(d)}$.
+In particular $\mathbb P(\bar a_d\le1.33)\le 2^{-d\,I(1.33)/\ln 2+o(d)}=2^{-0.25498\,d+o(d)}$.
 \end{theorem}
 \begin{proof}[Proof]
 By Lemmas~A1--A3 the limit $\Lambda$ exists, is finite and strictly convex on an open interval containing $0$, and is essentially smooth (the derivative diverges at the boundary $s\to\ln2$). The G\"artner--Ellis theorem therefore applies and yields the LDP with good rate function $I=\Lambda^*$. The stated tail bound is the upper bound for the closed set $(-\infty,1.33]$.
 \end{proof}
 
-\begin{remark}[Numerical confirmation, $n=7$, $2187$ states]
+\begin{remark}[Numerical confirmation, $n=7$, $1458$ states]
 \begin{center}
 \begin{tabular}{lcccc}
 \toprule
@@ -469,15 +469,14 @@ The Low-Frequency Cancellation Lemma is therefore falsified.
 \begin{observation}[Low-frequency structural cancellation; falsified]
 \label{obs:low_freq_cancellation}
 Fourier decomposition of the aggregate discrepancy $\sum_w \epsilon_w$ at
-$M=22$ (65,535 modes) reveals a three-tier structure:
+$M=22$ (projected to modulus $2^{16}$, 65,535 modes) reveals a three-tier structure:
 \[
 \begin{array}{c|c|c}
 \text{Modes} & \text{Fraction} & \text{Contribution to } |\sum\epsilon_w| \\ \hline
 \text{Top 5} & 0.008\% & 58\% \text{ of real discrepancy} \\
 \text{Top 20} & 0.03\% & 80\% \text{ of real discrepancy} \\
 \text{Top 100} & 0.15\% & 95.5\% \text{ of real discrepancy} \\
-\text{Top 1000} & 1.5\% & 99.6\% \text{ of real discrepancy} \\
-\text{Remainder (64535)} & 98.5\% & 0.4\% \text{ (thermal noise } \approx 2.6\sqrt{W}\text{)}
+\text{Remainder (65,435)} & 99.85\% & 4.5\% \text{ (thermal noise } \approx 3783 \approx 2.6\sqrt{W}\text{)}
 \end{array}
 \]
 The dominant modes are the lowest global frequencies $h = \pm 1, \pm 2, \pm 3, \pm 4, \pm 5$. While this hierarchical mode distribution correctly describes the variance spread at small $M$, our exact unrestricted evaluations at $M=22, 24$ prove that the ratio $|\sum\epsilon_w|/\sqrt{\sum|\epsilon_w|}$ does not converge to zero. The structural component does not grow slower than the volume; the normalized Fourier peak retains $O(1)$ macroscopic magnitude.
@@ -491,11 +490,11 @@ The hypothesis of coherent inter-bucket destructive interference is explicitly f
 \begin{lemma}[Spectral Transversality of Resonant Sets; falsified as a decay mechanism]
 \label{lem:spectral_transversality}
 Let $R_{\text{end}} = \{h : \|h 3^{d_{\text{end}}} / 2^M\| \le A/2^M\}$ be the set of resonant frequencies for the endpoint distribution, and $R_{\text{bad}} = \{h : \|h 3^{d_{\text{bad}}} / 2^M\| \le A/2^M\}$ be the resonant set for the bad-set boundary layer. 
-While the arithmetic fact $3^{d_{\text{end}} - d_{\text{bad}}} \not\equiv 1 \pmod{2^M}$ holds, enforcing that the central peaks do not intersect, this separation does not imply smallness of the total error $\Delta_b$. The high-frequency noise cross-terms generate macroscopic peaks of magnitude $\sim 0.43$ independent of the resonance alignment, exceeding the required $2^{-B/2}$ threshold by a factor of 885.
+While the arithmetic fact $d_{\text{end}} \not\equiv d_{\text{bad}} \pmod{2^{M-2}}$ holds, enforcing that the central peaks do not intersect, this separation does not imply smallness of the total error $\Delta_b$. The high-frequency noise cross-terms generate macroscopic peaks of magnitude $\sim 0.43$ independent of the resonance alignment, exceeding the required $2^{-B/2}$ threshold by a factor of 885.
 \end{lemma}
 
 \begin{remark}[Falsification of intra-layer anomalous cancellation]
-Extensive exact numerical DP tracking over the bucket constraints (up to $M=10^5$) explicitly falsifies any hypothesis of anomalous intra-layer Fourier cancellation. Within any fixed, macroscopic slice of length $d \approx M/2$, the Fourier coefficients uniformly obey $\theta \approx 0.47 \approx 0.5$, mirroring an unstructured random walk. Anomalous suppression (such as $\theta \to 0.20$ observed in unrestricted phase sums) is exclusively a consequence of \emph{inter-layer} destructive interference, which is irrelevant for isolated buckets defined at fixed length $d$. Thus, the decay in $\Delta_b$ is not driven by the endpoint distribution becoming artificially smooth, but rather by its sharp peaks systematically avoiding the structural resonances of the bad set.
+Extensive exact numerical DP tracking over the bucket constraints (up to $M \le 10^4$) explicitly falsifies any hypothesis of anomalous intra-layer Fourier cancellation. Within any fixed, macroscopic slice of length $d \approx M/2$, the Fourier coefficients uniformly obey $\theta \approx 0.47 \approx 0.5$, mirroring an unstructured random walk. Thus, the decay in $\Delta_b$ is not driven by the endpoint distribution becoming artificially smooth, but rather by its sharp peaks systematically avoiding the structural resonances of the bad set.
 \end{remark}
 
 \begin{theorem}[Conditional Forward Shadowing; hypothesis falsified]
@@ -559,9 +558,9 @@ The Reverse-chord Encoding Hypothesis was previously formulated as a
 potential bridge to attach $\gamma_{\rm rev} \approx 0.993$ to the forward
 exceptional set. Numerical experiments (E9) revealed a fundamental
 information-theoretic barrier: the entropy of reverse chords with mean
-shift $4/3$ is $h(4/3) \approx 1.077$ bits/step, while the target space
+shift $4/3$ is $h(4/3) \approx 1.0817$ bits/step, while the target space
 requires $\log_2 3 \approx 1.585$ bits/step. The resulting Hausdorff
-dimension deficit ($D_{\rm rev} \approx 0.808 < D_{\rm fwd} \approx 0.950$)
+dimension deficit ($D_{\rm rev} \approx 0.811 < D_{\rm fwd} \approx 0.950$)
 makes 100\% coverage algebraically impossible. This route is closed.
 \end{remark}
 
@@ -594,7 +593,7 @@ Consequently
 with the finite-size intercept $b\approx6.56$ accounting for the inflated
 small-peak values ($\alpha_{\mathrm{eff}}(14)\approx0.96$, Class~B mean
 $\approx0.71$ matching $0.5+6.5/\langle P\rangle\approx0.70$, and
-$\alpha_{\mathrm{eff}}(140)=0.536$).
+$\alpha_{\mathrm{eff}}(140)=0.542$).
 \end{theorem}
 
 \begin{remark}[Robustness and the 39-center refit]
@@ -995,7 +994,7 @@ The reverse thermodynamic calculation gives the dimensionless geometric ratio
 \[
  \gamma_{\rm rev}
  =\frac{I_{\rm rev}(1.33)}{\log_2 3-1.33}
- \approx\frac{0.2532}{0.25496}\approx0.993.
+ \approx\frac{0.2532}{0.25498}\approx0.993.
 \]
 \paragraph{The closure of the Fourier route.}
 The exact boundary-layer spectrum formula and the affine word structure are mathematically sound and robustly validated. However, the analytic path to Forward Shadowing via Fourier-based max bounds or L2 cancellation is conclusively closed. The unrestricted spectrum preserves macroscopic structural peaks, and the high-frequency ``noise'' retains $O(1)$ magnitude, explicitly failing the required $2^{-B/2}$ decay threshold. Consequently, neither pointwise Fourier suppression nor Spectral Transversality provides the global error cancellation necessary for an asymptotic proof. The numerical $2^{-B/2}$ decay observed in specific finite-scale bad sets is a local phenomenon reflecting specific topological properties of those sets, rather than a universal property of the endpoint measure. Any path forward must circumvent these Fourier obstructions entirely.
