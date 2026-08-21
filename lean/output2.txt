@@ -1,0 +1,21 @@
+LemmaT1_step2.lean:7:37: warning: Variable name `hd` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hd
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+LemmaT1_step2.lean:7:50: warning: Variable name `hS` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hS
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+LemmaT1_step2.lean:21:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑d
+ b := ↑σ
+LemmaT1_step2.lean:25:22: error: `simp` made no progress
+LemmaT1_step2.lean:25:22: error: `simp` made no progress

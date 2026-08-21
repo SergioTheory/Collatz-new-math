@@ -1,0 +1,33 @@
+LemmaT1_step2.lean:7:37: warning: Variable name `hd` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hd
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+LemmaT1_step2.lean:7:50: warning: Variable name `hS` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hS
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+LemmaT1_step2.lean:21:6: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case i_inj
+d σ : ℕ
+hd : 0 < d
+hσ : 1 ≤ σ
+S : ℕ
+hS : S ∈ Icc d (σ * d)
+⊢ ∀ a₂ ∈ Icc d (σ * d), S - 1 = a₂ - 1 → S = a₂
+LemmaT1_step2.lean:22:19: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case i_surj
+d σ : ℕ
+hd : 0 < d
+hσ : 1 ≤ σ
+S₁ : ℕ
+hS₁ : S₁ ∈ Icc (d - 1) (σ * d - 1)
+⊢ ∃ a, ∃ (_ : a ∈ Icc d (σ * d)), a - 1 = S₁
+LemmaT1_step2.lean:26:6: error: No goals to be solved
