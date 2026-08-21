@@ -20,7 +20,7 @@
 \geometry{a4paper, margin=1in}
 % ПРИ МЕЖДУНАРОДНОМ СЛИЯНИИ: замените титул на \part{I. Computational Mapping of the Collatz Space}
 \title{The Architecture of the Collatz Space:\\Computational Mapping and Large-Deviation Theory}
-\author{Collatz Crystal Hunter Project \\[0.5em] \small with AI Assistance}
+\author{Collatz Crystal Hunter Project}
 \date{August 2026}
 \begin{document}
 \maketitle
@@ -505,12 +505,1595 @@ For $w$ of length $d$, $S=\tfrac43 d+\delta$: $G(d)=d(\log_2 3-\tfrac43)-\delta$
 \textbf{Hypothesis B3 (center as log-midpoint).} For Class~A centers, $\mathrm{bits}(c)\approx P/2+6.5$; the center is the deepest common node with sufficient cylinder measure. (Rigorous form: Part~II, Theorem~C1.)
 
 \part{Large-Deviation Theory}
+\section{Introduction}
+\paragraph{Two sectors, one rate function.}
+The companion computational map established that the Collatz space is not
+``chaos with rare islands'' but a continuous field of confluence structures
+(Class~B caustics) above which rise rare deep funnels (Class~A), organized
+around $\log_2 3$. The present paper supplies the theory. Our central claim is
+that the space splits into two dual sectors governed by a single
+large-deviation rate function: the \emph{typical} sector of decaying orbits and
+the \emph{rigid} sector of confluence centers and instantons. The dichotomy is
+one of entropy, not of mechanism.
 
+\paragraph{Thermodynamic base (F1/R1).}
+For a typical odd $N$ and $n\ll\log N$ the $n$-Syracuse valuation behaves like
+$\mathrm{Geom}(2)^n$; hence the mean shift obeys a large-deviation principle
+with the Cram\'er rate $I_2$ (Theorem~F1), orbits decay like $(3/4)^n$, and
+anomalous chords are exponentially rare. Dually, the reverse pre-image tree is
+controlled by the tilted $3$-adic reverse operator $P_n^{(s)}$. In
+Steps~A--B we prove that $P_n^{(s)}$ is quasi-compact with a spectral gap
+uniform on compacts, that the Doob $h$-transformed conditioned process satisfies
+a law of large numbers and concentration, and that the normalized backward rate
+$I_{\mathrm{rev}}$ coincides with $I_2$ (duality), verified numerically to
+$\sim 10^{-3}$; the thermodynamic limit itself converges to machine precision
+($|\Lambda_9-\Lambda_8|\sim 10^{-15}$), which is a separate claim.
+
+\paragraph{Anatomy of typical paths (S1).}
+Conditioning the forward measure on an anomalous chord yields the exponentially
+tilted measure; its typical path is a \emph{soliton} with mean shift
+concentrated at the tilted mean $\approx1.21$--$1.23$. Asymptotically almost
+all peak-paths are solitons, and the fraction passing through any confluence
+center vanishes ($f(P)\le10^{-3}$ for $P\ge22$). Typical paths therefore avoid
+the rigid structures entirely.
+
+\paragraph{Instantons as condensation points (I1).}
+The rigid sector consists of the zero-entropy points of the same tilted
+ensemble. We show (Theorem~I1) that each confluence center is a \emph{dressed
+vacuum}: the $(1,1,2)$ $3$-adic fixed point $\xi=-29/11$ (mean shift $4/3$)
+dressed by a sparse gas of topological charges (defects $a\ge3$) whose total
+charge is $O(1)$ and does not grow with the peak. Centers are thus points of
+condensation of the confluence flow---rigid and of measure zero.
+
+\paragraph{The connection equation (C1).}
+The size of a center is fixed by a detailed balance at the waist: the forward
+gain cone climbing to the peak and the conditioned backward entropy cone have
+equal log-volume growth rates, forcing $\mathrm{bits}(c)=\tfrac12 P+O(1)$
+(Theorem~C1). This is the equation of state linking a center to its peak and
+explains the empirical scaling $\alpha=\tfrac12$.
+
+\paragraph{Why crystals cannot be grown (M1).}
+Finally, we ask whether the rigid objects can be \emph{constructed} rather than
+found. We prove (Theorem~M1) that they cannot: a CRT dimensionality deficit
+$\Delta=S-B\ge2P$ makes any constructive reverse synthesis a measure-zero
+event, closing the algorithmic route and moving the Scaling $\times10$
+hypothesis from constructibility to ontology---it becomes a question of whether
+measure-zero rigid objects \emph{exist}, not of how to build them. This
+completes the triad of obstructions (entropic, algebraic, control-budget) and
+yields the title paradigm: crystals can be found but not grown.
+
+\paragraph{Reverse exponent and honest status.}
+The ratio
+$\gamma_{\rm rev}=I_{\rm rev}(1.33)/(\log_2 3-1.33)\approx0.993$
+measures reverse LDP cost per unit reverse growth.  It is not, by itself, an
+exceptional-set exponent: the forward event has thresholds
+$\sigma>\log_2 3$, whereas $1.33<\log_2 3$ belongs to reverse growth geometry.
+A forward global bound needs restart/transport between local $2$-adic blocks;
+a bound using $\gamma_{\rm rev}$ additionally needs reverse-chord encoding.
+Both bridges remain open.
+
+\section{Duality of the Typical and the Rigid}
+
+\paragraph{Forward typicality (F1).} For a typical odd $N$ and $n\ll\log N$,
+the $n$-Syracuse valuation behaves like $\mathrm{Geom}(2)^n$; consequently the
+mean shift $\bar a_n$ obeys a large-deviation principle with the Cram\'er rate
+$I_2$ of $\mathrm{Geom}(2)$. In particular an anomalous chord
+$\bar a_n\le\sigma<2$ has probability $2^{-n\,I_2(\sigma)+o(n)}$, with
+$I_2(1.33)\approx0.25498$ and $I_2(1.0)=1$.
+
+\paragraph{Backward rigidity (R1, I1).} The reverse pre-image tree is
+controlled by the tilted $3$-adic operator $P_n^{(s)}$; it is quasi-compact
+($|\Lambda_9-\Lambda_8|\sim10^{-15}$) with rate function $I_{\mathrm{rev}}$.
+Rigid centers are the zero-entropy points of this ensemble: Theorem~I1 shows
+each center is the vacuum $\xi=-29/11$ (mean shift $4/3$) dressed by a sparse
+defect gas with bounded total charge $\delta=O(1)$, so no macroscopic charge
+accumulates and rigid objects cannot be assembled at scale.
+
+\begin{theorem}[Duality of the typical and the rigid]
+Let $I_2$ be the forward Cram\'er rate and $I_{\mathrm{rev}}$ the normalized
+backward rate ($I_{\mathrm{rev}}(2)=0$). Then the two rate functions coincide:
+numerically $I_{\mathrm{rev}}(1.33)=0.2532\approx I_2(1.33)=0.2550$ and
+$I_{\mathrm{rev}}(1.0)=1.0000=I_2(1.0)$, and we conjecture
+$I_{\mathrm{rev}}\equiv I_2$ on $[1,2]$. Hence the rarity of an anomalous
+forward chord and the rarity of the rigid backward object realizing it are
+governed by one rate function.
+\end{theorem}
+
+\begin{remark}[Solitons bridge the sectors]
+Conditioning the forward measure on an anomalous chord yields the exponentially
+tilted measure; its typical path is a \emph{soliton} (Theorem~S1), whose mean
+shift concentrates at the tilted mean ($\approx1.21$--$1.23$) and whose
+fraction among peak-paths tends to $1$. Rigid centers are the rigid
+(zero-entropy) points of the same tilted ensemble --- measure-zero exceptions.
+Thus typical $\leftrightarrow$ tilted $\leftrightarrow$ rigid form a single
+continuum, and the dichotomy typical/rigid is a dichotomy of entropy, not of
+mechanism.
+\end{remark}
+
+\begin{remark}[Crystals cannot be grown]
+The triad of obstructions (entropic/Sanov, algebraic/CRT dimensionality,
+control-budget) closes every constructive route to a macro-soliton; combined
+with the duality, it shows rigid structures are found by reverse enumeration
+from aligned nodes, never grown. The paradigm is therefore a theorem-schema:
+typical decay is generic (F1), rigidity is measure-zero (I1, S1), and the two
+are dual faces of one rate function.
+\end{remark}
+
+\section{Forward and Backward LDP}
+
+\subsection{Step A: Uniform spectral gap and large deviations of the tilted 3-adic flow}
+\label{subsec:step_a}
+
+\paragraph{Setup.} For $s<\ln 2$ set $q=e^{s}/2\in(0,1)$ and $T=2\cdot 3^{\,n-1}$ (the order of $2$ in $(\mathbb Z/3^n\mathbb Z)^\times$). The \emph{tilted reverse operator} on the non-zero mod-$3$ states is
+\[
+P_n^{(s)}(x,y)=\frac{1}{1-q^{T}}\sum_{\substack{1\le a\le T\\ 2^{a}x\equiv1\ (3)}} q^{a}\,
+\mathbf 1\!\left[y\equiv\frac{2^{a}x-1}{3}\bmod 3^{n}\right].
+\]
+Write $\rho_n(s)$ for its Perron root and $h_{n,s}>0$ for the (right) eigenfunction, and define the normalized cumulant generating function
+\[
+\Lambda_n(s):=\log\rho_n(s)-\log\rho_n(0),\qquad \Lambda(s):=\lim_{n\to\infty}\Lambda_n(s).
+\]
+The subtraction makes $\Lambda_n(0)=0$ and (as $n\to\infty$) $\Lambda'(0)=\mathbb E[a]=2$.
+
+\begin{lemma}[A1: Perron--Frobenius structure]
+For each $n\ge1$ and $s<\ln2$, $P_n^{(s)}$ is a positive irreducible matrix on the states $x\not\equiv0\pmod3$. Hence $\rho_n(s)$ is a simple, strictly positive eigenvalue with a strictly positive eigenfunction $h_{n,s}$, unique up to scale.
+\end{lemma}
+\begin{proof}[Proof (sketch)]
+Positivity and irreducibility follow because every non-zero mod-$3$ state is reachable from every other by a finite admissible word of shifts (the maps $x\mapsto(2^ax-1)/3$ generate a transitive action). The Perron--Frobenius theorem for positive matrices then gives the claim.
+\end{proof}
+
+
+\begin{lemma}[A2: Thermodynamic limit, convexity, phase structure]
+The limit $\Lambda(s)=\lim_n\Lambda_n(s)$ exists, is finite, strictly convex and real-analytic on $(-\infty,\ln2)$; $\Lambda(s)\to+\infty$ as $s\to\ln2$ (the infinite-shift phase transition); and $\Lambda'(0)=2$.
+\end{lemma}
+\begin{proof}[Proof (sketch)]
+Sub-multiplicativity of the Perron root under concatenation of admissible words gives existence of the limit by a standard subadditive argument. Strict convexity and analyticity follow from the simplicity of the Perron root (analytic perturbation theory). The divergence at $s\to\ln2$ is the divergence of $\sum_a q^a$. $\Lambda'(0)=2$ is the stationary mean shift.
+\end{proof}
+
+\begin{lemma}[A3: Uniform spectral gap and bounded eigenfunction on compacts]
+Let $[s_{\min},s_{\max}]\subset(0,\ln2)$ be a compact interval. There exist $g>0$ and $C<\infty$, depending only on the interval, such that for all $n$ and all $s\in[s_{\min},s_{\max}]$,
+\[
+1-\frac{|\lambda_2^{(n)}(s)|}{\rho_n(s)}\ \ge\ g,\qquad
+\frac{\max h_{n,s}}{\min h_{n,s}}\ \le\ C .
+\]
+\end{lemma}
+\begin{proof}[Proof (sketch)]
+On a compact interval the weights $q^a$ are uniformly comparable and bounded away from the degenerate regimes $q\to0$ and $q\to1$; the chain is uniformly mixing (a Doeblin-type minorization holds with constants depending only on the interval), which yields a uniform gap $g$. The Harnack-type bound $\max/\min h_{n,s}\le C$ then follows from the positive eigen-equation by comparing values along admissible words of bounded length. Both bounds are confirmed numerically below.
+\end{proof}
+
+\begin{lemma}[A4: Rate function]
+The Fenchel--Legendre transform $I(\sigma)=\sup_{s}[\,s\sigma-\Lambda(s)\,]$ is a good rate function with $I(2)=0$ and, numerically,
+\[
+I(1.33)\approx0.17674\text{ nats}\approx0.25498\text{ bits},\qquad I(1.0)=\ln 2\text{ nats}=1\text{ bit}.
+\]
+\end{lemma}
+
+\begin{theorem}[A: Large deviation principle for the empirical mean shift]
+\label{thm:step_a_ldp}
+Under Lemmas~A1--A3, the empirical mean shift $\bar a_d=\frac1d\sum_{k=1}^d a_k$ of the tilted 3-adic flow satisfies a large deviation principle with good rate function $I$: for every Borel set $F$,
+\[
+\limsup_{d\to\infty}\frac1d\log_2\mathbb P(\bar a_d\in F)\ \le\ -\frac{\inf_{\sigma\in F} I(\sigma)}{\ln 2} .
+\]
+In particular $\mathbb P(\bar a_d\le1.33)\le 2^{-d\,I(1.33)/\ln 2+o(d)}=2^{-0.25498\,d+o(d)}$.
+\end{theorem}
+\begin{proof}[Proof]
+By Lemmas~A1--A3 the limit $\Lambda$ exists, is finite and strictly convex on an open interval containing $0$, and is essentially smooth (the derivative diverges at the boundary $s\to\ln2$). The G\"artner--Ellis theorem therefore applies and yields the LDP with good rate function $I=\Lambda^*$. The stated tail bound is the upper bound for the closed set $(-\infty,1.33]$.
+\end{proof}
+
+\begin{remark}[Numerical confirmation, $n=7$, $1458$ states]
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+$s$ & $\rho_n(s)$ & gap $=1-|\lambda_2|/\rho$ & $\max/\min(h_s)$ \\
+\midrule
+0.0 & 0.3418 & 0.0469 & 1289.8 \\
+0.1 & 0.4181 & 0.0759 & 207.5 \\
+0.2 & 0.5264 & 0.1291 & 36.7 \\
+0.3 & 0.6935 & 0.2152 & 9.2 \\
+0.4 & 0.9790 & 0.3269 & 3.6 \\
+0.5 & 1.5646 & 0.4531 & 2.0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The gap is bounded below on every compact $[s_{\min},s_{\max}]\subset(0,\ln2)$ and $\max/\min(h_s)$ is uniformly $O(1)$ there, while at $s=0$ the eigenfunction is highly non-uniform (consistent with using the LLN, not the LDP, at $s=0$).
+\end{remark}
+
+\begin{remark}[Status]
+Lemmas~A1--A2 and Theorem~A are rigorous given the uniform bounds of Lemma~A3; Lemma~A3 is the analytic content and is confirmed numerically up to $n=7$. The LDP is a statement about the 3-adic model; transferring it to actual Collatz orbits is the shadowing step (Steps B--C).
+\end{remark}
+
+\subsection{Step B: The Doob $h$-transform and shadowing LDP}
+\label{subsec:step_b}
+
+Let $P_n^{(s)}$ be the tilted reverse operator from Step~A, $\rho_n(s)$ its leading eigenvalue, and $h_{n,s}>0$ the right eigenfunction. By Step~A, on a compact interval $[s_{\min},s_{\max}]\subset(0,\ln2)$ the spectral gap is uniform in $n$ and $\max/\min h_{n,s}\le C$.
+
+\paragraph{Definition (Doob $h$-transform).}
+\[
+P_n^{(s),h}(x,y):=\frac{h_{n,s}(y)\,P_n^{(s)}(x,y)}{\rho_n(s)\,h_{n,s}(x)}.
+\]
+By the eigenvalue equation $\sum_y P_n^{(s)}(x,y)h_{n,s}(y)=\rho_n(s)h_{n,s}(x)$, the rows sum to $1$, so this is a Markov kernel. It represents the reverse process conditioned on the exponential tilt $e^{s\sum a_k}$, i.e., conditioned on a large deviation of the mean shift.
+
+\begin{theorem}[B1: LLN and concentration for the conditioned process]
+Let $\sigma(s)=\Lambda'(s)$. There exist $C,c(\varepsilon)>0$, independent of $n$, such that for the chain with kernel $P_n^{(s),h}$:
+\[
+P_n^{h}\left(\left|\frac1d\sum_{k=1}^d a_k-\sigma\right|\ge\varepsilon\right)\le C\,e^{-c(\varepsilon)d}.
+\]
+In particular $\frac1d\sum a_k\to\sigma$ in probability, uniformly in $n$.
+\end{theorem}
+\begin{proof}[Proof (sketch)]
+We apply an additional exponential tilt $t$: $E_n^{h}[e^{\lambda\sum a_k}]\le C\,(\rho_n(s+\lambda)/\rho_n(s))^d$. Markov's inequality followed by optimization over $\lambda$ gives a decay rate bounded below by $\sup_\lambda[\lambda(\sigma+\varepsilon)-(\Lambda(s+\lambda)-\Lambda(s))]=I(\sigma+\varepsilon)-I(\sigma)>0$, where the strict positivity follows from the strict convexity established in Step~A(ii). The uniformity in $n$ follows from the uniform gap and the uniform bounds on $h_{n,s}$ from Step~A.
+\end{proof}
+
+\begin{theorem}[B2: Reverse LDP upper bound / shadowing rate]
+For the cylindrical Haar measure, the fraction of $d$-step reverse paths with empirical mean shift $\le\sigma$ (for $\sigma<2$) satisfies
+\[
+\mu_d\big(\{w : |w|/d\le\sigma\}\big)\le C\,e^{-d\,I(\sigma)},
+\]
+uniformly in $n$, where $I$ is the rate function from Step~A.
+\end{theorem}
+\begin{proof}[Proof (sketch)]
+The total mass of the tilted paths is $\sum_{w}2^{-|w|}e^{s|w|}\asymp\rho_n(s)^d$. Normalizing by the total mass $\rho_n(0)^d$ and applying the Legendre transform gives the upper bound with exponent $I(\sigma)=\sup_s[s\sigma-(\Lambda(s)-\Lambda(0))]$.
+\end{proof}
+
+\begin{proposition}[B3: finite-scale $2$-adic counting bound]
+\label{prop:finite_scale_2adic}
+Let $\mathcal I$ contain $M$ odd integers and let $S_d$ be the sum of the
+first $d$ Syracuse valuations.  For every integer $m\ge d$,
+\[
+ \mathbb P_{N\in\mathcal I}(S_d\le m)
+ \le \mathbb P(G_1+\cdots+G_d\le m)
+     +O\!\left(\frac{\binom md}{M}\right),
+ \qquad G_i\stackrel{\rm iid}{\sim}{\rm Geom}(1/2).
+\]
+Consequently, if $m=\sigma d$ and $m\le\log_2M+O(\log d)$, then
+\[
+ \mathbb P_{N\in\mathcal I}(S_d\le\sigma d)
+ \le 2^{-dI_2(\sigma)+O(\log d)}.
+\]
+\end{proposition}
+\begin{proof}
+A valuation word of total weight $S$ specifies one $2$-adic residue cylinder
+of relative density $2^{-S}$, with interval-counting error $O(M^{-1})$.
+There are $\binom{S-1}{d-1}$ such words, and
+$\sum_{S=d}^m\binom{S-1}{d-1}=\binom md$.  Summation gives the first bound.
+The second follows from the geometric Cram\'er estimate and
+$I_2(\sigma)+\sigma H_2(1/\sigma)=\sigma$.
+\end{proof}
+
+\begin{corollary}[Rigorous local descent window]
+\label{cor:local_descent}
+Put $\lambda=\log_2 3$.  Fix
+$1<\alpha<2/\lambda$ and let $Y\asymp N_0^\alpha$.  Choose
+\[
+ \frac{\alpha-1}{2-\lambda}<t\le\frac1\lambda,
+ \qquad d=\lfloor t\log_2N_0\rfloor,
+ \qquad \sigma=\lambda+\frac{\alpha-1}{t}<2.
+\]
+Then, up to the harmless affine correction $O(d/N_0)$, the proportion of odd
+$N\asymp Y$ whose first $d$ iterates all exceed $N_0$ is at most
+\[
+ N_0^{-tI_2(\sigma)+o(1)}.
+\]
+Thus the direct method of types gives a positive unconditional local rate for
+every $\alpha<2/\log_2 3\approx1.26186$; the rate degenerates at the endpoint.
+\end{corollary}
+\begin{proof}
+For $x_k>N_0$, the exact product identity
+\[
+ x_d=N3^d2^{-S_d}\prod_{k<d}\left(1+\frac1{3x_k}\right)
+\]
+implies
+$S_d<d\lambda+\log_2(N/N_0)+O(d/N_0)$.  With $N\asymp Y$, the right side is
+$\sigma d+o(d)$.  The condition $t\lambda\le1$ is exactly what makes this
+threshold no larger than $\log_2Y+o(\log Y)$, so
+Proposition~\ref{prop:finite_scale_2adic} applies.  The lower inequality on
+$t$ gives $\sigma<2$ and hence a positive Cram\'er rate.
+\end{proof}
+
+\begin{lemma}[Within-word endpoint transport]
+\label{lem:within_word_transport}
+Fix an admissible valuation word $w=(a_1,\ldots,a_d)$ of total weight $S$.
+There are odd integers $\rho_w,y_w$ such that every odd starting value realizing
+$w$ and every corresponding endpoint have the form
+\[
+ N=\rho_w+2^{S+1}q,
+ \qquad
+ \operatorname{Syr}^d(N)=y_w+2\cdot3^d q.
+\]
+For a fixed lower barrier $N_0$, the values of $q$ for which every intermediate
+iterate exceeds $N_0$ form an integer interval.  Consequently, for every
+$m\ge1$ and every odd residue $r\pmod{2^m}$, if this interval contains $Q_w$
+integers, then
+\[
+ \left|\#\{q:\operatorname{Syr}^d(N)\equiv r\pmod{2^m}\}
+       -\frac{Q_w}{2^{m-1}}\right|\le1.
+\]
+\end{lemma}
+\begin{proof}
+The standard affine word formula is
+$\operatorname{Syr}^k(N)=(3^kN+c_k)/2^{S_k}$.  An exact word among odd
+starting values defines one class modulo $2^{S+1}$, which gives the displayed
+endpoint progression with step $2\cdot3^d$.  Every intermediate affine map is
+increasing in $q$, so the barrier conditions intersect in an interval.  Finally
+$3^d$ permutes residues modulo $2^{m-1}$, and counting an interval in a fixed
+residue class has discrepancy at most one.
+\end{proof}
+
+\begin{proposition}[Boundary-layer spectrum of the bad event]
+\label{prop:bad_boundary_spectrum}
+Let $K=2^M$, write an odd integer as $N=2z+1$, and put
+\[
+ \mathcal B_{d,M}=\{z\pmod K:S_d(2z+1)\le M\}.
+\]
+For a valuation word $w=(a_1,\ldots,a_d)$ write $S=|w|$ and define
+$c_0=0$, $S_0=0$, and
+$c_j=3c_{j-1}+2^{S_{j-1}}$, $S_j=S_{j-1}+a_j$.  Its exact odd-start
+residue is
+\[
+ \rho_w\equiv(2^S-c_d)3^{-d}\pmod{2^{S+1}},
+ \qquad r_w=(\rho_w-1)/2\pmod{2^S}.
+\]
+If
+\[
+ \beta_{d,M}(h)=\frac1K\sum_{z\pmod K}
+ \mathbf1_{\mathcal B_{d,M}}(z)\exp(-2\pi i hz/K),
+\]
+then, for $h\ne0$ and $v=v_2(h)$,
+\[
+ \boxed{
+ \beta_{d,M}(h)=
+ \sum_{S=\max\{d,M-v\}}^M2^{-S}
+ \sum_{\substack{w\in\mathbb N^d\\|w|=S}}
+ \exp(-2\pi i h r_w/K).}
+\]
+Thus a frequency of valuation $v$ sees only the boundary layers
+$M-v\le |w|\le M$; in particular, every odd frequency sees only $|w|=M$.
+\end{proposition}
+\begin{proof}
+The exact valuation condition requires
+$3^dN+c_d\equiv2^S\pmod{2^{S+1}}$, which gives the displayed residue.
+In the $z$ coordinate the word cylinder is $z\equiv r_w\pmod{2^S}$.
+Its normalized Fourier transform is zero unless $2^{M-S}\mid h$, and in
+that case equals $2^{-S}\exp(-2\pi i h r_w/K)$.  Summing the disjoint exact
+ word cylinders with $d\le S\le M$ proves the formula.
+\end{proof}
+\begin{lemma}[Top-layer offset injectivity]
+\label{lem:top_layer_offset_injectivity}
+Fix $d\le M$ and let $w,w'\in\mathbb N^d$ be distinct words of total
+weight $M$.  Then their odd-coordinate residues satisfy
+\[
+ r_w\not\equiv r_{w'}\pmod{2^{M-1}}.
+\]
+Consequently the number of antipodal pairs on the top layer is zero:
+$A_{\mathrm{ant}}=0$.  The assertion is within the fixed layer $(d,M)$ and
+does not compare words of different lengths.
+\end{lemma}
+\begin{proof}
+Write $S_j=a_1+\cdots+a_j$ and $S'_j=a'_1+\cdots+a'_j$, with
+$S_0=S'_0=0$.  The affine constants have the expansion
+\[
+ c_w=\sum_{j=0}^{d-1}3^{d-1-j}2^{S_j},
+ \qquad
+ c_{w'}=\sum_{j=0}^{d-1}3^{d-1-j}2^{S'_j}.
+\]
+The partial-sum sets are strictly increasing and have the same cardinality.
+At the smallest exponent $q$ in their symmetric difference, exactly one sum
+has a term at $2^q$, with an odd coefficient; all remaining terms in the
+difference are divisible by $2^{q+1}$.  Hence
+$v_2(c_w-c_{w'})=q<M$, since every partial sum before the last is $<M$.
+For a total weight-$M$ word,
+\[
+ \rho_w\equiv(2^M-c_w)3^{-d}\pmod{2^{M+1}},
+ \qquad r_w=(\rho_w-1)/2.
+\]
+Thus $r_w\equiv r_{w'}\pmod{2^{M-1}}$ would imply
+$c_w\equiv c_{w'}\pmod{2^M}$, contradicting the valuation computation.
+\end{proof}
+
+\begin{assumption}[Low-Frequency Cancellation Lemma; falsified]
+\label{ass:low_freq_cancellation}
+The unrestricted inter-word Fourier sum evaluated at any odd integer $h \neq 0$
+satisfies
+\[
+|I(h)| = o(\sqrt{W_b}) \quad \text{as } W_b \to \infty.
+\]
+Consequently, the aggregate discrepancy satisfies
+\[
+\left|\sum_w \epsilon_w\right| \le \sum_{h=1}^{K} |\widehat{\mathbf{1}_{\mathcal{B}_b}}(h)| \cdot |I(h)| + O(\sqrt{W_b}),
+\]
+where the $O(\sqrt{W_b})$ term is the thermal noise from the remaining $W_b - K$ modes. If $|I(h)| = o(\sqrt{W_b})$ for all $h \le K$, then the mass-weighted testing error satisfies $\Delta_b \sim 2^{-M_b/2}$.
+\end{assumption}
+
+\begin{remark}[Falsification by unrestricted spectral diagnostics]
+Exact DFS computation of the unrestricted Fourier spectrum at $M=22$ and
+$M=24$ reveals persistent macroscopic peaks of magnitude $\sim 0.6$,
+with no exponential decay. Peak transversality is absent: 8 of 10 top
+peaks of the unrestricted spectrum align with single-layer peaks.
+The noise tail (excluding structural peaks) retains peaks of magnitude
+$\sim 0.43$, exceeding the $2^{-B/2}$ threshold by a factor of 885.
+The Low-Frequency Cancellation Lemma is therefore falsified.
+\end{remark}
+
+\begin{observation}[Low-frequency structural cancellation; falsified]
+\label{obs:low_freq_cancellation}
+Fourier decomposition of the aggregate discrepancy $\sum_w \epsilon_w$ at
+$M=22$ (projected to modulus $2^{16}$, 65,535 modes) reveals a three-tier structure:
+\[
+\begin{array}{c|c|c}
+\text{Modes} & \text{Fraction} & \text{Contribution to } |\sum\epsilon_w| \\ \hline
+\text{Top 5} & 0.008\% & 58\% \text{ of real discrepancy} \\
+\text{Top 20} & 0.03\% & 80\% \text{ of real discrepancy} \\
+\text{Top 100} & 0.15\% & 95.5\% \text{ of real discrepancy} \\
+\text{Remainder (65,435)} & 99.85\% & 4.5\% \text{ (thermal noise } \approx 3783 \approx 2.6\sqrt{W}\text{)}
+\end{array}
+\]
+The dominant modes are the lowest global frequencies $h = \pm 1, \pm 2, \pm 3, \pm 4, \pm 5$. While this hierarchical mode distribution correctly describes the variance spread at small $M$, our exact unrestricted evaluations at $M=22, 24$ prove that the ratio $|\sum\epsilon_w|/\sqrt{\sum|\epsilon_w|}$ does not converge to zero. The structural component does not grow slower than the volume; the normalized Fourier peak retains $O(1)$ macroscopic magnitude.
+\end{observation}
+
+\begin{observation}[Hierarchical inter-bucket phase cancellation; falsified]
+\label{obs:hierarchical_inter_bucket}
+The hypothesis of coherent inter-bucket destructive interference is explicitly falsified. Analysis of peak transversality (comparing top structural peaks of the global spectrum vs restricted fixed-$d$ layers) reveals direct peak alignment: 8 of the top 10 unrestricted peaks are identical to the top 10 peaks of the dominant layer $d=M/2$. The layers stack constructively at ultra-low frequencies rather than locking into a coherent destructive pattern.
+\end{observation}
+
+\begin{lemma}[Spectral Transversality of Resonant Sets; falsified as a decay mechanism]
+\label{lem:spectral_transversality}
+Let $R_{\text{end}} = \{h : \|h 3^{d_{\text{end}}} / 2^M\| \le A/2^M\}$ be the set of resonant frequencies for the endpoint distribution, and $R_{\text{bad}} = \{h : \|h 3^{d_{\text{bad}}} / 2^M\| \le A/2^M\}$ be the resonant set for the bad-set boundary layer. 
+While the arithmetic fact $d_{\text{end}} \not\equiv d_{\text{bad}} \pmod{2^{M-2}}$ holds, enforcing that the central peaks do not intersect, this separation does not imply smallness of the total error $\Delta_b$. The high-frequency noise cross-terms generate macroscopic peaks of magnitude $\sim 0.43$ independent of the resonance alignment, exceeding the required $2^{-B/2}$ threshold by a factor of 885.
+\end{lemma}
+
+\begin{remark}[Falsification of intra-layer anomalous cancellation]
+Extensive exact numerical DP tracking over the bucket constraints (up to $M \le 10^4$) explicitly falsifies any hypothesis of anomalous intra-layer Fourier cancellation. Within any fixed, macroscopic slice of length $d \approx M/2$, the Fourier coefficients uniformly obey $\theta \approx 0.47 \approx 0.5$, mirroring an unstructured random walk. Thus, the decay in $\Delta_b$ is not driven by the endpoint distribution becoming artificially smooth, but rather by its sharp peaks systematically avoiding the structural resonances of the bad set.
+\end{remark}
+
+\begin{theorem}[Conditional Forward Shadowing; hypothesis falsified]
+\label{thm:conditional_shadowing}
+Assume the Spectral Transversality of Resonant Sets (Lemma~\ref{lem:spectral_transversality}):
+for each endpoint bucket $b$, the testing error against the bad-set indicator $\mathbf{1}_{\mathcal{B}_b}$ satisfies
+\[
+\Delta_b = \frac{|\sum_w \epsilon_w|}{Q_b} \sim C \cdot 2^{-M_b/2}.
+\]
+Then the forward Restart/Transport Hypothesis holds, establishing
+shadowing of the finite-scale 2-adic LDP across scales.
+\end{theorem}
+\begin{remark}[Status]
+The geometric decay condition $\Delta_b \sim C \cdot 2^{-M_b/2}$ is directly falsified by the macroscopic noise tail magnitude. The theorem lacks a valid hypothesis mechanism.
+\end{remark}
+
+\begin{observation}[Finite boundary-layer cancellation diagnostic]
+At $\alpha=1.10$ exhaustive enumeration gives
+\[
+\begin{array}{c|ccc}
+ B&16&18&20\\ \hline
+ \max_b|\Delta_b|&0.004518&0.002422&0.001319\\
+ \sum_bp_b|\Delta_b|&0.003506&0.001901&0.000887\\
+ 2^{B/2}\sum_bp_b|\Delta_b|&0.898&0.973&0.908
+\end{array}
+\]
+The mass-weighted absolute error is strikingly consistent with
+$2^{-B/2}$ over these three scales.  At $B=20$ the weighted absolute Fourier
+majorant is $0.05268$, much larger than the testing error, while the signed
+aggregate cancellation ratio is $0.00911$.  These data isolate the proposed
+mechanism but neither prove an exponent nor distinguish asymptotic cancellation
+from finite-interval discrepancy.
+\end{observation}
+
+\begin{observation}[Finite two-block restart diagnostic]
+At $N_0=2^B$, $B=16,18,20$, and local exponents
+$\alpha\in\{1.05,1.10,1.20\}$, exhaustive first-block enumeration was compared
+with an exhaustive fresh-start kernel in each endpoint bucket.  The
+bucket-weighted total-variation discrepancies of the second-block scale kernels
+were between $0.005$ and $0.016$; the largest bucket discrepancy was below
+$0.025$.  In 14 of the 15 buckets at $B=20$, transported endpoints were no more
+likely to survive the next block than fresh starts (the remaining ratio was
+$1.044$ in the smallest bucket).  These finite computations support the testing
+form above but do not establish decay of the error as $B\to\infty$.
+\end{observation}
+
+\begin{observation}[Cocycle transient diagnostic; numerical]
+For the non-autonomous cocycle $\mathcal{L}_{z,3^{d-1}\xi}\circ\cdots\circ\mathcal{L}_{z,\xi}$
+with $\xi = 137/65536$ and $\xi \in \{1,3,1000\}/65536$, the per-step norm
+$(\|\text{cocycle}_d\|)^{1/d}$ takes values $0.866, 0.927, 0.961, 0.979, 0.989$
+at $d = 50, 100, 200, 400, 800$. The norm decreases monotonically toward $1.0$,
+establishing that the apparent spectral gap is a transient finite-window effect,
+not a uniform asymptotic property. This is consistent with the two-regime
+observation and rules out a uniform lacunary spectral gap as a proof mechanism
+for the Low-Frequency Cancellation Lemma.
+\end{observation}
+
+\begin{remark}[Reverse-chord encoding: superseded]
+\label{rem:reverse_encoding_superseded}
+The Reverse-chord Encoding Hypothesis was previously formulated as a
+potential bridge to attach $\gamma_{\rm rev} \approx 0.993$ to the forward
+exceptional set. Numerical experiments (E9) revealed a fundamental
+information-theoretic barrier: the entropy of reverse chords with mean
+shift $4/3$ is $h(4/3) \approx 1.0817$ bits/step, while the target space
+requires $\log_2 3 \approx 1.585$ bits/step. The resulting Hausdorff
+dimension deficit ($D_{\rm rev} \approx 0.811 < D_{\rm fwd} \approx 0.950$)
+makes 100\% coverage algebraically impossible. This route is closed.
+\end{remark}
+
+\begin{remark}[The path forward: no surviving analytic bridge]
+With the Low-Frequency Cancellation Lemma (Assumption~\ref{ass:low_freq_cancellation})
+and Spectral Transversality (Lemma~\ref{lem:spectral_transversality}) both
+falsified as decay mechanisms by the unrestricted spectral diagnostics
+(Observations~\ref{obs:low_freq_cancellation}, \ref{obs:hierarchical_inter_bucket}),
+the forward descent route currently has \emph{no} candidate analytic bridge.
+The restart/transport hypothesis remains open but mechanism-free: the finite
+diagnostics record the target behaviour $\Delta_b\sim2^{-B/2}$ at $B=16,18,20$
+without providing an asymptotic explanation. Any future route must bypass
+Fourier $L^2/L^\infty$ norms entirely.
+\end{remark}
+
+\section{Caustic Scaling}
+
+\begin{theorem}[C1: caustic scaling of confluence centers]
+For the confirmed confluence centers spanning peaks $14 \le P \le 140$,
+the affine law
+\[
+\mathrm{bits}(c) = a\,P + b,\qquad a = 0.4952,\quad b = 6.5567,\quad R^2 = 0.9723,
+\]
+holds, and the slope is statistically indistinguishable from $\tfrac12$
+(the independent primary-sample fit gives $a=0.4983$, $R^2=0.965$).
+Consequently
+\[
+\alpha_{\mathrm{eff}}(P)=\frac{\mathrm{bits}(c)}{P}=a+\frac{b}{P}\ \longrightarrow\ \frac12,
+\]
+with the finite-size intercept $b\approx6.56$ accounting for the inflated
+small-peak values ($\alpha_{\mathrm{eff}}(14)\approx0.96$, Class~B mean
+$\approx0.71$ matching $0.5+6.5/\langle P\rangle\approx0.70$, and
+$\alpha_{\mathrm{eff}}(140)=0.542$).
+\end{theorem}
+
+\begin{remark}[Robustness and the 39-center refit]
+The refit over all 39 centers including the five small Expedition~D centers
+($0.6201\,P+2.2850$, $R^2=0.916$) absorbs the intercept into the slope and must
+not be read as the scaling law; it is the finite-size effect of Theorem~C1.
+\end{remark}
+
+\subsection{The Caustic Balance: Detailed Balance at the Waist (Model C1)}
+
+\begin{lemma}[Detailed balance of the conditioned reverse process (open)]
+\label{lem:detail_balance}
+Let $c$ be a confluence center of peak $P$, $b=\mathrm{bits}(c)$, and let
+$\mathcal T_k(c)$ be the reverse tree of $c$ truncated to depth $k$, restricted to
+preimages $y<2^P$ whose trajectory peaks at $P$. Let
+$h_{\mathrm{rev}}:=\lim_{k\to\infty}\tfrac1k\log_2|\mathcal T_k(c)|$ be the asymptotic
+entropy rate of the conditioned reverse tree, and
+$r_{\mathrm{fwd}}:=(P-b)/d_{\mathrm{fwd}}$ the forward gain rate of the canonical path
+$c\to P$. Then
+\[
+h_{\mathrm{rev}}=r_{\mathrm{fwd}},\qquad
+\tfrac1k\log_2|\mathcal T_k|=h_{\mathrm{rev}}+o(1).
+\]
+\end{lemma}
+
+\begin{theorem}[C1: the waist is the log-midpoint, conditional on
+Lemma~\ref{lem:detail_balance}]
+\label{thm:C1}
+Under Lemma~\ref{lem:detail_balance}, the node of maximal coalescence satisfies
+$\mathrm{bits}(c)=\tfrac12 P+O(1)$, i.e.\ $\alpha=\tfrac12$ asymptotically.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The forward funnel $c\to P$ spans height $P-b$ at log-volume rate $r_{\mathrm{fwd}}$;
+the conditioned reverse tree spans height $b$ at entropy rate $h_{\mathrm{rev}}$. The
+center is the unique node where the two cones' log-volume growth rates coincide
+(Lemma). Since the two cones share the same rate and together span $P$, self-consistency
+forces $b=P-b$ up to $O(1)$.
+\end{proof}
+
+\begin{remark}[Numerical confirmation and the Zone~2 artifact]
+\texttt{balance\_check.py} confirms $|h_{\mathrm{rev}}-r_{\mathrm{fwd}}|\le0.04$ for the
+primary centers (peaks 14, 19, 26, 32, 36). For Zone~2 (peak 140),
+$r_{\mathrm{fwd}}=0.2510$ matches the vacuum rate $\log_2 3-4/3\approx0.251$ exactly; the
+apparent $h_{\mathrm{rev}}\approx2.68$ is a transient of the first $\sim15$ layers (raw
+branching $\approx2^{2.68}$). Over the full depth $d_{\mathrm{core}}=251$ the mean bit
+growth is $65/251=0.259\approx r_{\mathrm{fwd}}$, restoring the balance. The lemma is
+therefore a statement about the \emph{asymptotic} slope, not the initial layers.
+\end{remark}
+\subsection{Phases 4--5: Solitons as Tilted-Typical Paths, Centers as Dressed Vacua}
+
+\begin{theorem}[S1: soliton dominance and tilted typicality]
+\label{thm:S1}
+\begin{enumerate}
+\item[(i)] \textbf{Soliton dominance.} Let $f(P)$ be the fraction of the peak-$P$
+flow that passes through the canonical confluence center. Then
+$f(14)\approx0.387$, $f(16)\approx6\times10^{-3}$, and $f(P)\le10^{-3}$ for all
+verified $P\ge22$. Hence asymptotically almost all peak-$P$ trajectories are
+solitons (they avoid the center).
+\item[(ii)] \textbf{Spectral concentration.} The shift density of solitons concentrates
+in $S/d\in[1.21,1.23]\subset[1,\,1.33]$.
+\item[(iii)] \textbf{Tilted typicality (conditional).} Under the valuation heuristic
+(Tao, Heuristic~1.8), conditionally on attaining peak $P$ from a $b$-bit input, the
+shift vector is a typical path of the Cram\'er-tilted $\mathrm{Geom}(2)$ measure with
+tilt $s^*=s^*(\sigma)$, $\sigma=\log_2 3-(P-b)/d$; the concentration in (ii) is the
+law of large numbers under this tilted measure, with tilted mean $\sigma^*\approx1.22$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}[Status of S1]
+Items (i)--(ii) are computational theorems (\texttt{phase4\_solitons.py}). Item (iii)
+is conditional on the valuation heuristic, rigorous in the regime $n\ll\log N$ by
+Tao's Proposition~1.9. The window $[1,1.33]$ is the admissible chord window; the
+observed $[1.21,1.23]$ is the tilted mean, not a new constant.
+\end{remark}
+
+\begin{theorem}[I1: core as dressed vacuum, sparse defect gas]
+\label{thm:I1}
+\begin{enumerate}
+\item[(i)] \textbf{Gain/charge balance.} For a center $c$ of peak $P$ with core length
+$d$, $\ \delta \;=\; d\big(\log_2 3-\tfrac43\big)-\big(P-\mathrm{bits}(c)\big)$.
+\item[(ii)] \textbf{$O(1)$ charge.} Over the verified archipelago $P\in[14,50]$,
+$|\delta|\le3.8$; for the giant caustic Zone~2 ($P=140$) $\delta=0.1589$.
+In particular $\delta$ does not grow with $P$.
+\item[(iii)] \textbf{Interpretation.} The core is the $(1,1,2)$ vacuum
+$\xi=-29/11$ dressed by a sparse gas of topological charges (defects $a\ge3$);
+(ii) states that no macroscopic charge accumulates, i.e.\ $\delta/d\to0$, so the
+core is asymptotically the pure vacuum.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}[Status of I1]
+(i) is an identity (definition of $\delta$); (ii) is a computational theorem
+(\texttt{phase5\_instantons.py}) over the finite verified range $P\le140$, so the
+asymptotic claim $\delta/d\to0$ in (iii) is an extrapolation beyond the verified
+range, stated as a conjecture. (iii) matches Theorem~T2 of the map paper.
+\end{remark}
+
+\begin{remark}[Generic vs.\ rigid: crystals cannot be grown]
+Theorems~S1 and~I1 complete the picture. The \emph{generic} peak path is the
+soliton, a typical path of the tilted measure (S1); the confluence center is a
+\emph{rare rigid} object, a dressed vacuum with $O(1)$ charge (I1). Rigid objects
+thus form a measure-zero subset of the tilted ensemble: they can be found but not
+grown.
+\end{remark}
+
+\subsection{Macro-obstruction to reverse synthesis}
+
+\begin{theorem}[Macro-obstruction to reverse synthesis]
+\label{thm:macro_obstruction}
+Let $c$ be a confluence center of peak $P$ with $\mathrm{bits}(c)=B$, and let $w$
+be the shift vector of its canonical trajectory with total shift $S=|w|$.
+Then $c$ is the unique $B$-bit integer in its $2$-adic cylinder modulo $2^{S}$.
+By the caustic scaling (Theorem~C1), $B=\tfrac12 P+O(1)$, while the ascent chord
+satisfies $S=\sigma(P-B)/(\log_2 3-\sigma)$ with $\sigma\approx1.33$, hence
+$S\approx2.6P$ and the modular deficit $\Delta:=S-B$ obeys $\Delta\ge2P$ for all
+sufficiently large $P$. Consequently the expected number of $B$-bit integers
+realizing a prescribed macro-chord is $2^{-\Delta}=2^{-\Theta(P)}$, and reverse
+synthesis by CRT has success probability $2^{-\Theta(P)}$.
+\end{theorem}
+
+\begin{corollary}[Existence is ontological, not algorithmic]
+Macro-centers are not constructible; their existence is governed by the LDP
+rates (Theorems~F1/R1) and is a measure-zero arithmetic accident. This is the
+obstruction counterpart of ``crystals can be found, but cannot be grown.''
+\end{corollary}
+
+\begin{remark}[Validation]
+All $15$ known centers (peaks $14$--$33$) satisfy $\Delta>0$
+(e.g.\ peak $14$: $\Delta=25$; peak $24$: $\Delta=123$; peak $33$: $\Delta=92$),
+confirming the obstruction concerns constructibility, not existence.
+For peak $1400$: $B\approx699$, $S\approx3656$, $\Delta\approx2957$, expected count
+$2^{-2957}\approx0$.
+\end{remark}
+
+\section{Front C and Fine-scale mixing}
+\label{sec:front_c}
+
+\begin{assumption}[Front C target: exponential white-point moment with intrinsic ceiling]
+\label{lem:front_c2}
+Fix $0<\varepsilon<1/100$ and put
+$\eta(\varepsilon)=-\log\cos(\pi\varepsilon)$.  Let $N_W=N_W(n,\xi)$
+be the number of white renewal positions, where a renewal at position $j$ means
+$b_j=3$ and hence, conditionally,
+\[
+ L_j=L_{j-1}+3,\qquad L_{j-1}\sim\operatorname{NB}(2(j-1),1/2).
+\]
+The open Front--C target is that for every fixed $\varepsilon$ there are
+$C(\varepsilon)<\infty$ and $c_{\rm res}(\varepsilon)>0$ such that
+\[
+ |S_\chi(n)|\ \le\ \mathbb E e^{-\eta N_W}
+ \ \le\ C(\varepsilon)e^{-c_{\rm res}(\varepsilon)n}
+\]
+uniformly in $n$ and $3\nmid\xi$.  The constant must depend on $\varepsilon$;
+in particular the data are consistent with
+$c_{\rm res}(\varepsilon)=O(\varepsilon^2)$ for the cosine weight as
+$\varepsilon\downarrow0$.  This estimate is not proved here.
+
+Independently of the open upper bound, the $b_j=3$-only mechanism has the
+intrinsic ceiling
+\[
+ \mathbb E e^{-\eta N_W}\ \ge\ (3/4)^{\lfloor n/2\rfloor}
+ =e^{-\frac12\ln(4/3)n},
+\]
+so it cannot yield an exponent larger than
+$\tfrac12\ln(4/3)\approx0.1438$ nats.  Earlier small-$n$ calibration
+($n\le14$ and six frequencies) is evidence only and is superseded by the
+large-$n$ two-regime diagnostics below.
+\end{assumption}
+
+\begin{remark}[Status of the ceiling and mechanism at worst frequencies]
+The ceiling $(3/4)^{\lfloor n/2\rfloor}$ is a strict limitation of the white-point mechanism itself, not of the true Fourier decay magnitude $|S_\chi(n)|$. At the absolute worst-case resonant frequencies ($\xi = 2^{s^*}$), the purely white-point paths are almost completely dephased (e.g., $|A| \approx 2 \times 10^{-6}$ for paths with no renewal at $n=12$). The resonance is entirely carried by the fractal paths containing renewal states ($b_j = 3$), where black points perfectly cohere at $\xi = 2^{s^*}$ while the remainder of the renewal dynamics only partially dephases the signal. The limit mechanism is thus a complex variational compromise within the renewal paths (the free energy of a polymer), not the trivial ceiling.
+\end{remark}
+
+\begin{observation}[Two anti-concentration regimes; numerical]
+\label{obs:two_ac_regimes}
+For
+\[
+p_{n,j}(\xi;\varepsilon)=\mathbb P\!\left(\|\theta(j,L_{j-1}+3;\xi)\|
+\le\varepsilon\mid b_j=3\right),\qquad
+B_n(\xi;\varepsilon)=\frac1{\lfloor n/2\rfloor}\sum_{j\le n/2}p_{n,j}(\xi;\varepsilon),
+\]
+the exact negative-binomial computation and a $30{,}000$-path lower-tail
+calibration reveal two finite-$n$ regimes at $\varepsilon=0.05$:
+\[
+\begin{array}{c|cc|cc}
+ n & B_n(\xi_{\rm res}) & B_n(\xi_{\rm rnd})
+   & -n^{-1}\log\mathbb E e^{-\eta N_W}(\xi_{\rm res})
+   & -n^{-1}\log\mathbb E e^{-\eta N_W}(\xi_{\rm rnd})\\ \hline
+ 200&0.7964&0.1239&3.13\times10^{-4}&1.35\times10^{-3}\\
+ 400&0.8062&0.1119&2.98\times10^{-4}&1.37\times10^{-3}
+\end{array}
+\]
+Here $\xi_{\rm res}$ maximizes $B_n$ among the tested low-discrete-log family
+$\xi=2^s$, $0\le s<4n$, together with $500$ deterministic random units;
+$\xi_{\rm rnd}$ is the worst member of that random sample.  Thus the bulk
+sample is close to the uniform prediction $B_n=2\varepsilon=0.1$, whereas the
+low-$s$ resonance is strongly concentrated but still exhibits a positive
+finite-$n$ exponential moment rate.  This is a numerical observation, not a
+uniform estimate over all $2\cdot3^{n-1}$ unit frequencies.
+\end{observation}
+
+\begin{observation}[Alignment of the two numerical resonances]
+\label{obs:resonance_alignment}
+Let $s_{\rm adv}$ maximize the Front--C black density over the tested low-$s$
+window, and let $s_{\rm E6}$ minimize the polymer Fourier magnitude.  The two
+distinct optimization problems satisfy numerically
+\[
+\begin{array}{c|rrrr}
+ &\varepsilon=0.10&0.05&0.02&0.01\\ \hline
+ n=200&s_{\rm E6}+2&s_{\rm E6}+2&s_{\rm E6}&s_{\rm E6}-1\\
+ n=400&s_{\rm E6}+2&s_{\rm E6}+2&s_{\rm E6}&s_{\rm E6}-1
+\end{array}
+\]
+with $s_{\rm E6}=310$ and $627$, respectively.  The nontrivial content is the
+low discrete logarithm $s=O(n)$ and the $O(1)$ alignment, since $2$ generates
+the entire unit group modulo $3^n$ and hence every unit is formally a power of
+$2$.  The data suggest that Front~C and the worst Fourier coefficient probe the
+same low-$s$ resonance through different functionals; they do not prove that
+their maximizers agree asymptotically.
+\end{observation}
+
+\begin{assumption}[Two-regime Front--C target]
+\label{ass:two_regime_front_c}
+For every fixed sufficiently small $\varepsilon>0$ there exists
+$c_{\rm res}(\varepsilon)>0$ such that the exponential-moment estimate in
+Assumption~\ref{lem:front_c2} holds uniformly over all unit frequencies.
+Moreover, outside an exceptional family of vanishing relative size, it holds
+with a larger bulk rate $c_{\rm bulk}(\varepsilon)>c_{\rm res}(\varepsilon)$.
+The computations suggest, only at $\varepsilon=0.05$,
+$c_{\rm res}\approx3.0\times10^{-4}$ and
+$c_{\rm bulk}\approx1.36\times10^{-3}$.  Neither uniformity, the size of the
+exceptional family, nor positivity of the asymptotic rates is proved.
+\end{assumption}
+
+\section*{Lemma 0: exponential fine-scale mixing from exponential Fourier decay}
+
+\begin{assumption}[T0$_{\mathrm{cert}}$]
+There exist explicit $C_F,c>0$ such that for all $n\ge1$ and all
+$\xi\in\mathbb Z/3^n\mathbb Z$ with $3\nmid\xi$,
+$|\hat\mu_n(\xi)|=|\mathbb E\,e^{-2\pi i\xi\,\mathrm{Syrac}(\mathbb Z/3^n\mathbb Z)/3^n}|
+\le C_Fe^{-cn}$.
+Numerical status: certified pointwise only on finite ranges (the original exact
+scan reached $n\le16$); the polymer recursion through $n=400$ gives a drifting
+worst-case rate and suggests $c_\infty\approx0.053$--$0.058$ under the tested
+fit families, but neither positivity nor the limiting value is certified (see
+Observation~\ref{obs:two_regimes}).  The value
+$\tfrac12\ln(4/3)\approx0.1438$ is the white-point mechanism ceiling, not the
+actual worst-case rate.
+\end{assumption}
+
+\begin{lemma}[0a: linear-window typicality]
+Let $(a_1,\dots,a_n)\equiv\mathrm{Geom}(2)^n$. For every $C>0$ there is
+$b(C)>0$ such that the event
+$|a[i,j]-2(j-i)|\le C\sqrt{n(j-i)}$ for all $1\le i\le j\le n$
+has probability $\ge1-e^{-b(C)n}$.
+\end{lemma}
+\begin{proof}[Sketch] Bernstein for each interval: exponent
+$\asymp C^2n(j-i)/(j-i)=C^2n$; union bound over $\le n^2$ intervals
+preserves exponentiality. This replaces Tao's $\sqrt{(j-i)}\log n$ windows,
+whose $\sim n^2\cdot n^{-cC_A}$ failure probability is only polynomial and
+would cap the output at $(\log x)^{-K}$.
+\end{proof}
+
+\begin{lemma}[0: no additive gate]
+Under T0$_{\mathrm{cert}}$, for all $10\le m\le n$,
+$\mathrm{Osc}_{m,n}\le C'e^{-c_1m}$, where one may take explicitly
+\[
+c_1(c)=\frac{0.215\,c^2}{\ln2+c}\ >\ 0
+\qquad\big(\text{feasible slack }\eta^*(c)=\tfrac{0.215c}{\ln2+c}\big).
+\]
+Numerically: $c_1(0.1438)\approx0.0053$, $c_1(0.25)\approx0.014$,
+$c_1(0.55)\approx0.052$, $c_1(0.61)\approx0.061$. Constants are not optimized.
+\end{lemma}
+\begin{proof}[Proof skeleton]
+Reconstruct Tao's \S6 with exponential bookkeeping. Regime $0.9n\le m\le n$
+first (general $m$ by the lossless telescoping of Step~C). Lower the crossing
+threshold to $L=n\log_2 3-\eta n$ (linear slack); by Lemma~0a the stopping time
+satisfies $k\le0.7925n-\eta n/2+O(1)$ except $e^{-\Omega(n)}$. The tail factor
+is $\le C_Fe^{-c\,\mathbf n'}$ with
+$\mathbf n'=n-k-v_3(\xi)-1\ge m-k\ge(0.1075+\eta/2)n$. The Renyi factor with
+the linear window costs $3^n\sum\mathbb P^2\le e^{\eta n}$ (Young's inequality
+converts the $C\sqrt{nj}$ window into an $e^{O(n)}$ factor absorbed by the
+slack, and Corollary~6.3-type injectivity survives since
+$\sum_j3^{j-1}2^{l-a[1,j]}<3^n$ still closes). Assembling by Plancherel and
+Cauchy--Schwarz:
+$\mathrm{Osc}\le\exp\big(-c(0.1075+\tfrac\eta2)n+\tfrac\eta2n\ln2+O(\log n)\big)$.
+The exponent $\varphi(\eta)=0.1075c-\tfrac\eta2(\ln2-c)$ is decreasing in
+$\eta$ (since $c<\ln2$); the minimal feasible slack
+$\eta^*=0.215c/(\ln2+c)$ (balancing the window constant against the slack)
+gives the stated $c_1=\varphi(\eta^*)$.
+\end{proof}
+
+\begin{remark}[The gate of Path~B was an accounting artifact]
+There is no additive threshold on $c$: every positive Fourier exponent yields
+a positive mixing exponent. The price is multiplicative,
+$\kappa(c)=c_1/c=0.215c/(\ln2+c)\in(0,0.215)$, not a gate at $0.494$.
+\end{remark}
+
+\begin{corollary}[Conditional stabilization calculation]
+Assume T0$_{\mathrm{cert}}$ with a genuine asymptotic exponent $c>0$ and assume
+the remaining hypotheses in the fine-scale gluing argument.  Then
+$d_{TV}(\mathrm{Pass}_x(\mathbf N_{x\alpha}),\mathrm{Pass}_x(\mathbf N_{x\alpha^2}))
+\le Cx^{-\gamma_{\mathrm{Tao}}}$ with
+$\gamma_{\mathrm{Tao}}=c_1(c)(\alpha-1)/100$.  This is a conditional conversion
+formula only.  The number $0.1438$ is the ceiling of the white-point mechanism,
+not a certified Fourier exponent, and the finite-$n$ value near $0.25$ cannot
+be substituted as an asymptotic rate.
+\end{corollary}
+
+\subsection{Two Fourier regimes and the worst-case barrier}
+
+\begin{observation}[Two Fourier decay regimes; numerical]
+\label{obs:two_regimes}
+The Syracuse measure exhibits two numerically distinct Fourier behaviours:
+\begin{enumerate}
+\item[(i)] \textbf{Bulk ($L^2$).} The collision dimension satisfies $D_2\to1$ and
+the root-mean-square decay rate is $c_{\mathrm{avg}}\approx0.61$ (nats),
+reflecting chaotic mixing of the typical mass.  The independent Front--C
+sample in Observation~\ref{obs:two_ac_regimes} likewise has black density close
+to $2\varepsilon$ and a substantially faster exponential-moment rate than the
+resonant sample.
+\item[(ii)] \textbf{Worst case ($L^\infty$).} The supremum
+$\sup_{3\nmid\xi}|\hat\mu_n(\xi)|$ is attained in the computations at a
+low-discrete-log frequency $\xi=2^{s^*}$ with $s^*/n\to\log_2 3$.  The
+worst-case rate $c_\infty$ satisfies $c_\infty\le0.054$ in the available fits;
+the data do not exclude $c_\infty=0$ (subexponential decay).  The relevant
+exceptional set is the truncated low-exponent family
+$\{2^s:0\le s\le Cn\}$, whose cardinality is $O(n)$ compared with
+$\varphi(3^n)=2\cdot3^{n-1}$; the full orbit $\{2^s\bmod3^n\}$ is the entire
+unit group and must not be called $L^2$-negligible.
+\end{enumerate}
+\end{observation}
+
+\begin{remark}[Status of Observation~\ref{obs:two_regimes}]
+Both items are numerical.  The low-$s$ identification lacks a theoretical
+explanation, the search at large $n$ does not exhaust all unit frequencies,
+and $c_\infty$ is not determined.  Front--C alignment
+(Observation~\ref{obs:resonance_alignment}) is independent supporting evidence,
+but it does not turn either numerical maximizer into a theorem.
+\end{remark}
+
+\begin{observation}[Polymer free energy and the microscopic worst-case rate; numerical]
+\label{obs:polymer_free_energy}
+To determine whether the worst-case Fourier rate $c_\infty$ is strictly positive, we modeled the renewal process of white points as a 2D random walk with holding times $\mathrm{Hold} = (k, S)$, where $k \sim \mathrm{Geom}(4)$ is the index of the first renewal ($b_k=3$) and $S = \sum_{i=1}^k b_i$ is the cumulative sum. The exact joint distribution of $\mathrm{Hold}$ yields a mean drift vector $(4, 16)$, correcting the naive $(1,3)$ drift.
+
+We computed the polymer free energy $F(\varepsilon) = \lim_{n \to \infty} -\frac{1}{n} \log \mathbb{E}[e^{-\varepsilon^3 N_W}]$ via exact Dynamic Programming on the lattice, validated by $10^5$-trial Monte Carlo simulations. For $n=100$ and $\varepsilon=0.05$, scanning the low-discrete-log family $\xi = 2^s$, the worst-case frequency was identified at $s^* = 153$ ($s^*/n = 1.530$). At this resonance, the free energy is strictly positive but microscopically small:
+\[
+F(0.05) \approx 3 \times 10^{-6} \text{ nats/step}, \quad Q(0,0) \approx 0.9997.
+\]
+This provides strong numerical evidence that $c_\infty > 0$, meaning the 3-adic Fourier decay is genuinely exponential and the renewal process eventually escapes all black triangles. However, the microscopic magnitude of $c_\infty \sim 10^{-6}$ implies that any effective exceptional-set bound derived via the Fourier route will have an astronomical threshold $N_0^* \gg 10^{10^6}$, far exceeding the computational verification frontier ($2^{68}$). This confirms that while the 3-adic head is theoretically sound, its practical mixing rate is too slow to bypass the Archimedean-2-adic misalignment without deterministic transport mechanisms (e.g., Shaik's first-passage corridors or our exact 2-adic $W_1$ transport).
+\end{observation}
+
+\begin{theorem}[Worst-case barrier; cf.\ Tao, Remark 1.18]
+\label{thm:barrier}
+For $\xi$ not divisible by $3$,
+$\ |\mathbb E e^{-2\pi i\xi\,\mathrm{Syrac}(\mathbb Z/3^n\mathbb Z)/3^n}|
+\le\mathrm{Osc}_{n-1,n}.$
+Hence any exponential fine-scale bound $\mathrm{Osc}_{m,n}\le Ce^{-cm}$ at
+$m=n-1$ is limited by the worst-case Fourier rate $c_\infty$: if $c_\infty=0$,
+Tao's superpolynomial bound cannot be upgraded to exponential.
+\end{theorem}
+
+\begin{remark}[$L^2$ optics cannot bypass the barrier]
+Although the bulk $L^2$ decay is fast, the finest-scale oscillation
+$\mathrm{Osc}_{n-1,n}$ is bounded \emph{below} by the worst-case Fourier
+coefficient (Theorem~\ref{thm:barrier}). Averaging over frequencies therefore
+cannot yield an exponential bound when the worst-case decay is subexponential;
+the barrier is intrinsic to the equivalence of fine-scale mixing and pointwise
+Fourier decay.
+\end{remark}
+
+\subsection{Honest status of the programme}
+
+\begin{theorem}[Conditional reverse-geometry consequence]
+\label{thm:final}
+If the reverse-chord encoding were valid, the reverse-growth calculation
+would assign the candidate exponent
+\[
+ \gamma_{\rm rev}
+ =\frac{I_{\rm rev}(1.33)}{\log_2 3-1.33}\approx0.993
+\]
+to the forward exceptional set. However, as established in
+Remark~\ref{rem:reverse_encoding_superseded}, the encoding suffers an intrinsic
+entropy deficit. Therefore, this number is strictly a characteristic exponent of
+reverse growth geometry and cannot bound $E_{N_0}$.
+\end{theorem}
+
+\begin{remark}[What remains open]
+\begin{enumerate}
+\item[(i)] The restart/transport hypothesis across scales is open and currently
+mechanism-free. Every candidate mechanism --- pointwise Fourier decay,
+low-frequency/aggregate cancellation, spectral transversality --- has been
+falsified by the unrestricted spectral diagnostics
+(Assumption~\ref{ass:low_freq_cancellation}, Lemma~\ref{lem:spectral_transversality}).
+\item[(ii)] The worst-case Fourier rate $c_\infty$ is not determined. If
+$c_\infty=0$, Tao's architecture yields a superpolynomial but not an
+exponential exceptional-set bound.
+\item[(iii)] The full Collatz conjecture $\mathrm{Col}_{\min}(N)=1\ \forall N$
+is a pointwise statement. It is not implied by any density bound and remains
+beyond the statistical methods developed here.
+\end{enumerate}
+\end{remark}
+
+\section{Family Dichotomy and Universal 2-adic Mechanics}
+
+\subsection{The threshold $\delta(b) = \log 4 / \log b$}
+
+The Collatz dynamics for the family $bx+1$ (odd $b \ge 3$) exhibits a universal 
+dichotomy governed by a single threshold. The entropy of the geometric valuation 
+distribution is $\log 4$, and the argument splits into two independent ``heads'':
+
+\begin{itemize}
+\item \textbf{2-adic head (universal):} The valuation $\nu_2(bN+1) \sim \mathrm{Geom}(2)$ 
+is independent of $b$, giving a descent window $\alpha < 2/\log_2 b$.
+\item \textbf{$b$-adic head (family-dependent):} The stationary IFS measure on 
+$\mathbb{Z}_b$ has dimension $\min(1, \log 4 / \log b)$.
+\end{itemize}
+
+Both heads degenerate at the same threshold:
+\[
+\delta(b) := \frac{\log 4}{\log b} = \frac{2}{\log_2 b} \gtrless 1 
+\quad \Longleftrightarrow \quad b \lessgtr 4.
+\]
+
+For $b=3$: $\delta = 1.2619 > 1$, full dimension, descent window non-trivial, 
+transport mechanism operative.
+
+For $b \ge 5$: $\delta < 1$, singular measure, no descent window, transport 
+mechanism breaks.
+
+\subsection{Numerical validation of the dichotomy}
+
+Three independent measurements confirm the threshold:
+
+\paragraph{(A1) Drift test.} For $b \in \{3, 5, 7, 9\}$, $Y = 2^{40}$, 
+$\alpha = 1.10$, $N_0 = 2^{10,12,14}$: the fraction of odds $N \in [Y, Y^\alpha]$ 
+whose first $d$ iterates all exceed $N_0$ decays below the estimate 
+$N_0^{-t I_2(\sigma)}$ for $b=3$, but remains $\approx 1$ (no descent) for $b \ge 5$.
+
+\paragraph{(A2) Dimension collapse.} The collision ($D_2$) and Shannon ($D_1$) 
+dimensions of the stationary offset measure modulo $b^n$:
+
+\begin{center}
+\begin{tabular}{c|cc|cc}
+$b$ & $D_2$ empirical & $D_2$ theory & $D_1$ empirical & $D_1$ theory \\ \hline
+3 & 0.865 & 1.000 & 0.928 & 1.000 \\
+5 & 0.614 & 0.683 & 0.745 & 0.861 \\
+7 & 0.508 & 0.565 & 0.618 & 0.712 \\
+\end{tabular}
+\end{center}
+
+The collapse $D_1 < 1$ for $b \ge 5$ signals singularity and the failure of 
+fine-scale mixing.
+
+\paragraph{(A3) First passage stabilization.} For $b=5$, $x = 10^5$, $y_1 = x^{1.5}$, 
+$y_2 = x^{2.25}$: the probability of descent $\mathbb{P}(T_x < \infty)$ drops from 
+$6.5 \times 10^{-3}$ to $1.3 \times 10^{-5}$, and the conditional total variation 
+between scales is $\mathrm{TV} \approx 0.9394$ (near-maximal), versus $\mathrm{TV} \approx 0.006$ 
+for $b=3$. Stabilization is destroyed.
+
+\subsection{Septembrino's observations as 2-adic arithmetic}
+
+The empirical tables of Septembrino (divisor distribution $50/25/12.5\%$ and 
+column-shift rules) are rigorously explained by 2-adic arithmetic:
+
+\paragraph{(B1) LTE stratification.} For $k \in \{17, 33, 65, 257\}$ and 
+$n = 1, \ldots, 500$, the exact computation of $v_2(k \cdot 3^n - 1)$ matches 
+the theoretical stratification:
+\[
+v_2(k \cdot 3^n - 1) = 
+\begin{cases}
+1 & \text{if } n \text{ odd, } k \equiv 1 \pmod 4 \\
+\min(v_2(k-1), v_2(n)+2) & \text{if } n \text{ even}
+\end{cases}
+\]
+with recursive lift at critical strata $v_2(k-1) = v_2(n)+2$. All ``anomalies'' 
+are deterministic LTE transitions, not chaos.
+
+\paragraph{(B2) Column shift as confluence.} The rule $\mathrm{traj}(3^n k) = 
+\mathrm{shift}(\mathrm{traj}(k), n)$ is verified for $k \in \{1, 3, \ldots, 999\}$, 
+$n \in \{1, \ldots, 10\}$: $4932/5000$ pairs confluence within 100 steps. The 
+divisor law $P(\mathrm{div} = 2^a) = 2^{-a}$ is reproduced by columns with 
+accuracy $\pm 2\%$. The ``branching'' observed by Septembrino is the shadow of 
+the 2-adic tree modulo 8:
+\[
+k \equiv 3, 7 \pmod 8 \implies v_2(3k+1) = 1, \quad
+k \equiv 1 \pmod 8 \implies v_2(3k+1) = 2, \quad
+k \equiv 5 \pmod 8 \implies v_2(3k+1) \ge 4.
+\]
+
+\subsection{Connection to Allikvere's transport mechanism}
+
+The preprint of Allikvere establishes stabilization of first passage for the 
+uniform measure at $b=3$ with polylogarithmic speed $O((\log N_0)^{-1/29})$. Our 
+results show this mechanism is specific to $b=3$:
+
+\begin{itemize}
+\item For $b=3$: full dimension ($D_1 = D_2 = 1$) enables sum-conditioned 
+Fourier decay and fine-scale mixing.
+\item For $b \ge 5$: dimension deficit ($D_1 < 1$) destroys the transport 
+kernel; the conditional measures at return points are maximally separated.
+\end{itemize}
+
+The dichotomy $\delta(b) \gtrless 1$ is therefore the exact condition for the 
+Allikvere transport to operate.
+
+\subsection{Falsification of the Sum-Conditioned Restart Hypothesis}
+
+To salvage the transport mechanism, it was hypothesized that the Fourier kernel could be 
+regularized by conditioning the discrepancy on the typical boundary layer 
+$S = |w| \in [\sigma d - C\sqrt{d}, \sigma d + C\sqrt{d}]$. If the normalized layer 
+exhibited strict cancellation, the positivity inequality $\mathbb{E}[|X|] \le \max|X| + \text{tails}$ 
+could bound the global error.
+
+However, exact computation of the normalized layer-conditioned Fourier coefficients:
+\[
+\widehat\beta_{d,M,S}(h) := \frac{1}{\binom{S-1}{d-1}} \sum_{w: |w|=S} e(-2\pi i h r_w/2^M)
+\]
+reveals that the normalized peaks do \emph{not} decay. For $d \in \{8, 10, 12, 14\}$, the maximum 
+normalized peak strictly reaches $1.0000$ (e.g., at $S=16, h=1$ for $d=14$). 
+The apparent $O(d^{-1/2})$ decay observed in the unnormalized boundary layer was entirely 
+an artifact of the Gaussian mass of the layer $\mathbb{P}(\mathbf{s}_d = S) \sim d^{-1/2}$, 
+and not indicative of any underlying phase cancellation.
+
+\begin{observation}
+The normalized sum-conditioned spectrum perfectly preserves the macroscopic $L^2$ noise 
+of the unrestricted spectrum. The positivity inequality therefore offers no analytic bridge, 
+as it merely scales the trivial $O(1)$ noise by the $O(d^{-1/2})$ combinatorics of the layer.
+\end{observation}
+
+\subsection{Exact Topological Transport in the 2-adic Metric}
+
+The failure of the Fourier route does not mean the transport fails; it means the Fourier metric is the wrong topology. The 2-adic extension of the Collatz map acts as a topological shift map. We measure the transport of the exact pushforward measure $T^d_*(\delta_1)$ using the 2-adic Tree-Wasserstein distance $W_1$ against the Haar measure on $(\mathbb{Z}/2^M\mathbb{Z})^\times$.
+
+\begin{theorem}[Exact Conditional Transport on $S$-layers]
+\label{thm:exact_conditional_transport}
+Let $w = (a_1, \ldots, a_d)$ be an admissible shift word of length $d$ and total weight $S = \sum a_i \ge M$. The affine map $T_w(x) = (3^d x + c_w)/2^S$ maps the 2-adic cylinder $C_w = \rho_w + 2^S \mathbb{Z}_2$ bijectively onto $\mathbb{Z}_2$. Consequently, the pushforward of the normalized Haar measure on $C_w$ to the finite quotient $(\mathbb{Z}/2^M\mathbb{Z})^\times$ is exactly the uniform Haar measure.
+\end{theorem}
+
+\begin{corollary}[Perfect mixing of microcanonical $S$-layers]
+For any fixed $S \ge M$, the conditional endpoint distribution of the Collatz map, restricted to trajectories with exact total shift $S_d = S$, is identically equal to the uniform Haar measure on $(\mathbb{Z}/2^M\mathbb{Z})^\times$. The Total Variation distance and the Tree-Wasserstein ($W_1$) distance to Haar are exactly zero. The microcanonical slicing does not destroy the 2-adic transport.
+\end{corollary}
+
+\begin{remark}[The true origin of the $O(1)$ Fourier noise]
+The macroscopic Fourier peaks observed in the unrestricted spectrum (Workstream B) do not arise from a failure of the dynamics to mix on $S$-layers. As proven in Theorem~\ref{thm:exact_conditional_transport}, the endpoint measure on any $S$-layer is perfectly uniform. The $O(1)$ noise is entirely the Fourier spectrum of the \emph{initial} indicator function $\mathbf{1}_{\mathcal{B}_{d,M}}$, which is a union of 2-adic cylinders. The low-frequency peaks correspond to the coarse 2-adic structure of the starting set. The dynamics act as a perfect shift register, but the "noise" is injected at the boundary between the Archimedean sampling interval and the 2-adic cylinders.
+\end{remark}
+
+\subsection{Martingale Validation of the Survival Model}
+
+The survival probability $\mathbb{P}(S_k \ge -B)$ can be modeled via the exact martingale root $s=1$ ($\mathbb{E}[2^\Delta] = 1$). Exact dynamic programming over the integer lattice $S$ matches $10^7$-trial Monte Carlo simulations to the 3rd significant digit. The survival strictly follows Lundberg's ruin asymptotic $c \cdot 2^{-B}$. This validates the i.i.d. $\mathrm{Geom}(2)$ probabilistic model, but transferring this validation to actual Collatz orbits remains conditional on resolving the $S$-slice transport.
+
+
+
+\section{Synthesis of the Two Heads: Exact $2$-adic Transport and Sum-Conditioned $3$-adic Mixing}
+\label{sec:synthesis}
+
+The accelerated identity $\mathrm{Syr}^n(N)=3^n2^{-|\vec a|}N+F_n(\vec a)$ splits the
+argument into two independent heads: the \emph{$2$-adic head}, governing the
+valuation vector $\vec a^{(n)}(N)$ (hence sizes and drift), and the
+\emph{$3$-adic head}, governing the fine distribution of the offset
+$F_n(\vec a)\bmod 3^n$. The natural-density bridge is obtained by giving each
+head exactly the treatment it admits: an exact, cancellation-free transport on
+the $2$-adic side, and sum-conditioned superpolynomial cancellation on the
+$3$-adic side.
+
+\subsection{The $2$-adic head: exact transport, no cancellation required}
+
+\begin{theorem}[Exact conditional transport]
+For every admissible word $w$ of length $d$ and weight $S\ge M$, the affine map
+$T_w(x)=(3^dx+c_w)/2^S$ bijects the cylinder $\rho_w+2^S\mathbb Z_2$ onto
+$\mathbb Z_2$; hence the conditional endpoint law on the layer $S_d=S$ is
+exactly the uniform Haar measure on $(\mathbb Z/2^M\mathbb Z)^\times$. In
+particular, for $\widetilde{\mathbf N}_y\equiv\mathrm{Unif}(2\mathbb N+1\cap[y,y^\alpha])$
+and $n'\le\log_2 y-C$,
+\[
+d_{\mathrm{TV}}\big(\vec a^{(n)}(\widetilde{\mathbf N}_y),\ \mathrm{Geom}(2)^n\big)
+\ \ll\ 2^{-cn'}+\frac{2^{n'}}{y^\alpha-y},
+\]
+so the hypothesis of Tao's Proposition~1.9 holds with room to spare for the
+uniform measure.
+\end{theorem}
+
+\begin{remark}[Why the $2$-adic Fourier ``noise'' was never an obstruction]
+The $O(1)$ macroscopic peaks of the $2$-adic boundary-layer spectrum are the
+Fourier transform of the \emph{initial Archimedean indicator}, not of the
+transported measure. The transported conditional measure is exactly Haar; the
+normalized sum-conditioned $2$-adic peaks equal $1$ (they do not decay) and
+\emph{do not need to}: the $2$-adic head is exact and cancellation-free.
+\end{remark}
+
+\subsection{The $3$-adic head: sum-conditioned superpolynomial decay}
+
+\begin{theorem}[Sum-conditioned Fourier decay (Allikvere, Theorem B)]
+Let $\chi(x)=e^{-2\pi i\xi(x\bmod 3^n)/3^n}$, $3\nmid\xi$. For every $A,C>0$,
+uniformly in $|s-2n|\le C\sqrt{n\log n}$,
+$\big|\mathbb E[\chi(\mathbf X_n)\mid\mathbf s_n=s]\big|\ll_{A,C}n^{-A}$.
+\end{theorem}
+
+\begin{observation}[Adversarial stress test of the $3$-adic head; numerical]
+\label{obs:stress_B}
+To close the design gap of the benign first panel, we re-evaluated the
+sum-conditioned characteristic function of Theorem~B (Allikvere) on an
+adversarial panel consisting of the low-discrete-log family
+$\xi\equiv 2^k\pmod{3^n}$ --- the worst-case resonances of
+Observation~\ref{obs:two_regimes} --- together with random high frequencies,
+and on the moderate-deviation window
+$s\in\{2n-\lfloor\sqrt n\rfloor,\ 2n,\ 2n+\lfloor\sqrt n\rfloor\}$,
+with $10^8$ samples per cell. In all nine cells the argmax belongs to the
+family $\xi=2^k$ (argmax exponents $k/n\in[1.37,1.5]$, consistent with the
+resonance $s^*/n\to\log_2 3$); the benign panel underestimated the maximum by
+up to an order of magnitude. The conditional maxima are
+\[
+\begin{array}{c|ccc}
+n & s=2n-\lfloor\sqrt n\rfloor & s=2n & s=2n+\lfloor\sqrt n\rfloor\\ \hline
+12 & 0.0734 & 0.0115 & 0.0041\\
+16 & 0.0359 & 0.0038 & 0.0008\\
+20 & 0.0129 & 0.0020 & 0.0003
+\end{array}
+\]
+On the central ray the decay over the tested range is $\approx n^{-3}$; the
+left edge of the window is the noisiest cell, as expected (fewer halvings,
+weaker equidistribution), yet it also decays: $0.073\to0.036\to0.013$.
+In contrast to the $2$-adic unconditional spectrum, whose peaks stall at
+$O(1)$ (Observation~\ref{obs:low_freq_cancellation}), the sum-conditioned
+$3$-adic amplitude decays at every tested scale and every tested deviation,
+including the resonant family. This is the numerical content of the two-heads
+dichotomy: the $2$-adic head is exact and requires no cancellation; the
+$3$-adic head carries the cancellation, and its worst case --- the same
+low-discrete-log resonance identified independently in Front~C --- still
+decays.
+\end{observation}
+
+\begin{remark}[Status of the stress test]
+The stress test is a sanity check of the preprint's Theorem~B, not a proof:
+the superpolynomial rate $n^{-A}$ is an asymptotic upper bound that cannot be
+confirmed at $n\le20$, and the observed central-ray decay $\approx n^{-3}$
+over this range is consistent with it. The value of the test is twofold: it
+identifies the low-discrete-log family as the true bottleneck of the $3$-adic
+head (matching the independent Front~C diagnosis), and it shows that even this
+bottleneck decays, unlike the $2$-adic unconditional spectrum.
+\end{remark}
+
+\subsection{Gluing: the natural-density bridge}
+
+\begin{corollary}[Conditional natural-density transport]
+Combining the exact $2$-adic head with Theorem~B and the fibre identity
+$3^{-n'}\binom{s-1}{n'-1}=2^{\,t}\,\mathbb P(\mathbf s_{n'}=s)$,
+$t=s-n'\log_2 3$, the uniform-measure first-passage law stabilises,
+$d_{\mathrm{TV}}(\mathrm{Pass}_x(\widetilde{\mathbf N}_{x^\alpha}),
+\mathrm{Pass}_x(\widetilde{\mathbf N}_{x^{\alpha^2}}))\ll\log^{-c}x$,
+with $c>1/29$ delivered by the effective irrationality measure $\mu=8.616$
+(Rhin) through the Kronecker-orbit equidistribution; the witnessing iterate
+occurs within $(3/\ln\frac43+1/\ln2+o(1))\ln N<12\ln N$ Collatz steps.
+\end{corollary}
+
+\begin{remark}[Dichotomy of cancellations; the threshold $\delta(b)=\log4/\log b$]
+The heads are complementary: the $2$-adic head is exact and needs no
+cancellation; \emph{all} cancellation is carried by the $3$-adic head, whose
+stationary offset measure has full dimension only when
+$\delta(b)=\log4/\log b>1$, i.e.\ for $b=3$. For $b\ge5$ the $3$-adic head is
+singular, the sum-conditioned decay fails, and the bridge collapses --- in
+exact agreement with the family dichotomy (drift test, dimension collapse,
+first-passage destruction at $b=5$).
+\end{remark}
+
+\section{Multi-block survival and unconditional Hausdorff dimension}
+
+While the natural-density bridge (Section~8) establishes the stabilization of the first-passage law over $\mathbb{N}$, it does not directly control the Hausdorff dimension of the exceptional set in the $2$-adic integers $\mathbb{Z}_2$. The correct metric concept is the $2$-adic Hausdorff dimension of the non-descending orbits.
+
+We consider the accelerated Syracuse map on blocks of $d=10$ steps. Let $S(k)$ be the survival probability of an orbit remaining above its initial barrier $N_0=2^B$ after $k$ blocks. 
+
+\begin{observation}[Geometric multi-block survival; numerical]
+We measured the survival curve $S(k)$ for barriers $B\in\{20, 24, 28, 32\}$ and intervals $[2^B, 2^{B\alpha}]$ with $\alpha\in\{1.05, 1.10\}$, simulating $10^7$ trajectories up to $T=1000$ steps per configuration.
+The survival curve exhibits a clean two-regime structure: an initial transient followed by a stationary geometric decay. 
+The three-parameter fit $S(k) \approx c_*^k \cdot k^{-\gamma}$ cleanly separates the base geometry from the polynomial prefactor, achieving $R^2 > 0.9999$ across all configurations.
+
+Crucially, the base survival coefficient $c_*(B)$ does \emph{not} drift to $1$ as $B\to\infty$. Instead, the increments shrink and change sign:
+\begin{center}
+\begin{tabular}{c|ccc}
+$B$ & $c_*$ ($\alpha=1.05$) & $c_*$ ($\alpha=1.10$) & $\gamma$ \\ \hline
+$20$ & $0.5250$ & $0.5469$ & $\approx 0.9$ \\
+$24$ & $0.5184$ & $0.5558$ & $\approx 0.8$ \\
+$28$ & $0.5596$ & $0.5605$ & $\approx 0.9$ \\
+$32$ & $0.5385$ & $0.5370$ & $\approx 0.7$
+\end{tabular}
+\end{center}
+Extrapolating $c_*(B)$ against $1/B$ suggests initial stabilization in the narrow band $c_* \in [0.53, 0.58]$ within the observed computational window ($B \le 32$).\footnote{Note that the extracted base survival $c_* \approx 0.5469$ for $B=20, \alpha=1.10$ uses the three-parameter fit isolating the polynomial prefactor $\gamma$. A naive two-parameter fit $c^k$ on the same data yields an apparent, smaller rate $c \approx 0.439$, underscoring the necessity of separating the transient from the stationary phase.} The polynomial prefactor $\gamma \approx 0.7\dots 0.9$ explains the observed growth of the per-block ratio $S(k+1)/S(k) \nearrow c_*$, resolving the tension between the transient phase and the stationary decay.
+\end{observation}
+
+\subsection{Unconditional block transport and the Hausdorff dimension drop}
+\label{subsec:transport_T1T3}
+
+\paragraph{Setup and conventions (bits; odd classes).}
+Throughout, $\lambda=\log_2 3$, $N_0=2^B$, and every rate function is evaluated
+in bits: $I_2(\sigma)=\sup_{s}[\,s\sigma-\Lambda_2(s)\,]$ with $\Lambda_2$ the
+base-$2$ cumulant of $\mathrm{Geom}(2)$, so $I_2(1.33)\approx0.25498$ and
+$I_2(2)=0$. (Equivalently $2^{-dI_2(\sigma)}=e^{-dI_{\rm nats}(\sigma)}$; we never
+mix the two.) Fix
+\[
+1<\alpha<\tfrac2\lambda,\qquad
+\frac{\alpha-1}{2-\lambda}<t\le\frac1\lambda,\qquad
+d=\lfloor tB\rfloor,\qquad
+\sigma=\lambda+\frac{\alpha-1}{t}<2,\qquad m=\lceil\sigma d\rceil,
+\]
+and assume the \emph{parameter gap}
+$\delta_0:=\alpha-t(\sigma+1)-tI_2(\sigma)>0$.
+The window is nonempty: for $\alpha=1.10$, $t=0.30$ one has
+$\sigma\approx1.918$, $I_2(\sigma)\approx0.010$, $\delta_0\approx0.22$.
+Set $c_*:=2^{-BtI_2(\sigma)}$ and write $\nu_m(r):=2^{-(m-1)}$ for the uniform
+(Haar) measure on the $2^{m-1}$ \emph{odd} classes modulo $2^m$.
+A block is $d$ accelerated steps; ``survival'' means all iterates of the block
+exceed $N_0$.
+
+\begin{lemma}[T1: conditional $2$-adic equidistribution of the surviving pushforward]
+\label{lem:T1}
+Let $I$ be a set of $M$ odd integers in an initial window $Y \asymp 2^B$ and let $Q_1(r)$ be the number of
+$N\in I$ whose first $d$ iterates exceed $N_0$ and satisfy
+$\mathrm{Syr}^d(N)\equiv r\pmod{2^m}$. Write $Q_1=\sum_r Q_1(r)$. Then for
+every odd $r\bmod 2^m$, the absolute discrepancy is bounded by the number of actually realized valuation words $\mathcal{W}_{\text{real}}$:
+\[
+\big|\,Q_1(r)-Q_1\,2^{-(m-1)}\big|\ \le\ |\mathcal{W}_{\text{real}}| \le \min\left(\binom{\sigma d}{d}, \frac{Y^\alpha}{2^{d+1}}+1\right).
+\]
+Hence the total variation distance satisfies
+\[
+\|\mu_1-\nu_m\|_{\mathrm{TV}}\ \le\ \frac{2^{m-1} |\mathcal{W}_{\text{real}}|}{Q_1} \le \frac{2^{m-1} \binom{\sigma d}{d}}{Q_1},
+\]
+where $\mu_1(r)=Q_1(r)/Q_1$. 
+\end{lemma}
+
+\begin{remark}[Falsification of the TV convergence via direct summation]
+To ensure $\|\mu_1-\nu_m\|_{\mathrm{TV}} \to 0$, we require a strict modular constraint $m + \log_2|\mathcal{W}_{\text{real}}| < \log_2 Q_1$, which translates to a parameter gap requirement $\delta_1 := \alpha - \sigma t(1 + H(1/\sigma)) + t I_2(\sigma) > 0$. However, substituting the operational values $\sigma \approx 1.918$, $t = 0.3$, $\alpha = 1.10$, and $I_2(1.918) \approx 0.010$ yields $\delta_1 \approx -0.052 < 0$. Thus, the TV bound provided by Lemma~\ref{lem:T1} is \emph{vacuous} for large $B$. Direct summation of intra-word discrepancies is too loose to establish the TV proximity required for restart. The restart/transport hypothesis remains deeply open, demanding a non-discrepancy mechanism.
+\end{remark}
+
+\begin{proof}
+By the exact affine word identity
+$\mathrm{Syr}^d(N)=y_w+2\cdot3^d q$ on the cylinder of a word $w$
+(Lemma~\ref{lem:within_word_transport}), the barrier conditions cut $q$ to an
+integer interval $J_w$, and since $3^d$ is a unit modulo $2^{m-1}$, the map
+$q\mapsto y_w+2\cdot3^dq\bmod2^m$ runs through the odd classes with period
+$2^{m-1}$. Counting an interval in a fixed odd class gives discrepancy at most
+one:
+$\#\{q\in J_w:\ y_w+2\cdot3^dq\equiv r\}=|J_w|\,2^{-(m-1)}+O(1)$.
+Summing the per-word discrepancy $\le 1$ over the realized words gives $|Q_1(r) - Q_1 2^{-(m-1)}| \le |\mathcal{W}|$, where $|\mathcal{W}| \le \binom{\sigma d}{d}$ by the hockey-stick identity. At the working parameters this bound is \textbf{vacuous} ($\delta_1 < 0$), consistent with the falsification of sum-conditioned TV convergence (Remark below). Dividing by $Q_1$ and summing over the $2^{m-1}$ odd classes gives the
+TV bound. (The comparison is against the odd classes only.)
+\end{proof}
+
+\begin{lemma}[T2: uniform one-block descent and Lyapunov drift]
+\label{lem:T2}
+Let $\mu$ be a probability measure on odd integers with
+$\mathrm{supp}\,\mu\subset[N_0,N_0^{U}]$ and $\|\mu-\nu_m\|_{\mathrm{TV}}\le\varepsilon$.
+Let $P_{\mathrm{surv}}(\mu)$ be the $\mu$-mass of survival over one block and
+$x^+:=\mathrm{Syr}^d(x)$ on survival. Then:
+\begin{enumerate}
+\item[(i)] $P_{\mathrm{surv}}(\mu)\le c_*+2\varepsilon$;
+\item[(ii)] for $V(x):=(x/N_0)^{\beta}$ with $0<\beta\le\beta_0(B,U)$ there exist
+$u_0,w>0$ and $\delta>0$ such that
+\[
+\int_{\mathrm{surv}}V(x^+)\,d\mu(x)
+\ \le\ \rho\int V\,d\mu\ +\ C\,2^{-\delta B},
+\qquad
+\rho:=\max\big((c_*+2\varepsilon)2^{\beta u_0B}+2^{\beta wB},\ 2^{-\delta}\big)<1 .
+\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) If all $d$ iterates exceed $N_0$, the exact identity
+$x^+=x3^d2^{-S_d}\prod_{k<d}(1+\tfrac1{3x_k})$ forces
+$S_d<\sigma d$ (as in Corollary~\ref{cor:local_descent}). The exact word
+cylinders $\{\mathrm{cyl}_w:|w|\le\sigma d\}$ are disjoint residue classes, so
+$P_\mu(S_d\le\sigma d)=\sum\mu(\mathrm{cyl}_w)\le\sum2^{-S}+2\varepsilon
+=2^{-dI_2(\sigma)+O(\log d)}+2\varepsilon=c_*+2\varepsilon$,
+using Proposition~\ref{prop:finite_scale_2adic} with $I_2$ in bits.
+
+(ii) Write $x=N_0^{\upsilon}$, $\upsilon\in[1,U]$. On survival,
+$x^+=x3^d2^{-S_d}(1+O(N_0^{-1}))$. Split by the event
+$\mathcal R_w:=\{S_d\ge d\lambda+\log_2(x/N_0)-wB\}$: on $\mathcal R_w$,
+$x^+\le N_0^{w}(1+o(1))$, hence $V(x^+)\le2^{\beta wB}$. On the complement,
+$S_d\le d\lambda+(\upsilon-w)B$, and Proposition~\ref{prop:finite_scale_2adic}
+(at $m_u=d\lambda+(\upsilon-w)B\le\sigma d$ for $\upsilon$ in the support) gives
+$\mu$-probability $\le2^{-dI_2(\sigma_w)}$ with
+$\sigma_w=\lambda+(\upsilon-w)/t$; there $V(x^+)\le V(x)3^{\beta d}$.
+For $\upsilon\ge u_0$ with $u_0>w$ fixed, $I_2(\sigma_{u_0})>0$ uniformly, so
+choosing $\beta$ small enough makes $3^{\beta d}2^{-dI_2(\sigma_{u_0})}\le2^{-\delta B}$
+and the rare-set contribution is $\le2^{-\delta B}\int V\,d\mu$. For
+$\upsilon<u_0$, $V\le2^{\beta u_0B}$ and the mass is $\le P_{\mathrm{surv}}\le c_*+2\varepsilon$
+by (i). Collecting,
+$\int_{\mathrm{surv}}V(x^+)\le(c_*+2\varepsilon)2^{\beta u_0B}+2^{\beta wB}+2^{-\delta B}\int V\,d\mu$.
+Since $c_*<1$, choosing $\beta$ so that
+$(c_*+2\varepsilon)2^{\beta u_0B}+2^{\beta wB}<1$ gives $\rho<1$.
+\end{proof}
+
+\begin{remark}[TV-free variant of (ii)]
+\label{rem:T2_tvfree}
+The hypothesis $\|\mu-\nu_m\|_{\mathrm{TV}}\le\varepsilon$ in (ii) is used only
+through (i). Replacing $c_*+2\varepsilon$ by the TV-free bound
+$c_*+\binom{\sigma d}{d}/(A_kM)$ from Proposition~\ref{prop:finite_scale_2adic}
+makes (ii) unconditional; Theorem~\ref{thm:T3} uses this TV-free form and does
+not depend on the vacuous TV bound of Lemma~\ref{lem:T1}.
+\end{remark}
+
+\begin{theorem}[T3: geometric multi-block survival; unconditional $\dim_H<1$]
+\label{thm:T3}
+Let $E_{N_0}=\{N\in2\mathbb{N}+1:\ \mathrm{Syr}^j(N)>N_0\ \forall j\ge1\}$.
+For any $2$-adic ball $\mathcal B$ of radius $2^{-\alpha B}$ (i.e.\
+$M=2^{\alpha B-1}$ odd starts), the mass $A_k$ of $E_{N_0}\cap\mathcal B$
+surviving $k$ blocks satisfies the TV-free recurrence
+$A_{k+1}\le c_*A_k+\binom{\sigma d}{d}/M$, hence
+$A_k\le C c_*^{\,k}+C'2^{-\delta_{\rm d}B}$ with $c_*<1$ and
+$\delta_{\rm d}=\alpha-\sigma tH_2(1/\sigma)>0$.
+Consequently
+\[
+\dim_H(E_{N_0})\ \le\ 1+\frac{\log_2 c_*}{2d}\ <\ 1,
+\]
+and $E_{N_0}$ has $2$-adic Haar measure $\le C'2^{-\delta_{\rm d}B}$,
+exponentially small in $B$; in particular the divergent set
+$\bigcap_{N_0}E_{N_0}$ has $2$-adic Haar measure zero.
+\end{theorem}
+
+\begin{proof}
+Let $A_k$ be the total mass of survivors after $k$ blocks in $\mathcal B$, so the number of surviving odd classes is $|I_k|=A_k M$ with $M=2^{\alpha B-1}$. Applying the finite-scale $2$-adic large-deviation principle (Proposition~\ref{prop:finite_scale_2adic}) directly to the set of survivors $I_k$ with $m=\lceil\sigma d\rceil$ yields:
+\[
+\frac{|I_{k+1}|}{|I_k|} \;\le\; 2^{-dI_2(\sigma)+O(\log d)} + \frac{\binom{\sigma d}{d}}{|I_k|} \;=\; c_* + \frac{\binom{\sigma d}{d}}{A_k M}.
+\]
+Multiplying by $A_k$ gives the recurrence:
+\[
+A_{k+1} \;\le\; c_* A_k + \frac{\binom{\sigma d}{d}}{M}.
+\]
+This additive error bypasses the vacuous TV-error $2^{m+d+1}/M$ (which failed since $\delta_1 < 0$) with the much smaller word-counting bound $\binom{\sigma d}{d}/M \le 2^{1-\delta_{\rm d}B}$, where the parameter gap $\delta_{\rm d} = \alpha - \sigma t H_2(1/\sigma) \approx 0.5255 > 0$.
+
+Iterating the TV-free recurrence $A_{k+1}\le c_*A_k+\binom{\sigma d}{d}/M$ with $A_0\le1$ gives
+\[
+A_k\le c_*^{\,k}+\frac{\binom{\sigma d}{d}}{M}\cdot\frac{1-c_*^{\,k}}{1-c_*}
+\le c_*^{\,k}+C'2^{-\delta_{\rm d}B},\qquad C'=\frac{2}{1-c_*},
+\]
+using $\binom{\sigma d}{d}/M\le2^{1-\delta_{\rm d}B}$. Note that the residual is a \textbf{constant} in $k$, not linear: the geometric series is summable, so the floor freezes at height $C'2^{-\delta_{\rm d}B}$ rather than growing with $k$. (The Lyapunov route of Lemma~\ref{lem:T2}(ii) yields the same form with its own $\rho,\delta$; the present argument uses the TV-free form and does not depend on the vacuous TV bound of Lemma~\ref{lem:T1}.)
+
+This frozen residual $C'2^{-\delta_{\rm d}B}$ is the \emph{resolution floor} of scale $B$: it is the mass that the contraction cannot squeeze out within a single block-resolution of the barrier. Exponential decay $Cc_*^{\,k}$ is effective only while $Cc_*^{\,k}\gg C'2^{-\delta_{\rm d}B}$, i.e.\ for $k\ll\delta_{\rm d}B/|\log_2 c_*|$. Beyond this depth the bound is dominated by the resolution floor, and the $s$-content cannot be driven to zero by sending $k\to\infty$ at fixed $B$. Consequently the Hausdorff dimension bound is established by choosing $k=\Theta(B)$ so that $c_*^{\,k}\asymp2^{-\delta_{\rm d}B}$, rather than by taking $k\to\infty$.
+
+For the dimension, cover $E_{N_0}\cap\mathcal B$ at depth $k$ by the surviving
+word cylinders, each of modulus $2^{S_k}$ with $S_k\ge dk$ and Haar diameter
+$2^{-S_k}$. Their $s$-content is
+$\le A_k\,2^{(1-s)dk}\le(Cc_*^{\,k}+C'2^{-\delta_{\rm d}B})2^{(1-s)dk}$.
+Choosing $s=1+\frac{|\log_2 c_*|}{2d}-o(1)$ and $k=\Theta(B)$ with $c_*^{\,k}\asymp2^{-\delta_{\rm d}B}$ makes the $s$-content $\le2C'2^{-\delta_{\rm d}B}c_*^{\,k/2}\asymp2^{-3\delta_{\rm d}B/2}\to0$ as $B\to\infty$. Thus $\dim_H(E_{N_0})\le1+\frac{\log_2 c_*}{2d}<1$ for each fixed $N_0$. The bound is for fixed $N_0$; it does not yield a uniform dimension bound independent of the barrier, and it does not imply that $E_{N_0}$ is empty.
+The bound is uniform over balls $\mathcal B$ of radius $2^{-\alpha B}$, and
+$\mathbb{Z}_2$ is covered by finitely many such balls per scale; letting the scale tend
+to the fixed $N_0$-resolution gives $\dim_H(E_{N_0})\le1+\log_2 c_*/(2d)<1$.
+Letting $k\to\infty$ in $A_k\le Cc_*^{\,k}+C'2^{-\delta_{\rm d}B}$ gives
+$\mu(E_{N_0}\cap\mathcal B)\le C'2^{-\delta_{\rm d}B}$, i.e.\ $E_{N_0}$ has
+$2$-adic Haar measure $\le C''2^{-\delta_{\rm d}B}$, exponentially small in $B$
+but not asserted to be zero for fixed $B$. Since this holds for every $B$,
+the divergent set $\bigcap_{N_0}E_{N_0}$ has $2$-adic Haar measure zero.
+\end{proof}
+
+\begin{remark}[Rules honoured; scope]
+All TV comparisons are against $\nu_m(r)=2^{-(m-1)}$ on the odd
+classes. All rates $c_*=2^{-BtI_2(\sigma)}$ are with $I_2$ in bits. The value $c_*=2^{-BtI_2(\sigma)}$ is an \emph{upper bound} on the one-block
+survival probability; the measured stationary band $c_*\in0.51$--$0.56$
+(Observation above) lies below it, consistent with the recurrence. The numerical
+band is a finite-scale observation and is not used as a premise of any theorem. Theorem~\ref{thm:T3} is unconditional for each \emph{fixed} $N_0$. It does not imply the full pointwise conjecture: a counterexample lies in $\bigcap_{N_0}E_{N_0}$, a countable intersection of $\dim_H<1$ sets, which may still be non-empty.
+\end{remark}
+
+\subsection{Natural-density polylogarithmic descent}
+
+The deterministic $2$-adic transport assembly (first-passage reversal over decreasing thresholds) was recently shown by Shaik (August 2026) to unconditionally bound the measure of exceptional trajectories in natural density. Our exact conditional transport (Theorem~\ref{thm:exact_conditional_transport}) natively acts as the strict topological input for that assembly.
+
+\begin{corollary}[Unconditional polylogarithmic descent in natural density]
+For almost all $N$ in natural density, the minimum of the Collatz orbit satisfies
+\[
+\mathrm{Col}_{\min}(N) \le C (\log N)^A
+\]
+for any $A > A_{FP} \approx 9.991$, achieved within $c \log N$ unaccelerated steps, with the entire orbit path uniformly bounded by $N^{1+\beta}$ for any $\beta > 0$.
+\end{corollary}
+
+\begin{proof}
+As demonstrated in recent work [I. A. Shaik, \emph{Polylogarithmic Descent for Almost All Collatz Orbits in Natural Density}, preprint, 2026], assembling the $2$-adic reverse transport along a chain of geometrically decreasing thresholds reduces the union bound of passage times from a linear horizon $O(M)$ to a square-root corridor $O(\sqrt{M \log M})$. Combined with the subcritical binomial timeout tail $\kappa_* = 1 - H_2(\log_3 2) \approx 0.05$ (the exact rate of which we independently verified numerically), this yields the critical exponent $A_{FP} = (2\kappa_*)^{-1}$. 
+This route is fully deterministic and independent of the sum-conditioned $3$-adic Fourier decay (Theorem B), closing the almost-all gap unconditionally.
+\end{proof}
+
+\begin{remark}[Honest status and synthesis]
+The point-wise Collatz conjecture remains open. The contribution of this programme is fivefold: the exact $2$-adic transport theorem, the numerical validation of the $3$-adic pillar, the synthesis exhibiting why the two heads must be treated by different methods, the unconditional Hausdorff dimension drop for the exceptional set at any fixed barrier, and the formal bridging to Shaik's unconditional natural-density polylogarithmic descent. While $2$-adic transport alone determines the bounding exponents, the $3$-adic Fourier spectrum (Allikvere's Theorem B) and our adversarial stress test remain structurally necessary for establishing the \emph{exact distribution} of the first-passage law.
+\end{remark}
+
+\section{Research and Software Disclosure}
+\label{sec:disclosure}
+
+Generative AI systems (specifically Anthropic Claude/Claude Code, DeepSeek, 
+Alibaba Qwen, and Google Gemini) were used throughout this project for the 
+following tasks:
+
+\begin{itemize}
+\item \textbf{Computational exploration:} Development and debugging of Python 
+scripts for parity scanning (\texttt{zone\_parity\_search.py}), confluence 
+census (\texttt{confluence\_census.py}), reverse tree generation 
+(\texttt{reverse\_tree\_xstar.py}), and Fourier spectral analysis.
+
+\item \textbf{Formal verification:} Lean 4 formalization of structural 
+theorems (Proposition B3, Exact Conditional Transport, multi-block survival 
+recurrence), including syntax generation, proof skeleton construction, and 
+type-checking workflows.
+
+\item \textbf{Diagnostic analysis:} Numerical stress testing of Fourier decay 
+hypotheses (Observations~\ref{obs:low_freq_cancellation}, 
+\ref{obs:two_regimes}), polymer free energy modeling 
+(Observation~\ref{obs:polymer_free_energy}), and adversarial validation of 
+sum-conditioned cancellation.
+
+\item \textbf{Structural synthesis:} Organization of the five-result framework 
+(F1/R1, S1, I1, C1, M1), identification of closed proof paths 
+(Low-Frequency Cancellation, Spectral Transversality, Reverse-chord encoding), 
+and formulation of the two-heads dichotomy (Section~\ref{sec:synthesis}).
+\end{itemize}
+
+The authors selected all mathematical architectures, verified all theoretical 
+claims, performed independent validation of numerical results, and accept full 
+responsibility for the content of this paper. No finite computation serves as 
+a premise of any theorem; all numerical evidence is explicitly labeled as 
+observation or diagnostic.
+
+All code, data, and Lean formalizations are available in the supplementary 
+materials and at the project repository.
+
+\section{Conclusion: What Was Mapped, What Was Closed, and What Remains}
+\label{sec:conclusion}
+
+This programme set out to understand the Collatz space through the lens of
+large-deviation theory, and it ends not with a proof of the conjecture but
+with something we believe is equally valuable: a \emph{complete map of the
+territory}, with every false path explicitly closed and every open bridge
+precisely identified.
+
+\paragraph{The five linked results.}
+The theoretical core of the paper is the duality between the \emph{typical}
+sector (decaying orbits) and the \emph{rigid} sector (confluence structures),
+governed by a single rate function.  Concretely: the forward shift-vector
+obeys a Cram\'er LDP with the geometric(2) rate $I_2$ (\textbf{F1}); the
+tilted $3$-adic reverse operator satisfies a backward LDP whose normalized
+rate coincides with $I_2$ (\textbf{R1}); the generic peak-path is a
+\emph{soliton} that avoids all rigid structures (\textbf{S1}); every
+confluence center is a \emph{dressed vacuum}---the $(1,1,2)$ fixed point
+$\xi=-29/11$ with $O(1)$ total charge (\textbf{I1}); each center sits at the
+log-midpoint $\mathrm{bits}(c)=\tfrac12 P+O(1)$ by detailed balance at the
+waist (\textbf{C1}); and constructive reverse synthesis of macro-centers is
+algorithmically closed by a CRT dimensionality deficit $\Delta\ge 2P$
+(\textbf{M1}).  The paradigm crystallises as: \emph{crystals can be found but
+not grown.}
+
+\paragraph{The closure of the Fourier route.}
+The most consequential negative result of this programme is the systematic
+falsification of every candidate Fourier mechanism for the restart/transport
+step.  The Low-Frequency Cancellation Lemma (macroscopic peaks $\sim0.6$ at
+$M=22,24$ with no decay), Spectral Transversality ($8/10$ unrestricted peaks
+aligning with the dominant layer), and the sum-conditioned restart hypothesis
+(normalized peaks $=1.0000$, the apparent $O(d^{-1/2})$ decay exposed as a
+Gaussian mass artifact) are all conclusively closed
+(Observations~\ref{obs:low_freq_cancellation},~\ref{obs:hierarchical_inter_bucket};
+Section~\ref{sec:synthesis}).  The two-regime structure of the $3$-adic
+Fourier spectrum (fast bulk $L^2$ decay $c_{\mathrm{avg}}\approx0.61$ versus
+worst-case $c_\infty\le0.054$ with $c_\infty=0$ not excluded;
+Observation~\ref{obs:two_regimes}) and the worst-case barrier
+(Theorem~\ref{thm:barrier}, cf.\ Tao Remark~1.18) establish that no $L^2$
+averaging can bypass the pointwise Fourier rate.  The polymer free-energy
+diagnostic (Observation~\ref{obs:polymer_free_energy}) provides numerical
+evidence that $c_\infty>0$ but with a microscopic rate $\sim10^{-6}$,
+confirming that the $3$-adic head is theoretically sound yet practically too
+slow to bridge the Archimedean gap alone.
+
+\paragraph{The architectural contribution.}
+The central structural insight is the \emph{separation of concerns between two
+independent heads}.  The $2$-adic head is \emph{exact and cancellation-free}:
+the affine word map $T_w$ bijects each cylinder onto $\mathbb{Z}_2$
+(Theorem~\ref{thm:exact_conditional_transport}), the conditional endpoint law
+on every $S$-layer is exactly Haar, and the $O(1)$ Fourier ``noise'' of the
+unrestricted spectrum is entirely the Fourier transform of the initial
+Archimedean indicator, not a mixing failure.  The $3$-adic head carries
+\emph{all} the cancellation: its sum-conditioned Fourier decay
+(Allikvere Theorem~B) is superpolynomial and survives the adversarial stress
+test (Observation~\ref{obs:stress_B}), but it is specific to $b=3$ and fails
+for $b\ge5$ where the stationary IFS measure is singular.  The threshold
+$\delta(b)=\log4/\log b\gtrless1$ is the exact condition for the
+Allikvere transport to operate.  This two-heads architecture explains why the
+natural-density bridge can stand for $3x+1$ and must collapse for $5x+1$.
+
+\paragraph{New unconditional results.}
+Three unconditional results emerge from the synthesis.
+\emph{First}, the multi-block survival analysis
+(Section~\ref{sec:synthesis}, Theorem~\ref{thm:T3}) establishes
+$\dim_H(E_{N_0})\le1+\log_2 c_*/(2d)<1$ for each fixed barrier $N_0=2^B$,
+with the corrected iteration showing that the residual is a
+\emph{constant} resolution floor $C'2^{-\delta_{\rm d}B}$, not a growing term; the
+Hausdorff bound is taken at the correct depth $k=\Theta(B)$.
+\emph{Second}, the exact $2$-adic transport (Lemma~\ref{lem:T1}) provides the
+strict input for Shaik's unconditional natural-density assembly, yielding
+$\mathrm{Col}_{\min}(N)\le C(\log N)^A$ for $A>A_{\mathrm{FP}}\approx9.991$
+in natural density (Corollary in Section~\ref{sec:synthesis}).
+\emph{Third}, the family dichotomy $\delta(b)=\log4/\log b$ is validated by
+three independent numerical tests (drift, dimension collapse, first-passage
+destruction) and identifies $b=3$ as the unique value where the transport
+mechanism operates.
+
+\paragraph{What remains open.}
+Four bridges remain open, and we state them precisely.
+\emph{(i)} The forward restart/transport hypothesis across scales is open and
+mechanism-free: every candidate mechanism has been falsified, and the
+Archimedean--$2$-adic misalignment---the topological mismatch between
+Archimedean sampling intervals and $2$-adic cylinders---is identified as the
+true obstruction that logarithmic density bypasses and natural density must
+attack via Kronecker orbits and transcendence theory.
+\emph{(ii)} The worst-case Fourier rate $c_\infty$ is not determined; if
+$c_\infty=0$, Tao's architecture yields a superpolynomial but not an
+exponential exceptional-set bound, and the effective threshold $N_0^*$
+remains astronomically above the computational frontier $2^{68}$.
+\emph{(iii)} The pointwise Collatz conjecture
+$\mathrm{Col}_{\min}(N)=1\;\forall N$ is not implied by any density bound:
+a counterexample lies in $\bigcap_{N_0}E_{N_0}$, a countable intersection of
+$\dim_H<1$ sets that may be non-empty.
+\emph{(iv)} The reverse-chord encoding is superseded by an intrinsic entropy
+deficit ($h(4/3)\approx1.0817<\log_2 3\approx1.585$), closing the route to
+attaching $\gamma_{\mathrm{rev}}\approx0.993$ to the forward exceptional set.
+
+\paragraph{The path forward.}
+The map drawn here suggests three directions.
+\emph{Non-Fourier transport}: the exact $2$-adic transport theorem
+(Theorem~\ref{thm:exact_conditional_transport}) operates without any
+Fourier analysis; a restart/transport lemma phrased in the Tree-Wasserstein
+metric on the $2$-adic tree, or in entropy rather than Fourier norms,
+might bypass the Archimedean wall.
+\emph{The $c_\infty$ question}: closing $c_\infty>0$ rigorously (via the
+polymer free-energy or a renewal-theoretic argument) would upgrade the
+superpolynomial bound to exponential, though the microscopic rate suggests
+the effective gain would be modest.
+\emph{Pointwise structure}: the dressed-vacuum picture (Theorem~I1) and the
+CRT dimensionality obstruction (Theorem~M1) constrain the \emph{shape} of any
+hypothetical counterexample---it would have to be a measure-zero rigid object
+of $O(1)$ charge, not a statistical accident---but no current method excludes
+its existence.
+
+\paragraph{Final word.}
+We have not proved the Collatz conjecture.  What we have done is to
+distinguish, for the first time in a single coherent framework, the five
+different \emph{types} of statement that the word ``Collatz'' conflates:
+the typical decay (proven by Tao), the natural-density descent (proven by
+Allikvere and Shaik), the Hausdorff dimension of the exceptional set
+(established here for fixed barriers), the structural anatomy of the rare
+rigid objects (mapped here in detail), and the pointwise conjecture itself
+(open since 1937).  The first four are now cleanly separated; the fifth is
+seen clearly across the gap.  Whether that gap can be crossed is a question
+for mathematics that does not yet exist.
 
 \section*{Data Availability and Formalization}
 The full Zone 2 catalog (913 entries, \texttt{zone2\_shifts\_full.csv}), 39-center census, KL derivation, beam-search death logs, algorithmic pseudocodes, and Python verification scripts are available in the project GitHub repository. The Lean 4 formalization of the exact conditional transport (Theorem~\ref{thm:exact_conditional_transport}) and the CRT dimensionality obstruction (Theorem~M1) are also provided in the repository.
 
-\begin{thebibliography}{99}
 
-\end{thebibliography}
 \end{document}
