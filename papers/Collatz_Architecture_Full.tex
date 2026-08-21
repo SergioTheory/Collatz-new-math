@@ -459,28 +459,6 @@ The analytic explanation of the structures mapped above --- the large-deviation 
 \section{Conclusion of Part I: Crystals Cannot Be Grown}
 This Part has constructed a comprehensive computational map of the Collatz space to $\sim310$ bits and $d\approx500$. The central discoveries (Zone~2, the continuous archipelago, the $(1,1,2)$ equilibrium, the continuum of caustics, the triad of obstructions) form a coherent empirical structure whose rigorous theory is developed in Part~II. \textbf{Philosophical conclusion:} the Collatz space is not ``chaos with rare islands'' but a continuous field of confluence structures above which rise rare deep funnels; these \emph{can be found but cannot be grown}. \textbf{Open horizons:} the Scaling Hypothesis $\times10$ remains a question of existence, not constructibility; the map is complete for the explored range.
 
-\appendix
-\section{Main Project Scripts}
-\begin{flushleft}
-\textbf{Core:} \texttt{crt\_solver.py}, \texttt{records\_data.py}. \textbf{Search:} \texttt{peak\_hunter.py}, \texttt{zone\_parity\_search.py}, \texttt{residue\_search.py}, \texttt{class\_a\_search\_51\_80.py}. \textbf{Zone 2:} \texttt{confluence\_search.py}, \texttt{reverse\_tree\_xstar.py}, \texttt{count\_zone2\_in\_tree.py}, \texttt{analyze\_barina.py}. \textbf{Centers:} \texttt{confluence\_census.py}, \texttt{verify\_census\_centers.py}, \texttt{targeted\_search\_31\_50.py}, \texttt{targeted\_search\_41\_50.py}, \texttt{algebra\_centers.py}, \texttt{two\_class\_analysis.py}, \texttt{basin\_test.py}. \textbf{Spectrum:} \texttt{family\_a\_spectrum.py}, \texttt{check\_microplateau.py}, \texttt{analyze\_records\_gain.py}, \texttt{analyze\_27.py}. \textbf{Automata:} \texttt{automaton\_invariants.py}, \texttt{automaton\_compare.py}.
-\end{flushleft}
-
-\section{Key Algorithmic Primitives}
-\begin{enumerate}
-\item \textbf{Confluence filter:} $c\equiv1\pmod2$, $c\equiv2\pmod3$, $v_2(3c+1)=1$, $|\mathrm{bits}(c)-(0.498P+6.29)|\le3$ (rejects $\approx5/6$).
-\item \textbf{Reverse step:} $T^{-1}(x,a)=\{(x2^a-1)/3\}$, $a=1..15$, odd positive only.
-\item \textbf{Hit rate:} $HR(c,P;d_{win},W)=|\{y\in V_{d_{win}}\cap W:\mathrm{peak}(y)=P\}|/|V_{d_{win}}\cap W|$.
-\item \textbf{Class A:} $HR=1.0$ for some window, $d_{peak}>20$, $S/d_{peak}>1.30$.
-\end{enumerate}
-
-\section{Nature of the Instanton (Expedition B)}
-\begin{lemma}[2-adic vacuum]
-$I=I_2\circ I_1\circ I_1$ is a contraction on $\mathbb Z_2$ (ratio $2^{-4}$) with unique fixed point $\xi=-29/11$, generating a periodic inverse orbit with $S/d=4/3$. Finite orbits shadowing $\xi$ to $2^{-m}$ over $d$ steps have $S/d=4/3+O(1/d)+O(2^{-m})$.
-\end{lemma}
-\begin{lemma}[Gain/charge balance]
-For $w$ of length $d$, $S=\tfrac43 d+\delta$: $G(d)=d(\log_2 3-\tfrac43)-\delta$. Zone~2 core ($d=251$, $P-B\approx68.4$): $\delta\approx-0.67$ (low defect density).
-\end{lemma}
-\textbf{Hypothesis B3 (center as log-midpoint).} For Class~A centers, $\mathrm{bits}(c)\approx P/2+6.5$; the center is the deepest common node with sufficient cylinder measure. (Rigorous form: Part~II, Theorem~C1.)
 
 
 \part{Large-Deviation Theory}
@@ -2086,5 +2064,29 @@ The full Zone 2 catalog (913 entries, \texttt{zone2\_shifts\_full.csv}), 39-cent
 \bibitem{Allikvere2026} Allikvere, J. (2026). Natural-density bridges from Tao's logarithmic-density framework. Unpublished manuscript.
 \bibitem{Mazur2026} Mazur, L. (2026). Quantitative phase-gap and 2-adic lift from the logarithmic-density frontier. Unpublished manuscript.
 \end{thebibliography}
+
+
+\appendix
+\section{Main Project Scripts}
+\begin{flushleft}
+\textbf{Core:} \texttt{crt\_solver.py}, \texttt{records\_data.py}. \textbf{Search:} \texttt{peak\_hunter.py}, \texttt{zone\_parity\_search.py}, \texttt{residue\_search.py}, \texttt{class\_a\_search\_51\_80.py}. \textbf{Zone 2:} \texttt{confluence\_search.py}, \texttt{reverse\_tree\_xstar.py}, \texttt{count\_zone2\_in\_tree.py}, \texttt{analyze\_barina.py}. \textbf{Centers:} \texttt{confluence\_census.py}, \texttt{verify\_census\_centers.py}, \texttt{targeted\_search\_31\_50.py}, \texttt{targeted\_search\_41\_50.py}, \texttt{algebra\_centers.py}, \texttt{two\_class\_analysis.py}, \texttt{basin\_test.py}. \textbf{Spectrum:} \texttt{family\_a\_spectrum.py}, \texttt{check\_microplateau.py}, \texttt{analyze\_records\_gain.py}, \texttt{analyze\_27.py}. \textbf{Automata:} \texttt{automaton\_invariants.py}, \texttt{automaton\_compare.py}.
+\end{flushleft}
+
+\section{Key Algorithmic Primitives}
+\begin{enumerate}
+\item \textbf{Confluence filter:} $c\equiv1\pmod2$, $c\equiv2\pmod3$, $v_2(3c+1)=1$, $|\mathrm{bits}(c)-(0.498P+6.29)|\le3$ (rejects $\approx5/6$).
+\item \textbf{Reverse step:} $T^{-1}(x,a)=\{(x2^a-1)/3\}$, $a=1..15$, odd positive only.
+\item \textbf{Hit rate:} $HR(c,P;d_{win},W)=|\{y\in V_{d_{win}}\cap W:\mathrm{peak}(y)=P\}|/|V_{d_{win}}\cap W|$.
+\item \textbf{Class A:} $HR=1.0$ for some window, $d_{peak}>20$, $S/d_{peak}>1.30$.
+\end{enumerate}
+
+\section{Nature of the Instanton (Expedition B)}
+\begin{lemma}[2-adic vacuum]
+$I=I_2\circ I_1\circ I_1$ is a contraction on $\mathbb Z_2$ (ratio $2^{-4}$) with unique fixed point $\xi=-29/11$, generating a periodic inverse orbit with $S/d=4/3$. Finite orbits shadowing $\xi$ to $2^{-m}$ over $d$ steps have $S/d=4/3+O(1/d)+O(2^{-m})$.
+\end{lemma}
+\begin{lemma}[Gain/charge balance]
+For $w$ of length $d$, $S=\tfrac43 d+\delta$: $G(d)=d(\log_2 3-\tfrac43)-\delta$. Zone~2 core ($d=251$, $P-B\approx68.4$): $\delta\approx-0.67$ (low defect density).
+\end{lemma}
+\textbf{Hypothesis B3 (center as log-midpoint).} For Class~A centers, $\mathrm{bits}(c)\approx P/2+6.5$; the center is the deepest common node with sufficient cylinder measure. (Rigorous form: Part~II, Theorem~C1.)
 
 \end{document}
