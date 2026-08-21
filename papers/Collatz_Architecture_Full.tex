@@ -105,7 +105,7 @@ Analysis of Barina's record holders (71--82 bits) revealed they all peak at exac
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{trajectory_plot.png}
+\includegraphics[width=0.8\textwidth]{../data/trajectory_plot.png}
 \caption{Confluence in vivo: several Zone~2 trajectories (solid) merge exactly at $x^*$ and proceed as one path to the 140-bit peak; Barina's number (dashed) reaches the same peak by a disjoint path. Data: \texttt{zone2\_shifts\_full.csv}.}
 \label{fig:trajectory}
 \end{figure}
@@ -461,7 +461,9 @@ This Part has constructed a comprehensive computational map of the Collatz space
 
 \appendix
 \section{Main Project Scripts}
+\begin{flushleft}
 \textbf{Core:} \texttt{crt\_solver.py}, \texttt{records\_data.py}. \textbf{Search:} \texttt{peak\_hunter.py}, \texttt{zone\_parity\_search.py}, \texttt{residue\_search.py}, \texttt{class\_a\_search\_51\_80.py}. \textbf{Zone 2:} \texttt{confluence\_search.py}, \texttt{reverse\_tree\_xstar.py}, \texttt{count\_zone2\_in\_tree.py}, \texttt{analyze\_barina.py}. \textbf{Centers:} \texttt{confluence\_census.py}, \texttt{verify\_census\_centers.py}, \texttt{targeted\_search\_31\_50.py}, \texttt{targeted\_search\_41\_50.py}, \texttt{algebra\_centers.py}, \texttt{two\_class\_analysis.py}, \texttt{basin\_test.py}. \textbf{Spectrum:} \texttt{family\_a\_spectrum.py}, \texttt{check\_microplateau.py}, \texttt{analyze\_records\_gain.py}, \texttt{analyze\_27.py}. \textbf{Automata:} \texttt{automaton\_invariants.py}, \texttt{automaton\_compare.py}.
+\end{flushleft}
 
 \section{Key Algorithmic Primitives}
 \begin{enumerate}
