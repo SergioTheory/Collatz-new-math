@@ -7,6 +7,7 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{amsthm}
+\usepackage{graphicx}
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -117,6 +118,14 @@ identical from position 8; \textbf{Zone~2} found for all bits $71$--$87$.
 \caption*{Representatives (full 17-row table in Supplementary). All have $d=259$, $S=\mathrm{bits}+271$.}
 \end{longtable}
 $2^{88}-1$ peaks at $141$ and does \emph{not} pass through $x^*$ --- the sharp boundary.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../data/trajectory_plot.png}
+    \caption{Trajectories of Zone 2 numbers (solid) perfectly merging into $x^*$, compared to Barina's number (dashed) reaching the same peak independently.}
+    \label{fig:trajectory}
+\end{figure}
+
 \subsection{Two-layer invariants}
 \textbf{Core} ($x^*\to$ peak): identical for all 913; $d_{core}=251$,
 $S_{core}=334$, $S/d\approx1.331$. \textbf{Adapter shell}: inputs reach $x^*$ in

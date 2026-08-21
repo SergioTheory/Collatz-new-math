@@ -1,0 +1,99 @@
+{
+  "metadata": {
+    "peaks": [
+      46,
+      50
+    ],
+    "mode": "exhaustive",
+    "samples": "exhaustive",
+    "v2_filter": true,
+    "date": "2026-03-29 13:41:23"
+  },
+  "results": [
+    {
+      "peak": 46,
+      "method": "exhaustive",
+      "pred_bits": 29.3,
+      "search_range": "25-34",
+      "center": "516844415",
+      "center_bits": 29,
+      "inputs": 520,
+      "hit_rate": 0.9285714285714286,
+      "status": "CONFIRMED",
+      "samples_found": 654053,
+      "total_checked": 1430257664,
+      "notes": "",
+      "confluence_hits": 34,
+      "confluence_sample": 100,
+      "elapsed": 3910.594978570938
+    },
+    {
+      "peak": 47,
+      "method": "exhaustive",
+      "pred_bits": 29.8,
+      "search_range": "25-34",
+      "center": "442441855",
+      "center_bits": 29,
+      "inputs": 548,
+      "hit_rate": 0.8712241653418124,
+      "status": "CONFIRMED",
+      "samples_found": 325864,
+      "total_checked": 1430257664,
+      "notes": "",
+      "confluence_hits": 12,
+      "confluence_sample": 100,
+      "elapsed": 3936.9934701919556
+    },
+    {
+      "peak": 48,
+      "method": "exhaustive",
+      "pred_bits": 30.3,
+      "search_range": "26-35",
+      "center": "2303929595",
+      "center_bits": 32,
+      "inputs": 520,
+      "hit_rate": 0.9285714285714286,
+      "status": "CONFIRMED",
+      "samples_found": 651168,
+      "total_checked": 2860515328,
+      "notes": "",
+      "confluence_hits": 14,
+      "confluence_sample": 100,
+      "elapsed": 8313.063694238663
+    },
+    {
+      "peak": 49,
+      "method": "exhaustive",
+      "pred_bits": 30.8,
+      "search_range": "26-35",
+      "center": "3830005073",
+      "center_bits": 32,
+      "inputs": 520,
+      "hit_rate": 0.8333333333333334,
+      "status": "CONFIRMED",
+      "samples_found": 328236,
+      "total_checked": 2860515328,
+      "notes": "",
+      "confluence_hits": 33,
+      "confluence_sample": 100,
+      "elapsed": 7988.180092334747
+    },
+    {
+      "peak": 50,
+      "method": "exhaustive",
+      "pred_bits": 31.3,
+      "search_range": "27-36",
+      "center": "1396693151",
+      "center_bits": 31,
+      "inputs": 716,
+      "hit_rate": 0.8850432632880099,
+      "status": "CONFIRMED",
+      "samples_found": 651169,
+      "total_checked": 5721030656,
+      "notes": "",
+      "confluence_hits": 33,
+      "confluence_sample": 100,
+      "elapsed": 16571.325662612915
+    }
+  ]
+}

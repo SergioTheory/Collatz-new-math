@@ -1,0 +1,11 @@
+peak,method,pred_bits,center,center_bits,inputs,hit_rate,status,samples_found,total_checked,notes
+41,sampling,26.8,,,0,,NONE,200,5072,"200 samples, no confluence"
+42,sampling,27.3,,,0,,NONE,200,5757,"200 samples, no confluence"
+43,sampling,27.8,,,0,,NONE,200,5963,"200 samples, no confluence"
+44,sampling,28.3,,,0,,NONE,200,6824,"200 samples, no confluence"
+45,sampling,28.8,,,0,,NONE,200,5755,"200 samples, no confluence"
+46,sampling,29.3,,,0,,NONE,200,5243,"200 samples, no confluence"
+47,sampling,29.8,,,0,,NONE,200,6715,"200 samples, no confluence"
+48,sampling,30.3,,,0,,NONE,200,7475,"200 samples, no confluence"
+49,sampling,30.8,,,0,,NONE,200,7137,"200 samples, no confluence"
+50,sampling,31.3,,,0,,NONE,200,6355,"200 samples, no confluence"
