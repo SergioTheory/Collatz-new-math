@@ -1742,7 +1742,7 @@ $q\mapsto y_w+2\cdot3^dq\bmod2^m$ runs through the odd classes with period
 $2^{m-1}$. Counting an interval in a fixed odd class gives discrepancy at most
 one:
 $\#\{q\in J_w:\ y_w+2\cdot3^dq\equiv r\}=|J_w|\,2^{-(m-1)}+O(1)$.
-Summing the per-word discrepancy $\le 1$ over the realized words gives $|Q_1(r) - Q_1 2^{-(m-1)}| \le |\mathcal{W}|$, where $|\mathcal{W}| \le \binom{\sigma d}{d}$ by the hockey-stick identity. At the working parameters this bound is \textbf{vacuous} ($\delta_1 < 0$), consistent with the falsification of sum-conditioned TV convergence (Remark below). Dividing by $Q_1$ and summing over the $2^{m-1}$ odd classes gives the
+Summing the per-word discrepancy $\le 1$ over the realized words gives $|Q_1(r) - Q_1 2^{-(m-1)}| \le |\mathcal{W}|$, where $|\mathcal{W}| \le \binom{\sigma d}{d}$ by the hockey-stick identity $\sum_{S=d}^{m}\binom{S-1}{d-1}=\binom{m}{d}$ (formalized in Lean as \texttt{W1\_word\_count\_bound}). At the working parameters this bound is \textbf{vacuous} ($\delta_1 < 0$), consistent with the falsification of sum-conditioned TV convergence (Remark below). Dividing by $Q_1$ and summing over the $2^{m-1}$ odd classes gives the
 TV bound. (The comparison is against the odd classes only.)
 \end{proof}
 
