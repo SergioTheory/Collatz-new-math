@@ -1,7 +1,7 @@
 # The Architecture of the Collatz Space: Computational Mapping and Large-Deviation Theory
 
 [![arXiv](https://img.shields.io/badge/arXiv-Pending-b31b1b.svg)](https://arxiv.org/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PENDING.svg)](https://doi.org/10.5281/zenodo.PENDING)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22059852.svg)](https://doi.org/10.5281/zenodo.22059852)
 
 This repository contains the complete theoretical, computational, and formal verification package for the **Collatz Crystal Hunter Project**. The research establishes an unconditional exact conditional transport theory and maps the macroscopic architecture of the Collatz space.
 
@@ -50,5 +50,6 @@ This project was developed with extensive assistance from state-of-the-art AI mo
 * **Early Stage Explorations**: DeepSeek, Claude Opus.
 
 See the *Data Availability and Formalization* section in the manuscript for explicit disclosure details.
+
 
 
