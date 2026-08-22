@@ -18,7 +18,7 @@ The unified manuscript, combining computational mapping (Part I) and large-devia
 
 ### 1. Lean Formalization
 To verify the Lean proofs for the Large-Deviation Theory:
-`ash
+`Bash
 cd lean
 lake build
 `
@@ -28,7 +28,7 @@ The Python scripts require
 umpy, 
 umba, and scipy.
 Example run of the multiprocessed boundary survival test:
-`ash
+`Bash
 cd scripts
 python D_multiblock_survival_v2.py
 `
