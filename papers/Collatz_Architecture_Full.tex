@@ -41,7 +41,7 @@ structures (F1/R1), soliton dominance (S1), the dressed-vacuum anatomy of
 centers (I1), the caustic log-midpoint law (C1), and the CRT obstruction to
 constructive synthesis (M1). We prove an exact $2$-adic transport theorem, an
 unconditional Hausdorff dimension drop for the exceptional set at fixed
-barriers, and bridge to Shaik's unconditional natural-density polylogarithmic
+barriers, and bridge to Shaik's \cite{Shaik2026} unconditional natural-density polylogarithmic
 descent. Together the parts establish the paradigm: \emph{crystals can be
 found, but not grown}. The pointwise Collatz conjecture is not proved; the
 five types of statement the word ``Collatz'' conflates are cleanly separated.
@@ -154,7 +154,7 @@ Analysis of Barina's record holders (71--82 bits) revealed they all peak at exac
 82 & 4831046860529623920148297 & 140 & 1.7073 & 7 \\
 83 & 9662093721059247840295139 & 140 & 1.6867 & 7 \\
 84 & 19324187442118495680593175 & 140 & 1.6667 & 7 \\
-85 & 38648379884236991361186739 & 140 & 1.6471 & 7 \\
+85 & 38648374884236991361186739 & 140 & 1.6471 & 7 \\
 86 & 77296749768473982722370787 & 140 & 1.6279 & 7 \\
 87 & 154593499536947965444748439 & 140 & 1.6092 & 7 \\
 \bottomrule
@@ -1864,7 +1864,7 @@ band is a finite-scale observation and is not used as a premise of any theorem. 
 
 \subsection{Natural-density polylogarithmic descent}
 
-The deterministic $2$-adic transport assembly (first-passage reversal over decreasing thresholds) was recently shown by Shaik (August 2026) to unconditionally bound the measure of exceptional trajectories in natural density. Our exact conditional transport (Theorem~\ref{thm:exact_conditional_transport}) natively acts as the strict topological input for that assembly.
+The deterministic $2$-adic transport assembly (first-passage reversal over decreasing thresholds) was recently shown by Shaik \cite{Shaik2026} (August 2026) to unconditionally bound the measure of exceptional trajectories in natural density. Our exact conditional transport (Theorem~\ref{thm:exact_conditional_transport}) natively acts as the strict topological input for that assembly.
 
 \begin{corollary}[Unconditional polylogarithmic descent in natural density]
 For almost all $N$ in natural density, the minimum of the Collatz orbit satisfies
@@ -1875,12 +1875,12 @@ for any $A > A_{FP} \approx 9.991$, achieved within $c \log N$ unaccelerated ste
 \end{corollary}
 
 \begin{proof}
-As demonstrated in recent work [I. A. Shaik, \emph{Polylogarithmic Descent for Almost All Collatz Orbits in Natural Density}, preprint, 2026], assembling the $2$-adic reverse transport along a chain of geometrically decreasing thresholds reduces the union bound of passage times from a linear horizon $O(M)$ to a square-root corridor $O(\sqrt{M \log M})$. Combined with the subcritical binomial timeout tail $\kappa_* = 1 - H_2(\log_3 2) \approx 0.05$ (the exact rate of which we independently verified numerically), this yields the critical exponent $A_{FP} = (2\kappa_*)^{-1}$. 
+As demonstrated in recent work \cite{Shaik2026}, assembling the $2$-adic reverse transport along a chain of geometrically decreasing thresholds reduces the union bound of passage times from a linear horizon $O(M)$ to a square-root corridor $O(\sqrt{M \log M})$. Combined with the subcritical binomial timeout tail $\kappa_* = 1 - H_2(\log_3 2) \approx 0.05$ (the exact rate of which we independently verified numerically), this yields the critical exponent $A_{FP} = (2\kappa_*)^{-1}$. 
 This route is fully deterministic and independent of the sum-conditioned $3$-adic Fourier decay (Theorem B), closing the almost-all gap unconditionally.
 \end{proof}
 
 \begin{remark}[Honest status and synthesis]
-The point-wise Collatz conjecture remains open. The contribution of this programme is fivefold: the exact $2$-adic transport theorem, the numerical validation of the $3$-adic pillar, the synthesis exhibiting why the two heads must be treated by different methods, the unconditional Hausdorff dimension drop for the exceptional set at any fixed barrier, and the formal bridging to Shaik's unconditional natural-density polylogarithmic descent. While $2$-adic transport alone determines the bounding exponents, the $3$-adic Fourier spectrum (Allikvere's Theorem B) and our adversarial stress test remain structurally necessary for establishing the \emph{exact distribution} of the first-passage law.
+The point-wise Collatz conjecture remains open. The contribution of this programme is fivefold: the exact $2$-adic transport theorem, the numerical validation of the $3$-adic pillar, the synthesis exhibiting why the two heads must be treated by different methods, the unconditional Hausdorff dimension drop for the exceptional set at any fixed barrier, and the formal bridging to Shaik's \cite{Shaik2026} unconditional natural-density polylogarithmic descent. While $2$-adic transport alone determines the bounding exponents, the $3$-adic Fourier spectrum (Allikvere's Theorem B \cite{Allikvere2026}) and our adversarial stress test remain structurally necessary for establishing the \emph{exact distribution} of the first-passage law.
 \end{remark}
 
 \section{Research and Software Disclosure}
@@ -2041,7 +2041,7 @@ its existence.
 We have not proved the Collatz conjecture.  What we have done is to
 distinguish, for the first time in a single coherent framework, the five
 different \emph{types} of statement that the word ``Collatz'' conflates:
-the typical decay (proven by Tao), the natural-density descent (proven in natural density by Shaik; the Tao-to-natural-density bridges of Allikvere and Mazur remain unpublished), the Hausdorff dimension of the exceptional set
+the typical decay (proven by Tao), the natural-density descent (proven in natural density by Shaik \cite{Shaik2026}; the Tao-to-natural-density bridges of Allikvere and Mazur \cite{Allikvere2026,Mazur2026} remain unpublished), the Hausdorff dimension of the exceptional set
 (established here for fixed barriers), the structural anatomy of the rare
 rigid objects (mapped here in detail), and the pointwise conjecture itself
 (open since 1937).  The first four are now cleanly separated; the fifth is
