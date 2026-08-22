@@ -34,16 +34,19 @@ python D_multiblock_survival_v2.py
 `
 
 Key scripts include:
-* zone_parity_search.py, everse_tree_xstar.py, confluence_census.py (Part I mapping).
-* estart_transport.py, estart_fourier_decomposition.py (Part II transport and spectral tests).
+* zone_parity_search.py, 
+everse_tree_xstar.py, confluence_census.py (Part I mapping).
+* 
+estart_transport.py, 
+estart_fourier_decomposition.py (Part II transport and spectral tests).
 
 ## Authorship & AI Contributions
 
-**Author / Principal Investigator:** Sergey A. Zadorozhnyi
+**Author / Principal Investigator:** Sergey A. Zadorozhnii
 
 This project was developed with extensive assistance from state-of-the-art AI models, acting as collaborative research agents:
 * **Alibaba Qwen 3.8 MAX**: Mathematical generation, hypothesis validation, formula derivation, and rigorous control of definitions and systems of units (Nats vs. Bits).
-* **Google Gemini (Antigravity Agent)**: Computational architecture, script execution, multiprocessed algorithm design, numerical verification, LaTeX typesetting, and repository management.
+* **Google Gemini (Antigravity Agent)**: Computational architecture, script execution, multiprocessed algorithm design, numerical verification.
 * **Early Stage Explorations**: DeepSeek, Claude Opus 4.6.
 
 See the *Data Availability and Formalization* section in the manuscript for explicit disclosure details.
