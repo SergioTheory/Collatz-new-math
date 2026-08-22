@@ -42,7 +42,7 @@ estart_fourier_decomposition.py (Part II transport and spectral tests).
 
 ## Authorship & AI Contributions
 
-**Author / Principal Investigator:** Sergey A. Zadorozhnii
+**Author / Principal Investigator:** Sergey Alexandrovich Zadorozhnii
 
 This project was developed with extensive assistance from state-of-the-art AI models, acting as collaborative research agents:
 * **Alibaba Qwen**: Mathematical generation, hypothesis validation, formula derivation, and rigorous control of definitions and systems of units (Nats vs. Bits).
