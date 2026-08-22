@@ -45,8 +45,8 @@ estart_fourier_decomposition.py (Part II transport and spectral tests).
 **Author / Principal Investigator:** Sergey A. Zadorozhnii
 
 This project was developed with extensive assistance from state-of-the-art AI models, acting as collaborative research agents:
-* **Alibaba Qwen 3.8 MAX**: Mathematical generation, hypothesis validation, formula derivation, and rigorous control of definitions and systems of units (Nats vs. Bits).
+* **Alibaba Qwen**: Mathematical generation, hypothesis validation, formula derivation, and rigorous control of definitions and systems of units (Nats vs. Bits).
 * **Google Gemini (Antigravity Agent)**: Computational architecture, script execution, multiprocessed algorithm design, numerical verification.
-* **Early Stage Explorations**: DeepSeek, Claude Opus 4.6.
+* **Early Stage Explorations**: DeepSeek, Claude Opus.
 
 See the *Data Availability and Formalization* section in the manuscript for explicit disclosure details.
