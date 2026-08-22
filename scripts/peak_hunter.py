@@ -296,7 +296,7 @@ def run_hunt(
                                 print(f"  {'!'*50}")
 
                         # Дедупликация топа
-                        all_candidates.sort(key=lambda x: -x["proximity"])
+                        all_candidates.sort(key=lambda x: -x.get("proximity", 0.0))
                         seen_keys, deduped = set(), []
                         for c in all_candidates:
                             key = c["binary"][:40]
@@ -355,7 +355,7 @@ def run_hunt(
     print(f"  {'bits':>5}  {'peak':>5}  {'ratio':>7}  {'proximity':>10}  first 28 bits")
     print(f"  {'-'*58}")
     for c in all_candidates[:5]:
-        nb, pk, prox = c["bits"], c["peak_bits"], c["proximity"]
+        nb, pk, prox = c["bits"], c["peak_bits"], c.get("proximity", 0.0)
         print(f"  {nb:>5}  {pk:>5}  {pk/nb:>7.4f}  {prox:>10.6f}  {c['binary'][:28]}...")
     print()
     print(f"  Will auto-load on next normal-mode start.")
