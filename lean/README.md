@@ -35,6 +35,5 @@ lake exe cache get
 
 # 2. Build the project and verify all proofs
 lake build
-`
 
 If the lake build command completes without errors (e.g. Build completed successfully), all mathematical theorems in this directory have been successfully mathematically verified by the Lean 4 kernel with 0 sorry statements.
