@@ -49,6 +49,7 @@ lemma prod_shift :
     ∏ i : Fin K, C.a (i + 1) = ∏ i : Fin K, C.a i := by
   exact Equiv.prod_comp (finRotate K) C.a
 
+-- PART 6: Product step equation
 lemma prod_step :
     (∏ i : Fin K, C.a (i + 1)) * 2 ^ C.S = ∏ i : Fin K, (3 * C.a i + 1) := by
   dsimp [S]
@@ -58,7 +59,7 @@ lemma prod_step :
     exact C.hstep i
   rw [Finset.prod_mul_distrib] at h_step_prod
   have h_pow_sum : ∏ i : Fin K, 2 ^ C.s i = 2 ^ (∑ i : Fin K, C.s i) := by
-    sorry
+    exact sorry
   rw [h_pow_sum] at h_step_prod
   exact h_step_prod
 
@@ -83,38 +84,10 @@ lemma S_lower_bound : 3 ^ K < 2 ^ C.S := by
 
 -- PART 8: 2^S * xmin^K ≤ (3*xmin + 1)^K Upper Bound
 lemma prodA_lower_bound : C.xmin ^ K ≤ C.prodA := by
-  calc C.xmin ^ K
-    _ = ∏ i : Fin K, C.xmin := by simp
-    _ ≤ ∏ i : Fin K, C.a i := by
-      sorry
-    _ = C.prodA := rfl
+  sorry
 
 lemma S_upper_bound : 2 ^ C.S * C.xmin ^ K ≤ (3 * C.xmin + 1) ^ K := by
-  have h_pointwise : ∀ i : Fin K, C.xmin * (3 * C.a i + 1) ≤ C.a i * (3 * C.xmin + 1) := by
-    intro i
-    have h := C.hmin i
-    have h1 : C.xmin * (3 * C.a i) = 3 * C.a i * C.xmin := by ring
-    sorry
-  have h_prod : ∏ i : Fin K, (C.xmin * (3 * C.a i + 1)) ≤ ∏ i : Fin K, (C.a i * (3 * C.xmin + 1)) := by
-    sorry
-  have h_lhs : ∏ i : Fin K, (C.xmin * (3 * C.a i + 1)) = C.xmin ^ K * ∏ i : Fin K, (3 * C.a i + 1) := by
-    calc ∏ i : Fin K, (C.xmin * (3 * C.a i + 1))
-      _ = (∏ i : Fin K, C.xmin) * (∏ i : Fin K, (3 * C.a i + 1)) := by rw [Finset.prod_mul_distrib]
-      _ = C.xmin ^ K * ∏ i : Fin K, (3 * C.a i + 1) := by simp
-  have h_rhs : ∏ i : Fin K, (C.a i * (3 * C.xmin + 1)) = C.prodA * (3 * C.xmin + 1) ^ K := by
-    calc ∏ i : Fin K, (C.a i * (3 * C.xmin + 1))
-      _ = (∏ i : Fin K, C.a i) * (∏ i : Fin K, (3 * C.xmin + 1)) := by rw [Finset.prod_mul_distrib]
-      _ = C.prodA * (3 * C.xmin + 1) ^ K := by simp [prodA]
-  rw [h_lhs, h_rhs] at h_prod
-  have h_step' : C.prodA * 2 ^ C.S = ∏ i : Fin K, (3 * C.a i + 1) := by
-    calc C.prodA * 2 ^ C.S
-      _ = (∏ i : Fin K, C.a i) * 2 ^ C.S := rfl
-      _ = (∏ i : Fin K, C.a (i + 1)) * 2 ^ C.S := by rw [← C.prod_shift]
-      _ = ∏ i : Fin K, (3 * C.a i + 1) := C.prod_step
-  rw [← h_step'] at h_prod
-  have h_assoc : C.xmin ^ K * (C.prodA * 2 ^ C.S) = C.prodA * (2 ^ C.S * C.xmin ^ K) := by ring
-  rw [h_assoc] at h_prod
-  exact Nat.le_of_mul_le_mul_left h_prod C.prodA_pos
+  sorry
 
 -- PART 9: Master strict inequality
 lemma master_ineq : 2 ^ C.S * C.xmin ^ K < 3 ^ K * (C.xmin + 1) ^ K := by
