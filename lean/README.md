@@ -20,10 +20,10 @@ The main proof components are located in CollatzLean/ and are fully verified out
 
 ## Prerequisites
 
-To verify the proofs on your own machine, you need to install **Lean 4**. We strongly recommend using Lean (the Lean version manager).
+To verify the proofs on your own machine, you need to install **Lean 4**. We strongly recommend using elan (the Lean version manager).
 
 1. Install Lean by following the instructions at: [leanprover/elan](https://github.com/leanprover/elan)
-2. Ensure you have lake (Lean's package manager) installed (it comes bundled with lan).
+2. Ensure you have lake (Lean's package manager) installed (it comes bundled with elan).
 
 ## How to Build and Verify
 
