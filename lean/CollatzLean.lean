@@ -14,3 +14,4 @@ import CollatzLean.CycleBounds
 import CollatzLean.CycleLogs
 import CollatzLean.BakerRhin
 import CollatzLean.CycleFractions
+import CollatzLean.Divergence
