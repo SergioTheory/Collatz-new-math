@@ -14,13 +14,13 @@ The main proof components are located in CollatzLean/ and are fully verified out
 * EndpointUniform.lean: The endpoint mapping law corresponding strictly to the Haar measure on odd classes.
 * UnitsHalf.lean: Modular arithmetics, dropping external unit hypotheses (isUnit_three_pow), and halving transfers.
 * CountBounds.lean: Range filtration and the counting bounds for the $\pm 1$ transport law (Proposition B3).
-* DirectViaB3.lean: The macroscopic interface bounding survival probability and Hausdorff dimensions using rigorous xiom declarations for the external metric properties.
+* DirectViaB3.lean: The macroscopic interface bounding survival probability and Hausdorff dimensions using rigorous axiom declarations for the external metric properties.
 
 *(Note: Early historical sketches and unverified drafts from the initial stages of the project can be found in the root archive/ folder. They are not part of the active build).*
 
 ## Prerequisites
 
-To verify the proofs on your own machine, you need to install **Lean 4**. We strongly recommend using lan (the Lean version manager).
+To verify the proofs on your own machine, you need to install **Lean 4**. We strongly recommend using Lean (the Lean version manager).
 
 1. Install Lean by following the instructions at: [leanprover/elan](https://github.com/leanprover/elan)
 2. Ensure you have lake (Lean's package manager) installed (it comes bundled with lan).
