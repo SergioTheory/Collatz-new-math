@@ -19,7 +19,7 @@ The unified manuscript, combining computational mapping (Part I) and large-devia
 
 ### 1. Lean Formalization (100% Verified)
 The project includes a mathematically flawless formalization of the exact 2-adic transport. To verify the Lean proofs yourself:
-`ash
+`Bash
 cd lean
 lake exe cache get
 lake build
