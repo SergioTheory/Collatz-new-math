@@ -3,4 +3,9 @@ import CollatzLean.LemmaT1_step1_pure
 import CollatzLean.EndpointUniform
 import CollatzLean.UnitsHalf
 import CollatzLean.CountBounds
+import CollatzLean.DensityLayer
 import CollatzLean.DirectViaB3
+import CollatzLean.LiftCounting
+import CollatzLean.SurvivalCutoff
+import CollatzLean.Stage4Decay
+import CollatzLean.Terras
