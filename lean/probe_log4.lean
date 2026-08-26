@@ -1,0 +1,9 @@
+import Mathlib
+#check Real.log_le_sub_one_of_pos
+#check Real.exp_le_exp
+#check Real.add_le_exp
+#check Real.exp_le_iff
+#check Real.log_le_log
+#check Real.lt_one_add_exp
+#check Real.log_lt_one_add
+#check Real.log_le_abs_sub_one

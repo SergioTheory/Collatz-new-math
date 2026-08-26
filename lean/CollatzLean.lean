@@ -10,3 +10,7 @@ import CollatzLean.SurvivalCutoff
 import CollatzLean.Stage4Decay
 import CollatzLean.Terras
 import CollatzLean.CycleBasic
+import CollatzLean.CycleBounds
+import CollatzLean.CycleLogs
+import CollatzLean.BakerRhin
+import CollatzLean.CycleFractions

@@ -1,0 +1,12 @@
+import Mathlib
+#check Real.log_lt_log
+#check Real.log_pow
+#check Real.log_of_pos
+#check Real.log_pos
+#check Real.log_le_log
+#check Real.lt_log_iff_exp_lt
+#check Real.log_exp
+#check Real.exp_log
+#check Real.log_natCast_pos
+#check Real.log_lt_log_iff
+#check norm_num
