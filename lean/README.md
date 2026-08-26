@@ -16,20 +16,20 @@ The main proof components are located in CollatzLean/ and are fully verified out
 * CountBounds.lean: Range filtration and the counting bounds for the $\pm 1$ transport law (Proposition B3).
 * DirectViaB3.lean: The macroscopic interface bounding survival probability and Hausdorff dimensions using rigorous xiom declarations for the external metric properties.
 
-*(Note: Early historical sketches and unverified drafts from the initial stages of the project can be found in the root rchive/ folder. They are not part of the active build).*
+*(Note: Early historical sketches and unverified drafts from the initial stages of the project can be found in the root archive/ folder. They are not part of the active build).*
 
 ## Prerequisites
 
 To verify the proofs on your own machine, you need to install **Lean 4**. We strongly recommend using lan (the Lean version manager).
 
-1. Install lan by following the instructions at: [leanprover/elan](https://github.com/leanprover/elan)
+1. Install Lean by following the instructions at: [leanprover/elan](https://github.com/leanprover/elan)
 2. Ensure you have lake (Lean's package manager) installed (it comes bundled with lan).
 
 ## How to Build and Verify
 
 To compile the project, download the Mathlib dependencies, and verify all proofs, run the following commands in this directory:
 
-`ash
+`bash
 # 1. Download the required version of Mathlib (optional but recommended for speed)
 lake exe cache get
 
