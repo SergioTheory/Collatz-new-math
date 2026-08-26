@@ -1,0 +1,19 @@
+import Mathlib
+open scoped ENNReal
+#check ENNReal.mul_div_right
+#check ENNReal.mul_inv_cancel
+#check ENNReal.mul_inv_cancel_of_dvd
+#check div_le_div_of_nonneg_right
+#check le_div_iff_mul_le
+#check div_le_iff₀
+#check ENNReal.div_le_iff₀
+#check ENNReal.mul_comm
+#check Finset.card_le_card
+#check Finset.range_subset
+#check Nat.monotoneOn_card
+#check Finset.card_le_of_subset
+#check Nat.cast_le
+#check Nat.cast_ofNat
+#check ENNReal.coe_natCast
+#check ENNReal.div_self
+#check ENNReal.div_eq_mul_inv
