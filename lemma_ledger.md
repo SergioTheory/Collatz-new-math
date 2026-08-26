@@ -9,3 +9,4 @@
 | 2026-08-24 | 2.3 wasserstein_multiblock.py | численно | rho > 1 | [GATE-2] W1 multiblock contract. -> FALSIFIED (rho>1, memory in low 2-adic bits persists). |
 | 2026-08-24 | VERDICT | итог | - | [GATE-2] VERDICT: pointwise martingale/transport route CLOSED. Archimedean-2adic wall stands. |
 | 2026-08-24 | 3.1 cycle_baker_exclude.py | аналитически | > 10^6 | Все циклы длины d <= 1,000,000 исключены благодаря фронту Барины 2^68 (так как N_ub ~ d / ln 2 << 2^68). |
+| 2026-08-24 | A3 spectral_gap_n8.py | численно | gap > 0.05 | Спектральная щель при n=8 не убывает (gap от 0.05 до 0.44), Лемма A3 подтверждена на большем масштабе. |
