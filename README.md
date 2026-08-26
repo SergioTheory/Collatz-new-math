@@ -31,14 +31,17 @@ The Python scripts require
 umpy, 
 umba, and scipy.
 Example run of the multiprocessed boundary survival test:
-`ash
+`Bash
 cd scripts
 python D_multiblock_survival_v2.py
 `
 
 Key scripts include:
-* zone_parity_search.py, everse_tree_xstar.py, confluence_census.py (Part I mapping).
-* estart_transport.py, estart_fourier_decomposition.py (Part II transport and spectral tests).
+* zone_parity_search.py, 
+everse_tree_xstar.py, confluence_census.py (Part I mapping).
+* 
+estart_transport.py, 
+estart_fourier_decomposition.py (Part II transport and spectral tests).
 
 ## Authorship & AI Contributions
 
