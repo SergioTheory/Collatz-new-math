@@ -65,6 +65,38 @@ lemma shift_log_upper (hxpos : 0 < C.xmin) :
   rw [hlog_lhs, hlog_rhs] at hlog
   exact hlog
 
+/-- `ln (1 + 1/xmin) ≤ 1/xmin`, from the elementary bound `ln t ≤ t−1`. -/
+lemma log_one_add_inv_le (hxpos : 0 < C.xmin) :
+    Real.log (1 + 1 / (C.xmin : ℝ)) ≤ 1 / (C.xmin : ℝ) := by
+  have hpos : (0 : ℝ) < 1 + 1 / (C.xmin : ℝ) := by positivity
+  have h := Real.log_le_sub_one_of_pos hpos
+  -- h : ln(1 + 1/xmin) ≤ (1 + 1/xmin) − 1
+  have hsimp : (1 + 1 / (C.xmin : ℝ)) - 1 = 1 / (C.xmin : ℝ) := by ring
+  rwa [hsimp] at h
+
+/-- **The logarithmic clamp (log₂ form).**
+The Diophantine linear form `Λ = S·ln2 − K·ln3` is pinned strictly:
+`0 < Λ < K / xmin`.  This is the tight window that feeds the Baker–Rhin
+lower bound on `|Λ|`: a non-trivial cycle would force `Λ` to be a nonzero
+integer linear form in ln 2 and ln 3 of size `< K/xmin`, arbitrarily small as
+`xmin → ∞` — the Diophantine obstruction. -/
+theorem cycle_log_clamp (hxpos : 0 < C.xmin) :
+    (0 : ℝ) < (C.S : ℝ) * Real.log 2 - (K : ℝ) * Real.log 3 ∧
+    (C.S : ℝ) * Real.log 2 - (K : ℝ) * Real.log 3 < (K : ℝ) / (C.xmin : ℝ) := by
+  have hlow := C.Lambda_pos
+  have h_up := C.shift_log_upper hxpos
+  have hlog := C.log_one_add_inv_le hxpos
+  -- K·ln(1+1/xmin) ≤ K·(1/xmin) = K/xmin   (K ≥ 0)
+  have hKmul : (K : ℝ) * Real.log (1 + 1 / (C.xmin : ℝ)) ≤ (K : ℝ) * (1 / (C.xmin : ℝ)) := by
+    exact mul_le_mul_of_nonneg_left hlog (by positivity : 0 ≤ (K : ℝ))
+  have hup2 : (C.S : ℝ) * Real.log 2 - (K : ℝ) * Real.log 3 < (K : ℝ) / (C.xmin : ℝ) := by
+    have hle : (K : ℝ) * Real.log (1 + 1 / (C.xmin : ℝ)) ≤ (K : ℝ) / (C.xmin : ℝ) := by
+      have h1 : (K : ℝ) * Real.log (1 + 1 / (C.xmin : ℝ)) ≤ (K : ℝ) * (1 / (C.xmin : ℝ)) := hKmul
+      have h2 : (K : ℝ) * (1 / (C.xmin : ℝ)) = (K : ℝ) / (C.xmin : ℝ) := by ring_nf
+      rwa [h2] at h1
+    exact lt_of_lt_of_le h_up hle
+  exact ⟨hlow, hup2⟩
+
 /-- `K ≤ S`: each of the K shifts is at least 1. -/
 lemma s_pos_each_le : K ≤ C.S := by
   calc K

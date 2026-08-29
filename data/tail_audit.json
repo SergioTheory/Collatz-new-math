@@ -1,0 +1,1002 @@
+{
+  "A_MAX": 200,
+  "M_MAX": 65536,
+  "by_a": {
+    "2": {
+      "growth": 16384,
+      "total": 32768,
+      "density": 0.5
+    },
+    "3": {
+      "growth": 16384,
+      "total": 32768,
+      "density": 0.5
+    },
+    "4": {
+      "growth": 24576,
+      "total": 32768,
+      "density": 0.75
+    },
+    "5": {
+      "growth": 24576,
+      "total": 32768,
+      "density": 0.75
+    },
+    "6": {
+      "growth": 28672,
+      "total": 32768,
+      "density": 0.875
+    },
+    "7": {
+      "growth": 30720,
+      "total": 32768,
+      "density": 0.9375
+    },
+    "8": {
+      "growth": 30720,
+      "total": 32768,
+      "density": 0.9375
+    },
+    "9": {
+      "growth": 31744,
+      "total": 32768,
+      "density": 0.96875
+    },
+    "10": {
+      "growth": 31744,
+      "total": 32768,
+      "density": 0.96875
+    },
+    "11": {
+      "growth": 32256,
+      "total": 32768,
+      "density": 0.984375
+    },
+    "12": {
+      "growth": 32512,
+      "total": 32768,
+      "density": 0.9921875
+    },
+    "13": {
+      "growth": 32512,
+      "total": 32768,
+      "density": 0.9921875
+    },
+    "14": {
+      "growth": 32640,
+      "total": 32768,
+      "density": 0.99609375
+    },
+    "15": {
+      "growth": 32640,
+      "total": 32768,
+      "density": 0.99609375
+    },
+    "16": {
+      "growth": 32704,
+      "total": 32768,
+      "density": 0.99804688
+    },
+    "17": {
+      "growth": 32704,
+      "total": 32768,
+      "density": 0.99804688
+    },
+    "18": {
+      "growth": 32736,
+      "total": 32768,
+      "density": 0.99902344
+    },
+    "19": {
+      "growth": 32752,
+      "total": 32768,
+      "density": 0.99951172
+    },
+    "20": {
+      "growth": 32752,
+      "total": 32768,
+      "density": 0.99951172
+    },
+    "21": {
+      "growth": 32760,
+      "total": 32768,
+      "density": 0.99975586
+    },
+    "22": {
+      "growth": 32760,
+      "total": 32768,
+      "density": 0.99975586
+    },
+    "23": {
+      "growth": 32764,
+      "total": 32768,
+      "density": 0.99987793
+    },
+    "24": {
+      "growth": 32766,
+      "total": 32768,
+      "density": 0.99993896
+    },
+    "25": {
+      "growth": 32766,
+      "total": 32768,
+      "density": 0.99993896
+    },
+    "26": {
+      "growth": 32767,
+      "total": 32768,
+      "density": 0.99996948
+    },
+    "27": {
+      "growth": 32767,
+      "total": 32768,
+      "density": 0.99996948
+    },
+    "28": {
+      "growth": 32767,
+      "total": 32768,
+      "density": 0.99996948
+    },
+    "29": {
+      "growth": 32767,
+      "total": 32768,
+      "density": 0.99996948
+    },
+    "30": {
+      "growth": 32767,
+      "total": 32768,
+      "density": 0.99996948
+    },
+    "31": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "32": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "33": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "34": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "35": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "36": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "37": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "38": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "39": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "40": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "41": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "42": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "43": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "44": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "45": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "46": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "47": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "48": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "49": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "50": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "51": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "52": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "53": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "54": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "55": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "56": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "57": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "58": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "59": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "60": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "61": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "62": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "63": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "64": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "65": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "66": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "67": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "68": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "69": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "70": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "71": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "72": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "73": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "74": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "75": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "76": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "77": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "78": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "79": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "80": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "81": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "82": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "83": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "84": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "85": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "86": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "87": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "88": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "89": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "90": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "91": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "92": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "93": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "94": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "95": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "96": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "97": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "98": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "99": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "100": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "101": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "102": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "103": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "104": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "105": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "106": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "107": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "108": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "109": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "110": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "111": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "112": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "113": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "114": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "115": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "116": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "117": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "118": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "119": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "120": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "121": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "122": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "123": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "124": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "125": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "126": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "127": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "128": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "129": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "130": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "131": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "132": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "133": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "134": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "135": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "136": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "137": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "138": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "139": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "140": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "141": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "142": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "143": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "144": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "145": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "146": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "147": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "148": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "149": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "150": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "151": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "152": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "153": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "154": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "155": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "156": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "157": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "158": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "159": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "160": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "161": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "162": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "163": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "164": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "165": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "166": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "167": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "168": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "169": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "170": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "171": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "172": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "173": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "174": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "175": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "176": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "177": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "178": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "179": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "180": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "181": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "182": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "183": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "184": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "185": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "186": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "187": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "188": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "189": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "190": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "191": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "192": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "193": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "194": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "195": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "196": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "197": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "198": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "199": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    },
+    "200": {
+      "growth": 32768,
+      "total": 32768,
+      "density": 1.0
+    }
+  },
+  "elapsed_sec": 52.56
+}

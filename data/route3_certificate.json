@@ -1,0 +1,305 @@
+{
+  "partA": {
+    "I2": [
+      {
+        "sigma": 1.0,
+        "I2_bits": 1.0
+      },
+      {
+        "sigma": 1.05,
+        "I2_bits": 0.759995
+      },
+      {
+        "sigma": 1.1,
+        "I2_bits": 0.616553
+      },
+      {
+        "sigma": 1.333333,
+        "I2_bits": 0.251629
+      },
+      {
+        "sigma": 1.33,
+        "I2_bits": 0.254981
+      },
+      {
+        "sigma": 1.4,
+        "I2_bits": 0.191631
+      },
+      {
+        "sigma": 1.584963,
+        "I2_bits": 0.079319
+      },
+      {
+        "sigma": 1.6,
+        "I2_bits": 0.072906
+      },
+      {
+        "sigma": 1.7,
+        "I2_bits": 0.03839
+      },
+      {
+        "sigma": 1.8,
+        "I2_bits": 0.016063
+      },
+      {
+        "sigma": 1.9,
+        "I2_bits": 0.003798
+      },
+      {
+        "sigma": 2.0,
+        "I2_bits": 0.0
+      }
+    ],
+    "c_star": [
+      {
+        "d": 16,
+        "sigma": 1.333333,
+        "c_star": 0.06138089
+      },
+      {
+        "d": 16,
+        "sigma": 1.584963,
+        "c_star": 0.41491916
+      },
+      {
+        "d": 16,
+        "sigma": 1.33,
+        "c_star": 0.05914132
+      },
+      {
+        "d": 32,
+        "sigma": 1.333333,
+        "c_star": 0.00376761
+      },
+      {
+        "d": 32,
+        "sigma": 1.584963,
+        "c_star": 0.17215791
+      },
+      {
+        "d": 32,
+        "sigma": 1.33,
+        "c_star": 0.0034977
+      },
+      {
+        "d": 64,
+        "sigma": 1.333333,
+        "c_star": 1.419e-05
+      },
+      {
+        "d": 64,
+        "sigma": 1.584963,
+        "c_star": 0.02963835
+      },
+      {
+        "d": 64,
+        "sigma": 1.33,
+        "c_star": 1.223e-05
+      },
+      {
+        "d": 128,
+        "sigma": 1.333333,
+        "c_star": 0.0
+      },
+      {
+        "d": 128,
+        "sigma": 1.584963,
+        "c_star": 0.00087843
+      },
+      {
+        "d": 128,
+        "sigma": 1.33,
+        "c_star": 0.0
+      }
+    ],
+    "delta_d_grid": [
+      {
+        "alpha": 1.1,
+        "t": 0.240942,
+        "sigma": 2.0,
+        "delta_d": 0.618116
+      },
+      {
+        "alpha": 1.1,
+        "t": 0.63093,
+        "sigma": 1.743459,
+        "delta_d": 0.017243
+      },
+      {
+        "alpha": 1.2,
+        "t": 0.481884,
+        "sigma": 2.0,
+        "delta_d": 0.236232
+      },
+      {
+        "alpha": 1.2,
+        "t": 0.63093,
+        "sigma": 1.901955,
+        "delta_d": 0.002301
+      },
+      {
+        "alpha": 1.3,
+        "t": 0.722826,
+        "sigma": 2.0,
+        "delta_d": -0.145653
+      },
+      {
+        "alpha": 1.3,
+        "t": 0.63093,
+        "sigma": 2.060451,
+        "delta_d": 0.000807
+      },
+      {
+        "alpha": 1.4,
+        "t": 0.963768,
+        "sigma": 2.0,
+        "delta_d": -0.527537
+      },
+      {
+        "alpha": 1.4,
+        "t": 0.63093,
+        "sigma": 2.218948,
+        "delta_d": 0.009848
+      },
+      {
+        "alpha": 1.5,
+        "t": 1.20471,
+        "sigma": 2.0,
+        "delta_d": -0.909421
+      },
+      {
+        "alpha": 1.5,
+        "t": 0.63093,
+        "sigma": 2.377444,
+        "delta_d": 0.027388
+      }
+    ]
+  },
+  "partB": {
+    "one_block_survival": [
+      {
+        "N0": 65536,
+        "d": 8,
+        "M": 262144,
+        "survivors": 149252,
+        "fraction": 0.569351,
+        "implied_rate_bits/step": 0.101576,
+        "c_star(4/3)": 0.247752,
+        "c_star(lambda)": 0.644142,
+        "sec": 1.26
+      },
+      {
+        "N0": 65536,
+        "d": 16,
+        "M": 262144,
+        "survivors": 70129,
+        "fraction": 0.267521,
+        "implied_rate_bits/step": 0.118892,
+        "c_star(4/3)": 0.061381,
+        "c_star(lambda)": 0.414919,
+        "sec": 0.0
+      },
+      {
+        "N0": 65536,
+        "d": 32,
+        "M": 262144,
+        "survivors": 17268,
+        "fraction": 0.065872,
+        "implied_rate_bits/step": 0.122631,
+        "c_star(4/3)": 0.003768,
+        "c_star(lambda)": 0.172158,
+        "sec": 0.0
+      },
+      {
+        "N0": 65536,
+        "d": 64,
+        "M": 262144,
+        "survivors": 1389,
+        "fraction": 0.005299,
+        "implied_rate_bits/step": 0.118128,
+        "c_star(4/3)": 1.4e-05,
+        "c_star(lambda)": 0.029638,
+        "sec": 0.0
+      },
+      {
+        "N0": 1048576,
+        "d": 8,
+        "M": 262144,
+        "survivors": 92374,
+        "fraction": 0.352379,
+        "implied_rate_bits/step": 0.1881,
+        "c_star(4/3)": 0.247752,
+        "c_star(lambda)": 0.644142,
+        "sec": 0.0
+      },
+      {
+        "N0": 1048576,
+        "d": 16,
+        "M": 262144,
+        "survivors": 34790,
+        "fraction": 0.132713,
+        "implied_rate_bits/step": 0.182101,
+        "c_star(4/3)": 0.061381,
+        "c_star(lambda)": 0.414919,
+        "sec": 0.0
+      },
+      {
+        "N0": 1048576,
+        "d": 32,
+        "M": 262144,
+        "survivors": 7449,
+        "fraction": 0.028416,
+        "implied_rate_bits/step": 0.160537,
+        "c_star(4/3)": 0.003768,
+        "c_star(lambda)": 0.172158,
+        "sec": 0.0
+      },
+      {
+        "N0": 1048576,
+        "d": 64,
+        "M": 262144,
+        "survivors": 553,
+        "fraction": 0.00211,
+        "implied_rate_bits/step": 0.138889,
+        "c_star(4/3)": 1.4e-05,
+        "c_star(lambda)": 0.029638,
+        "sec": 0.0
+      }
+    ],
+    "gate2_band_check": {
+      "rows": [
+        {
+          "N0": 65536,
+          "d": 8,
+          "M": 262144,
+          "survivors": 149252,
+          "fraction": 0.569351,
+          "implied_rate_bits/step": 0.101576,
+          "c_star(4/3)": 0.247752,
+          "c_star(lambda)": 0.644142,
+          "sec": 1.26
+        },
+        {
+          "N0": 65536,
+          "d": 16,
+          "M": 262144,
+          "survivors": 70129,
+          "fraction": 0.267521,
+          "implied_rate_bits/step": 0.118892,
+          "c_star(4/3)": 0.061381,
+          "c_star(lambda)": 0.414919,
+          "sec": 0.0
+        }
+      ],
+      "paper_band": [
+        0.51,
+        0.56
+      ],
+      "in_paper_band": false
+    }
+  },
+  "meta": {
+    "cpu": "Intel64 Family 6 Model 63 Stepping 2, GenuineIntel",
+    "threads": 30
+  }
+}
