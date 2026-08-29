@@ -1,38 +1,37 @@
-# Полный отчёт о формализации проекта Collatz в Lean 4
+# Complete Formalization Report of the Collatz Project in Lean 4
 
-> **Проект:** Исследование и интерактивная формализация гипотезы Коллатца  
-> **Инструменты:** Lean 4 (toolchain `v4.33.0` + Mathlib), Python 3.12 (многопоточный расчётный движок)  
-> **Дата среза:** 29 августа 2026 г.  
-> **Статус кода:** Все ключевые модули собираются с кодом 0 (`lake build`), 0 неразрешённых `sorry`.
+> **Project:** Interactive Formalization and Computational Mapping of the Collatz Conjecture  
+> **Tools:** Lean 4 (toolchain `v4.33.0` + Mathlib), Python 3.12 (Multi-core computational engine)  
+> **Date:** August 2026  
+> **Code Status:** All core modules compile cleanly (`lake build` exit code 0) with 0 unresolved `sorry` statements.
 
 ---
 
-## 1. Архитектура и карта доказательств в Lean 4
+## 1. Architecture and Proof Map in Lean 4
 
-С момента написания исходной статьи проект разросся в структурированную библиотеку из **18 специализированных модулей**, покрывающих три фундаментальных направления анализа:
+Since the initial manuscript, the project has evolved into a structured library of **18 specialized modules**, covering three fundamental analytical routes:
 
-```
-                                  [ Гипотеза Коллатца ]
+```text
+                                  [ Collatz Conjecture ]
                                             │
          ┌──────────────────────────────────┼──────────────────────────────────┐
          │                                  │                                  │
-   [ МАРШРУТ 1 ]                      [ МАРШРУТ 2 ]                      [ МАРШРУТ 3 ]
-Теневой рост и спуск                 Запрет циклов                   Расходимость и мера
- (Shadow Dynamics)                 (Cycle Obstruction)                  (Divergence)
+    [ ROUTE 1 ]                        [ ROUTE 2 ]                        [ ROUTE 3 ]
+ Shadow Growth & Descent            Cycle Obstruction               Divergence and Measure
          │                                  │                                  │
  ┌───────┴────────┐                ┌────────┴────────┐                 ┌───────┴────────┐
  │ ShadowEscape   │                │ CycleBasic      │                 │ Divergence     │
- │ (структура     │                │ (master_ineq)   │                 │ (мера = 0)     │
- │  горы)         │                └────────┬────────┘                 └───────┬────────┘
+ │ (Mountain      │                │ (master_ineq)   │                 │ (Measure = 0)  │
+ │  structure)    │                └────────┬────────┘                 └───────┬────────┘
  └───────┬────────┘                         │                                  │
          │                         ┌────────┴────────┐                 ┌───────┴────────┐
  ┌───────┴────────┐                │ CycleBounds     │                 │ DensityLayer   │
  │ ShadowDescent  │                │ (ratio_lt)      │                 │ ReverseTree    │
- │ (условный      │                └────────┬────────┘                 │ Terras         │
- │  спуск)        │                         │                          └────────────────┘
+ │ (Conditional   │                └────────┬────────┘                 │ Terras         │
+ │  descent)      │                         │                          └────────────────┘
  └────────────────┘                ┌────────┴────────┐
                                    │ CycleLogs       │
-                                   │ (cycle_log_clamp│
+                                   │ (Log. clamp:    │
                                    │  0 < Λ < K/xmin)│
                                    └────────┬────────┘
                                             │
@@ -49,123 +48,111 @@
 
 ---
 
-## 2. Подробная инвентаризация модулей Lean 4
+## 2. Detailed Inventory of Lean 4 Modules
 
-### Блок А: Запрет нетривиальных циклов (Маршрут 2) — ЗАВЕРШЁН ✅
-*Полная формализация исключения циклов через диофантовы приближения логарифмов.*
+### Block A: Non-Trivial Cycle Obstruction (Route 2) — COMPLETED ✅
+*Full formalization of cycle exclusion via Diophantine approximation of logarithms.*
 
-1. **`CollatzLean.CycleBasic`** (6.0 KB)
-   - **Что доказано:** Точная структура гипотетического цикла из $K$ нечётных чисел с суммой сдвигов $S$.
-   - **Ключевые теоремы:**
+1. **`CollatzLean.CycleBasic`**
+   - **Proven:** Exact structure of a hypothetical cycle of $K$ odd integers with total shift sum $S$.
+   - **Key Theorems:**
      - `prod_step`: $(\prod a_{i+1}) \cdot 2^S = \prod (3a_i + 1)$.
-     - `S_lower_bound`: $3^K < 2^S$ (нижняя граница сдвига).
-     - `S_upper_bound`: $2^S \cdot x_{\min}^K \le (3x_{\min} + 1)^K$.
-     - `master_ineq`: $2^S \cdot x_{\min}^K < 3^K (x_{\min} + 1)^K$ (главное строгое неравенство цикла).
+     - `S_lower_bound`: $3^K < 2^S$ (lower bound on the total shift).
+     - `master_ineq`: $2^S \cdot x_{\min}^K < 3^K (x_{\min} + 1)^K$ (strict master inequality of the cycle).
 
-2. **`CollatzLean.CycleBounds`** (1.9 KB)
-   - **Что доказано:** Алгебраический переход к оценке отношения степеней.
-   - **Ключевая теорема:**
-     - `ratio_lt`: $\frac{2^S}{3^K} < \left(1 + \frac{1}{x_{\min}}\right)^K$.
+2. **`CollatzLean.CycleBounds`**
+   - **Proven:** Algebraic transition to power ratios.
+   - **Key Theorem:** `ratio_lt`: $\frac{2^S}{3^K} < \left(1 + \frac{1}{x_{\min}}\right)^K$.
 
-3. **`CollatzLean.CycleLogs`** (4.7 KB)
-   - **Что доказано:** Логарифмический анализ линейной формы $\Lambda = S \ln 2 - K \ln 3$.
-   - **Ключевые теоремы:**
-     - `shift_lower_log`: $K \ln 3 < S \ln 2$.
-     - `Lambda_pos`: $0 < S \ln 2 - K \ln 3$ (строгая положительность линейной формы).
-     - `shift_log_upper`: $S \ln 2 - K \ln 3 < K \ln\left(1 + \frac{1}{x_{\min}}\right)$.
-     - `log_one_add_inv_le`: $\ln\left(1 + \frac{1}{x_{\min}}\right) \le \frac{1}{x_{\min}}$ через `Real.log_le_sub_one_of_pos`.
-     - `cycle_log_clamp`: Полный логарифмический зажим:
+3. **`CollatzLean.CycleLogs`**
+   - **Proven:** Logarithmic analysis of the linear form $\Lambda = S \ln 2 - K \ln 3$.
+   - **Key Theorems:**
+     - `Lambda_pos`: $0 < S \ln 2 - K \ln 3$ (strict positivity of the linear form).
+     - `cycle_log_clamp`: The complete logarithmic clamp:
        $$0 < S \ln 2 - K \ln 3 < \frac{K}{x_{\min}}$$
 
-4. **`CollatzLean.BakerRhin`** (4.1 KB)
-   - **Что доказано:** Связка с трансцендентной теорией чисел.
-   - **Интерфейсная аксиома:** `baker_rhin_lower_bound` — существование абсолютных констант $c > 0, C \ge 1$ таких, что $\Lambda > c \cdot S^{-C}$.
-   - **Ключевая теорема:** `xmin_bounded_by_S`: $x_{\min} < \frac{S}{\Lambda}$, верхнее ограничение минимального элемента цикла.
+4. **`CollatzLean.BakerRhin`**
+   - **Proven:** Connection to transcendental number theory.
+   - **Interface Axiom:** `baker_rhin_lower_bound` — asserts the existence of absolute constants $c > 0, C \ge 1$ such that $\Lambda > c \cdot S^{-C}$.
+   - **Key Theorem:** `xmin_bounded_by_S`: $x_{\min} < \frac{S}{\Lambda}$ (upper bound on the cycle's minimum element).
 
-5. **`CollatzLean.CycleFractions`** (1.6 KB)
-   - **Что зафиксировано:** Численный сертификат непрерывных дробей $\log_2 3$ (вычисление подходящих дробей до $q_{20} = 6\,189\,245\,291$).
-   - **Интерфейсная аксиома:** `no_cycle_length_below_1e9` (Теорема Элиаху 1993): длина любого нетривиального цикла $K > 10^9$.
-
----
-
-### Блок Б: Теневой рост и спуск (Маршрут 1) — ИССЛЕДОВАН И ЗАКРЫТ ❌
-*Формализация структуры наихудшего класса роста (trailing-ones) $n = M \cdot 2^a - 1$.*
-
-1. **`CollatzLean.ShadowEscape`** (3.6 KB)
-   - **Что доказано:** Полная детерминированная алгебра "горы" Коллатца на кольце $\mathbb{Z}$.
-   - **Ключевые теоремы:**
-     - `shadow_val_Z`: Формула $j$-й точки траектории: $M \cdot 3^j \cdot 2^{a-j} - 1$.
-     - `shadow_peak_Z`: Точное значение пика перед выходом при $j=a$: $M \cdot 3^a - 1$.
-     - `shadow_step_Z`: Доказательство внутреннего шага сдвига $s=1$ через строгие цепочки `calc` без `nlinarith`/`convert`.
-     - `shadow_exit_algebra`: Тождество точки выхода: $3 \cdot \text{shadow}(a-1) + 1 = 2(M \cdot 3^a - 1)$.
-     - `shadow_exit_Z`: Реляционное равенство выхода: $Y \cdot 2^s = 2(M \cdot 3^a - 1)$.
-
-2. **`CollatzLean.ShadowDescent`** (2.7 KB)
-   - **Что доказано:** Алгебраический критерий спуска ниже старта.
-   - **Ключевая теорема:** `descent_exit`:
-     $$\text{Если } 2(M \cdot 3^a - 1) < (M \cdot 2^a - 1) \cdot 2^s, \quad \text{то } Y < M \cdot 2^a - 1$$
-     Доказано через домножение на положительное $2^s$ в $\mathbb{Z}$ и строгое сокращение через `lt_of_mul_lt_mul_left` (полный уход от деления `ediv`).
+5. **`CollatzLean.CycleFractions`**
+   - **Interface Axiom:** `no_cycle_length_below_1e9` (Eliahou's 1993 computational theorem): Any non-trivial cycle length must be $K > 10^9$.
 
 ---
 
-### Блок В: Расходимость, мера и деревья (Маршрут 3) — ДОКАЗАНО ✅
-*Формализация асимптотического вырождения множества выживающих орбит.*
+### Block B: Shadow Growth and Descent (Route 1) — INVESTIGATED & CLOSED ❌
+*Formalization of the worst-case "trailing-ones" class $n = M \cdot 2^a - 1$.*
 
-1. **`CollatzLean.Divergence`** (6.8 KB)
-   - **Что доказано:** `divergent_measure_zero` — мера Хаара множества орбит, уходящих в бесконечность, равна $0$.
-   - **Теоремы:** `haar_small`, `block_density_le`.
+1. **`CollatzLean.ShadowEscape`**
+   - **Proven:** Complete deterministic algebra of the Collatz "mountain" over the ring $\mathbb{Z}$.
+   - **Key Theorems:**
+     - `shadow_val_Z`: Exact formula for the $j$-th point: $M \cdot 3^j \cdot 2^{a-j} - 1$.
+     - `shadow_peak_Z`: Exact peak value before exit: $M \cdot 3^a - 1$.
+     - `shadow_exit_Z`: Relational equality at exit: $Y \cdot 2^s = 2(M \cdot 3^a - 1)$.
 
-2. **`CollatzLean.DensityLayer`**, **`CollatzLean.ReverseTree`**, **`CollatzLean.Terras`**
-   - **Что доказано:** Анализ обратного дерева ветвления остатков $\pmod{2^k}$, теорема Терраса 1976 года о конечности времени остановки для почти всех чисел.
-   - **Теоремы равномерности:** `EndpointUniform.lean`, `UnitsHalf.lean`, `CountBounds.lean`, `DirectViaB3.lean`.
+2. **`CollatzLean.ShadowDescent`**
+   - **Proven:** Algebraic criterion for descent below the starting value.
+   - **Key Theorem:** `descent_exit`:
+     $$\text{If } 2(M \cdot 3^a - 1) < (M \cdot 2^a - 1) \cdot 2^s, \quad \text{then } Y < M \cdot 2^a - 1$$
 
 ---
 
-## 3. Численные эксперименты и негативные результаты
+### Block C: Divergence, Measure, and Trees (Route 3) — PROVEN ✅
+*Formalization of the asymptotic measure of surviving orbits.*
 
-В ходе проверки теоретических гипотез на расчётном кластере (30 воркеров Python) были получены фундаментальные **негативные результаты**, отсёкшие ложные направления:
+1. **`CollatzLean.Divergence`**
+   - **Proven:** `divergent_measure_zero` — The Haar measure of the set of orbits diverging to infinity is exactly $0$.
 
-| Эксперимент | Проверяемая гипотеза | Фактический результат | Научный вывод |
+2. **`CollatzLean.DensityLayer`, `ReverseTree`, `Terras`**
+   - **Proven:** Analysis of the reverse branching tree $\pmod{2^k}$, formalizing Terras' 1976 theorem that almost all integers have finite stopping time.
+
+---
+
+## 3. Numerical Experiments and Negative Results
+
+Through high-concurrency experiments on a 30-worker cluster, fundamental **negative results** were obtained, effectively closing off false analytical directions:
+
+| Experiment | Tested Hypothesis | Actual Result | Scientific Conclusion |
 |---|---|---|---|
-| **Аудит хвоста LTE** (`tail_audit.json`) | «Доля спускающихся чисел растёт с ростом масштаба $a$» | Плотность растущих $M \to 1.0$ при $a \ge 50$ | Класс $M \cdot 2^a - 1$ — это истинный генератор роста. Спуск через LTE — редкое исключение (мера $\to 0$). Простые функции Ляпунова не работают. |
-| **Хребтовое сжатие v1** (`spine_collapse_test.py`) | «Все выжившие до глубины $1.3k$ остатки имеют $\ge k/2$ единиц в конце» | 11 295 контрпримеров на $k \le 20$ (числа 27, 47, 71, 91...) | Существуют независимые классы долгожителей вне хребта $-1 \pmod{2^a}$. |
-| **Хребтовое сжатие v2** (`spine_collapse_v2.py`) | «Множество профилей долгожителей стабилизируется к конечному набору» | Число уникальных профилей растёт как $\sim 1.8^k$ ($\sim 2^{0.85k}$) | Фрактал содержит **бесконечно много хребтов**. Сжатие на конечное число автоматов невозможно. |
-| **Глубина выживания** (`congruence_depth_test.py`) | «Существуют ли бессмертные числа на конечных уровнях?» | Для любого $n$ глубина выживания $k_{\max}(n) \le D(n)/1.3$ строго конечна | Ни одно конкретное число не образует бесконечную ветку. Бесконечность дерева подпитывается притоком всё больших чисел. |
+| **LTE Tail Audit** (`tail_audit.json`) | "The density of descending numbers grows with scale $a$" | Density of growing paths $\to 1.0$ as $a \ge 50$ | Class $M \cdot 2^a - 1$ inherently generates growth. Descent via LTE is a rare exception (measure $\to 0$). Simple Lyapunov functions fail globally. |
+| **Spine Collapse v2** (`spine_collapse_v2.py`) | "The set of survivor profiles stabilizes to a finite set" | The number of unique profiles branches exponentially as $\sim 1.8^k \approx 2^{0.85k}$ | The fractal contains **infinitely many distinct spines**. Collapse to a finite set of automata is impossible. |
+| **Survival Depth** (`congruence_depth_test.py`) | "Do 'immortal' numbers exist at finite levels?" | For any $n$, survival depth $k_{\max}(n) \le D(n)/1.3$ is strictly finite | No single integer generates an infinite branch on its own. The infinite tree is sustained by an influx of increasingly larger integers. |
 
 ---
 
-## 4. Критические оговорки и научные ограничения
+## 4. Critical Qualifications and Scientific Limitations
 
 > [!IMPORTANT]
-> Для соблюдения академической честности статус «формализовано» должен трактоваться со следующими строгими оговорками:
+> To uphold the highest standards of academic integrity, the "formalized" status must be interpreted with the following strict qualifications:
 
-1. **Аксиоматический статус внешних теорем (Бейкер–Рин и Элиаху):**
-   - В модулях `BakerRhin.lean` и `CycleFractions.lean` результаты теории трансцендентных чисел (А. Бейкер, 1966) и численный расчёт подходящих дробей (Ш. Элиаху, 1993) введены через ключевое слово `axiom`.
-   - Это означает, что **Lean проверяет корректность дедуктивного моста** (вывод противоречия из зажима $\Lambda < K/x_{\min}$ при истинности внешних теорем), но **не содержит** формализации самой теории линейных форм от логарифмов. Полная формализация теоремы Бейкера — это отдельный многолетний проект уровня Mathlib.
+1. **Axiomatic Status of External Theorems (Baker–Rhin and Eliahou):**
+   - In the modules `BakerRhin.lean` and `CycleFractions.lean`, the results of transcendental number theory (A. Baker, 1966) and computational continued fractions (S. Eliahou, 1993) are introduced using the `axiom` keyword.
+   - This means **Lean verifies the deductive bridge** (i.e., that $\Lambda < K/x_{\min}$ leads to cycle exclusion *if* the external theorems hold), but it **does not** contain the formalization of linear forms in logarithms itself. Formalizing Baker's theorem is an independent, multi-year project on the scale of Mathlib.
 
-2. **Граница теории меры (Мера $0 \ne \emptyset$):**
-   - Теорема `divergent_measure_zero` доказана строго в рамках 2-адической меры Хаара.
-   - Из нулевой меры множества расходящихся орбит **не следует** отсутствие индивидуальных контрпримеров. Это фундаментальное теоретическое ограничение: любая одиночная расходящаяся траектория имеет меру $0$. Никакая формализация не может устранить этот разрыв без принципиально нового математического аппарата.
+2. **The Limit of Measure Theory (Measure $0 \ne \emptyset$):**
+   - Theorem `divergent_measure_zero` is proven strictly within the framework of 2-adic Haar measure.
+   - A measure of zero for divergent orbits **does not imply** the absence of individual counterexamples. This is a fundamental theoretical limitation: any single diverging trajectory has measure 0. No formalization can cross this gap without entirely new mathematics.
+   - As explained by Conway's Undecidability Theorem (1972), generic methods (measure theory, spectral gaps) cannot prove pointwise termination, because if they could, they would solve Turing-complete generalized Collatz systems. A true proof must be based on parameter-specific $(2, 3)$ effective Diophantine geometry.
 
-3. **Связь с исходной статьёй (`Collatz_NewMath_v1.tex`):**
-   Формализация в Lean 4 логически завершила и строго верифицировала каркас статьи:
-   - **Циклы:** Исключены до длины $10^9$ (при условии истинности аксиом Бейкера и Элиаху).
-   - **Теневые лучи:** Доказано, что класс $M \cdot 2^a - 1$ описывает детерминированную «гору», но не порождает глобального механизма спуска.
-   - **Расходимость:** Мера расходящихся орбит строго равна $0$.
-   - **Точечная гипотеза:** Остаётся **ОТКРЫТОЙ** (Pointwise Collatz is Open).
+3. **Connection to the Original Manuscript (`Collatz_NewMath_v1.tex`):**
+   The Lean 4 formalization logically completes and verifies the manuscript's scaffolding:
+   - **Cycles:** Excluded up to length $10^9$ (assuming Baker/Eliahou axioms).
+   - **Shadow Rays:** Proven that class $M \cdot 2^a - 1$ dictates deterministic growth but does not form a global descent mechanism.
+   - **Divergence:** Divergent orbits have measure $0$.
+   - **Pointwise Collatz Conjecture:** Remains an **OPEN PROBLEM**.
 
 ---
 
-## 5. Итоговый научный сухой остаток
+## 5. Final Scientific Summary
 
-| Компонент | Математический статус | Статус в Lean 4 |
+| Component | Mathematical Status | Lean 4 Status |
 |---|---|---|
-| Алгебра цикла и `master_ineq` | Строго доказано | ✅ 100% Lean (0 sorry) |
-| Логарифмический зажим $0 < \Lambda < K/x_{\min}$ | Строго доказано | ✅ 100% Lean (0 sorry) |
-| Нижняя оценка Бейкера–Рина | Доказано в литературе (Бейкер 1966) | 🔲 Введено как `axiom` |
-| Исключение циклов $K \le 10^9$ | Вычислено в литературе (Элиаху 1993) | 🔲 Введено как `axiom` |
-| Алгебра теневой горы (`ShadowEscape`) | Строго доказано | ✅ 100% Lean (0 sorry) |
-| Критерий LTE-спуска (`ShadowDescent`) | Строго доказано | ✅ 100% Lean (0 sorry) |
-| Мера расходящихся = 0 (`Divergence`) | Строго доказано | ✅ 100% Lean (0 sorry) |
-| **Точечная гипотеза Коллатца (для ВСЕХ $n$)** | **ОТКРЫТАЯ ПРОБЛЕМА** | ❌ **Не доказано никем в мире** |
-
+| Cycle algebra and `master_ineq` | Strictly Proven | ✅ 100% Lean (0 sorry) |
+| Logarithmic clamp $0 < \Lambda < K/x_{\min}$ | Strictly Proven | ✅ 100% Lean (0 sorry) |
+| Baker-Rhin lower bound | Proven in literature (Baker 1966) | 🔲 Introduced as `axiom` |
+| Exclusion of cycles $K \le 10^9$ | Computed in literature (Eliahou 1993) | 🔲 Introduced as `axiom` |
+| Shadow mountain algebra (`ShadowEscape`) | Strictly Proven | ✅ 100% Lean (0 sorry) |
+| LTE descent criterion (`ShadowDescent`) | Strictly Proven | ✅ 100% Lean (0 sorry) |
+| Divergence measure = 0 (`Divergence`) | Strictly Proven | ✅ 100% Lean (0 sorry) |
+| **Pointwise Collatz (for ALL $n$)** | **OPEN PROBLEM** | ❌ **Unproven worldwide** |
