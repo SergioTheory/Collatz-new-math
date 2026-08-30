@@ -1,6 +1,6 @@
 # Collatz Crystal Hunter: Project Status & Roadmap
 
-**Current Release:** v2.2.0 (Architectural Synthesis Milestone)  
+**Current Release:** v2.1.1 (Architectural Synthesis Milestone)  
 **Objective:** Mapping the deterministic architecture of the Collatz space and formalizing structural obstructions.
 
 This document clarifies the exact boundaries between what has been strictly machine-verified in Lean 4 and what has been proven computationally/analytically in our broader research manuscript.
